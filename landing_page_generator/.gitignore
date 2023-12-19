@@ -1,0 +1,13 @@
+.env
+.DS_Store
+__pycache__
+templates/tailwindui-commit
+templates/tailwindui-keynote
+templates/tailwindui-pocket
+templates/tailwindui-primer
+templates/tailwindui-protocol
+templates/tailwindui-salient
+templates/tailwindui-spotlight
+templates/tailwindui-studio
+templates/tailwindui-syntax
+templates/tailwindui-transmit
