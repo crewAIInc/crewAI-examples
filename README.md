@@ -6,6 +6,6 @@ By [@joaomdmoura](https://x.com/joaomdmoura).
 
 
 ## Examples
-- [Landing Page Generator](#landing-page-generator)
-- [Stock Analysis](#stock-analysis)
-- [Trip Planner](#trip-planner)
+- [Landing Page Generator](tree/main/landing_page_generator)
+- [Stock Analysis](tree/main/stock_analysis)
+- [Trip Planner](tree/main/trip_planner)
