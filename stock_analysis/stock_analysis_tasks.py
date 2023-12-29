@@ -57,7 +57,7 @@ class StockAnalysisTasks():
         Extract relevant data and insights that could influence
         the stock's future performance.
 
-        Your final answes must be an expanded report that now
+        Your final answer must be an expanded report that now
         also highlights significant findings from these filings,
         including any red flags or positive indicators for
         your customer.
@@ -83,7 +83,7 @@ class StockAnalysisTasks():
         Your final answer MUST be a recommendation for your
         customer should be a full super detailed report, providing a 
         clear investment stance and strategy with supporting evidence.
-        Make it pretty and well formated for your customer.
+        Make it pretty and well formatted for your customer.
         {self.__tip_section()}
       """),
       agent=agent

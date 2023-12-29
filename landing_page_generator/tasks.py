@@ -40,7 +40,7 @@ class TaskPrompts():
       component files should be updated to make the 
       landing page about the idea bellow.
       
-      - YOU MUST READ THE DIRECTORY BEFORE CHOSING THE FILES.      
+      - YOU MUST READ THE DIRECTORY BEFORE CHOOSING THE FILES.      
       - YOU MUST NOT UPDATE any Pricing components.
       - YOU MUST UPDATE ONLY the 4 most important components.
       
