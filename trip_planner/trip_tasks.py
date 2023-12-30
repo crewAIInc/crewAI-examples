@@ -60,7 +60,7 @@ class TripTasks():
         and a budget breakdown.
         
         You MUST suggest actual places to visit, actual hotels 
-        to stay and actual restaurante to go to.
+        to stay and actual restaurants to go to.
         
         This itinerary should cover all aspects of the trip, 
         from arrival to departure, integrating the city guide
