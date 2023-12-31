@@ -14,7 +14,7 @@ By [@joaomdmoura](https://x.com/joaomdmoura)
 - [License](#license)
 
 ## CrewAI Framework
-CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to give a complete stock analysis and investment recomendation
+CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to give a complete stock analysis and investment recommendation
 
 ## Running the Script
 It uses GPT-4 by default so you should have access to that to run it.
@@ -44,7 +44,7 @@ llm = ChatOpenAI(model='gpt-3.5') # Loading GPT-3.5
 def local_expert(self):
 	return Agent(
       role='The Best Financial Analyst',
-      goal="""Impress all customer with your financial data 
+      goal="""Impress all customers with your financial data 
       and market trends analysis""",
       backstory="""The most seasoned financial analyst with 
       lots of expertise in stock market analysis and investment
@@ -79,7 +79,7 @@ ollama_openhermes = Ollama(model="agent")
 def local_expert(self):
 	return Agent(
       role='The Best Financial Analyst',
-      goal="""Impress all customer with your financial data 
+      goal="""Impress all customers with your financial data 
       and market trends analysis""",
       backstory="""The most seasoned financial analyst with 
       lots of expertise in stock market analysis and investment
