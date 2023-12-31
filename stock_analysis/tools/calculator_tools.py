@@ -8,6 +8,6 @@ class CalculatorTools():
     """Useful to perform any mathematica calculations, 
     like sum, minus, mutiplcation, division, etc.
     The input to this tool should be a mathematical 
-    experission, a couple examples are `200*7` or `5000/2*10`
+    expression, a couple examples are `200*7` or `5000/2*10`
     """
     return eval(operation)
