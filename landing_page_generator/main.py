@@ -44,7 +44,7 @@ class LandingPageCrew():
     return expanded_idea
 
   def __choose_template(self, expanded_idea):
-    choose_tempalte_taks = Task(
+    choose_template_task = Task(
         description=TaskPrompts.choose_template().format(
           idea=self.idea
         ),
@@ -58,7 +58,7 @@ class LandingPageCrew():
     )
     crew = Crew(
       agents=[self.react_developer],
-      tasks=[choose_tempalte_taks, update_page],
+      tasks=[choose_template_task, update_page],
       verbose=True
     )
     components = crew.kickoff()
@@ -117,7 +117,7 @@ class LandingPageCrew():
       verbose=True,
       tools=[
         SearchTools.search_internet,
-        BrowserTools.scrape_and_summarize_kwebsite
+        BrowserTools.scrape_and_summarize_website
       ]
     )
 
@@ -126,7 +126,7 @@ class LandingPageCrew():
       verbose=True,
       tools=[
           SearchTools.search_internet,
-          BrowserTools.scrape_and_summarize_kwebsite,
+          BrowserTools.scrape_and_summarize_website,
       ]
     )
 
@@ -135,7 +135,7 @@ class LandingPageCrew():
       verbose=True,
       tools=[
           SearchTools.search_internet,
-          BrowserTools.scrape_and_summarize_kwebsite,
+          BrowserTools.scrape_and_summarize_website,
           TemplateTools.learn_landing_page_options,
           TemplateTools.copy_landing_page_template_to_project_folder,
           FileTools.write_file
@@ -146,7 +146,7 @@ class LandingPageCrew():
       **editor_config,
       tools=[
           SearchTools.search_internet,
-          BrowserTools.scrape_and_summarize_kwebsite,
+          BrowserTools.scrape_and_summarize_website,
       ]
     )
 
@@ -173,9 +173,9 @@ if __name__ == "__main__":
       !!! NO TEMPLATES FOUND !!!
       ! YOU MUST FORK THIS BEFORE USING IT !
       
-      Templates are not inlcuded as they are Tailwind templates. 
+      Templates are not included as they are Tailwind templates. 
       Place Tailwind individual template folders in `./templates`, 
-      if you have a lincese you can download them at
+      if you have a license you can download them at
       https://tailwindui.com/templates, their references are at
       `config/templates.json`.
       

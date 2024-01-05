@@ -58,15 +58,15 @@ if __name__ == "__main__":
   print('-------------------------------')
   location = input(
     dedent("""
-      From where will you be travelling from?
+      From where will you be traveling from?
     """))
   cities = input(
     dedent("""
-      What are the cities options you are intereseted in visiting?
+      What are the cities options you are interested in visiting?
     """))
   date_range = input(
     dedent("""
-      What is the date range you are intereseted in traveling?
+      What is the date range you are interested in traveling?
     """))
   interests = input(
     dedent("""

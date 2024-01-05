@@ -54,8 +54,8 @@ class TaskPrompts():
 
   def update_page():
     return dedent("""
-      READ the ./[choosen_template]/src/app/page.jsx OR
-      ./[choosen_template]/src/app/(main)/page.jsx (main with the parenthesis) 
+      READ the ./[chosen_template]/src/app/page.jsx OR
+      ./[chosen_template]/src/app/(main)/page.jsx (main with the parenthesis) 
       to learn its content and then write an updated 
       version to the filesystem that removes any 
       section related components that are not in our 
@@ -126,7 +126,7 @@ class TaskPrompts():
       - Don't make up images, videos, gifs, icons, logos, etc.
       - keep the same style and tailwind classes.
       - MUST HAVE `'use client'` at the be beginning of the code.
-      - href in buttons, links, NavLink and navigations should be `#`.
+      - href in buttons, links, NavLinks, and navigations should be `#`.
       - NEVER WRITE \\n (newlines as string) on the file, just the code.
       - NEVER FORGET TO CLOSE THE FINAL BRACKET (}}) in the file.
       - Keep the same component imports and don't use new components.
@@ -159,7 +159,7 @@ class TaskPrompts():
       - NEVER USE Apostrophes for contraction!
       - ALL COMPONENTS USED SHOULD BE IMPORTED.
       - MUST HAVE `'use client'` at the be beginning of the code.
-      - href in buttons, links, NavLink and navigations should be `#`.
+      - href in buttons, links, NavLinks, and navigations should be `#`.
       - NEVER WRITE \\n (newlines as string) on the file, just the code.
       - NEVER FORGET TO CLOSE THE FINAL BRACKET (}}) in the file.
       - NEVER USE COMPONENTS THAT ARE NOT IMPORTED.

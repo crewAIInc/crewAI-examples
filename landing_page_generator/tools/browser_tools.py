@@ -10,7 +10,7 @@ from unstructured.partition.html import partition_html
 class BrowserTools():
 
   @tool("Scrape website content")
-  def scrape_and_summarize_kwebsite(website):
+  def scrape_and_summarize_website(website):
     """Useful to scrape and summarize a website content"""
     url = f"https://chrome.browserless.io/content?token={os.environ['BROWSERLESS_API_KEY']}"
     payload = json.dumps({"url": website})
