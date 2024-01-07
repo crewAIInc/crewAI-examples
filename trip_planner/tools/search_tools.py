@@ -24,14 +24,14 @@ class SearchTools():
       return "Sorry, I couldn't find anything about that, there could be an error with you serper api key."
     else:
       results = response.json()['organic']
-      stirng = []
+      string = []
       for result in results[:top_result_to_return]:
         try:
-          stirng.append('\n'.join([
+          string.append('\n'.join([
               f"Title: {result['title']}", f"Link: {result['link']}",
               f"Snippet: {result['snippet']}", "\n-----------------"
           ]))
         except KeyError:
           next
 
-      return '\n'.join(stirng)
+      return '\n'.join(string)

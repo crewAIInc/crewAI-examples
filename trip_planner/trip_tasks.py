@@ -38,7 +38,7 @@ class TripTasks():
         local would know.
         This guide should provide a thorough overview of what 
         the city has to offer, including hidden gems, cultural
-        hotspots, must-visit landmarks, weather forcast, and
+        hotspots, must-visit landmarks, weather forecasts, and
         high level costs.
         
         The final answer must be a comprehensive city guide, 
