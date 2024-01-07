@@ -11,7 +11,7 @@ class StockAnalysisAgents():
   def financial_analyst(self):
     return Agent(
       role='The Best Financial Analyst',
-      goal="""Impress all customer with your financial data 
+      goal="""Impress all customers with your financial data 
       and market trends analysis""",
       backstory="""The most seasoned financial analyst with 
       lots of expertise in stock market analysis and investment
@@ -33,7 +33,7 @@ class StockAnalysisAgents():
       your customer with it""",
       backstory="""Known as the BEST research analyst, you're
       skilled in sifting through news, company announcements, 
-      and market sentiments. Now you're working on super 
+      and market sentiments. Now you're working on a super 
       important customer""",
       verbose=True,
       tools=[

@@ -34,8 +34,8 @@ class SECTools():
       "sort": [{ "filedAt": { "order": "desc" }}]
     }
 
-    fillings = queryApi.get_filings(query)['filings']
-    link = fillings[0]['linkToFilingDetails']    
+    filings = queryApi.get_filings(query)['filings']
+    link = filings[0]['linkToFilingDetails']    
     answer = SECTools.__embedding_search(link, ask)
     return answer
 
@@ -62,8 +62,8 @@ class SECTools():
       "sort": [{ "filedAt": { "order": "desc" }}]
     }
 
-    fillings = queryApi.get_filings(query)['filings']
-    link = fillings[0]['linkToFilingDetails']
+    filings = queryApi.get_filings(query)['filings']
+    link = filings[0]['linkToFilingDetails']
     answer = SECTools.__embedding_search(link, ask)
     return answer
   

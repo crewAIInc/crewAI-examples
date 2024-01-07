@@ -11,7 +11,7 @@ class StockAnalysisTasks():
         sentiments, and analysts' opinions. Also include upcoming 
         events like earnings and others.
   
-        Your final answer MUST be a report that include a
+        Your final answer MUST be a report that includes a
         comprehensive summary of the latest news, any notable
         shifts in market sentiment, and potential impacts on 
         the stock.
@@ -42,7 +42,7 @@ class StockAnalysisTasks():
         and how it fares against its competitors in the current
         market scenario.{self.__tip_section()}
 
-        Make sure to use the most recent data as possible.
+        Make sure to use the most recent data possible.
       """),
       agent=agent
     )
@@ -81,7 +81,7 @@ class StockAnalysisTasks():
         trading activity, and upcoming events like earnings.
 
         Your final answer MUST be a recommendation for your
-        customer should be a full super detailed report, providing a 
+        customer. It should be a full super detailed report, providing a 
         clear investment stance and strategy with supporting evidence.
         Make it pretty and well formatted for your customer.
         {self.__tip_section()}
@@ -90,4 +90,4 @@ class StockAnalysisTasks():
     )
 
   def __tip_section(self):
-    return "If you do your BEST WORK, I'll give you a $10,000 commision!"
+    return "If you do your BEST WORK, I'll give you a $10,000 commission!"

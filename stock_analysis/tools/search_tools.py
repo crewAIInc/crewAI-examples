@@ -19,22 +19,22 @@ class SearchTools():
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     results = response.json()['organic']
-    stirng = []
+    string = []
     for result in results[:top_result_to_return]:
       try:
-        stirng.append('\n'.join([
+        string.append('\n'.join([
             f"Title: {result['title']}", f"Link: {result['link']}",
             f"Snippet: {result['snippet']}", "\n-----------------"
         ]))
       except KeyError:
         next
 
-    return '\n'.join(stirng)
+    return '\n'.join(string)
 
   @tool("Search news on the internet")
   def search_news(query):
     """Useful to search news about a company, stock or any other
-    topic an return relevant results"""""
+    topic and return relevant results"""""
     top_result_to_return = 4
     url = "https://google.serper.dev/news"
     payload = json.dumps({"q": query})
@@ -44,14 +44,14 @@ class SearchTools():
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     results = response.json()['news']
-    stirng = []
+    string = []
     for result in results[:top_result_to_return]:
       try:
-        stirng.append('\n'.join([
+        string.append('\n'.join([
             f"Title: {result['title']}", f"Link: {result['link']}",
             f"Snippet: {result['snippet']}", "\n-----------------"
         ]))
       except KeyError:
         next
 
-    return '\n'.join(stirng)
+    return '\n'.join(string)
