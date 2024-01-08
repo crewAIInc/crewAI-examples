@@ -16,26 +16,28 @@ class SECTools():
     """
     Useful to search information from the latest 10-Q form for a
     given stock.
-    The input to this tool should be a pipe (|) separated text of 
-    length two, representing the stock ticker you are interested, what
+    The input to this tool should be a pipe (|) separated text of
+    length two, representing the stock ticker you are interested and what
     question you have from it.
 		For example, `AAPL|what was last quarter's revenue`.
     """
     stock, ask = data.split("|")
     queryApi = QueryApi(api_key=os.environ['SEC_API_API_KEY'])
     query = {
-      "query": { 
+      "query": {
         "query_string": {
           "query": f"ticker:{stock} AND formType:\"10-Q\""
-        } 
+        }
       },
       "from": "0",
       "size": "1",
       "sort": [{ "filedAt": { "order": "desc" }}]
     }
 
-    filings = queryApi.get_filings(query)['filings']
-    link = filings[0]['linkToFilingDetails']    
+    fillings = queryApi.get_filings(query)['filings']
+    if len(fillings) == 0:
+      return "Sorry, I couldn't find any filling for this stock, check if the ticker is correct."
+    link = fillings[0]['linkToFilingDetails']
     answer = SECTools.__embedding_search(link, ask)
     return answer
 
@@ -44,7 +46,7 @@ class SECTools():
     """
     Useful to search information from the latest 10-K form for a
     given stock.
-    The input to this tool should be a pipe (|) separated text of 
+    The input to this tool should be a pipe (|) separated text of
     length two, representing the stock ticker you are interested, what
     question you have from it.
     For example, `AAPL|what was last year's revenue`.
@@ -52,21 +54,21 @@ class SECTools():
     stock, ask = data.split("|")
     queryApi = QueryApi(api_key=os.environ['SEC_API_API_KEY'])
     query = {
-      "query": { 
+      "query": {
         "query_string": {
           "query": f"ticker:{stock} AND formType:\"10-K\""
-        } 
+        }
       },
       "from": "0",
       "size": "1",
       "sort": [{ "filedAt": { "order": "desc" }}]
     }
 
-    filings = queryApi.get_filings(query)['filings']
-    link = filings[0]['linkToFilingDetails']
+    fillings = queryApi.get_filings(query)['filings']
+    link = fillings[0]['linkToFilingDetails']
     answer = SECTools.__embedding_search(link, ask)
     return answer
-  
+
   def __embedding_search(url, ask):
     text = SECTools.__download_form_html(url)
     elements = partition_html(text=text)
@@ -86,7 +88,7 @@ class SECTools():
     answers = "\n\n".join([a.page_content for a in answers])
     return answers
 
-  def __download_form_html(url):    
+  def __download_form_html(url):
     headers = {
       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
       'Accept-Encoding': 'gzip, deflate, br',
