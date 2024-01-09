@@ -2,8 +2,8 @@
 ## Introduction
 This project is an example using the CrewAI framework to automate the process of coming up with an instagram post. CrewAI orchestrates autonomous AI agents, enabling them to collaborate and execute complex tasks efficiently.
 
-#### Trip Planner
-[![Trip Planner](https://img.youtube.com/vi/lcD0nT8IVTg/0.jpg)](https://www.youtube.com/watch?v=lcD0nT8IVTg "Trip Planner")
+#### Instagram Post
+[![Instagram Post](https://img.youtube.com/vi/lcD0nT8IVTg/0.jpg)](https://www.youtube.com/watch?v=lcD0nT8IVTg "Instagram Post")
 
 By [@joaomdmoura](https://x.com/joaomdmoura)
 
