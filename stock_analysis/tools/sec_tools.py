@@ -65,6 +65,8 @@ class SECTools():
     }
 
     fillings = queryApi.get_filings(query)['filings']
+    if len(fillings) == 0:
+      return "Sorry, I couldn't find any filling for this stock, check if the ticker is correct."
     link = fillings[0]['linkToFilingDetails']
     answer = SECTools.__embedding_search(link, ask)
     return answer
