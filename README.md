@@ -9,3 +9,4 @@ By [@joaomdmoura](https://x.com/joaomdmoura).
 - [Trip Planner](https://github.com/joaomdmoura/crewAI-examples/tree/main/trip_planner)
 - [Stock Analysis](https://github.com/joaomdmoura/crewAI-examples/tree/main/stock_analysis)
 - [Landing Page Generator](https://github.com/joaomdmoura/crewAI-examples/tree/main/landing_page_generator)
+- [Create Instagram Post](https://github.com/joaomdmoura/crewAI-examples/tree/main/instagram_post)
