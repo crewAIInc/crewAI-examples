@@ -6,6 +6,14 @@ from tools.search_tools import SearchTools
 from tools.sec_tools import SECTools
 
 from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
+from langchain.llms import Ollama
+from langchain.chat_models import ChatOpenAI
+
+# llm = ChatOpenAI(model='gpt-3.5-turbo', base_url="http://127.0.0.1:8000",openai_api_key="sk-00a5k_7O2hXR_DUYjNPNQg")
+# litellm_chat = ChatLiteLLM(model="gpt-3.5-turbo",openai_api_key="sk-00a5k_7O2hXR_DUYjNPNQg",api_base="http://0.0.0.0:8000") # Loading GPT-3.5
+ollama_openchat = Ollama(model="openchat")
+
+# llm = GoogleGenerativeAI(model="gemini-pro", google_api_key="AIzaSyA2i2P9hlJ7lSkOhMdYfgqtCkC7Vwj-pPE")
 
 class StockAnalysisAgents():
   def financial_analyst(self):
@@ -17,6 +25,7 @@ class StockAnalysisAgents():
       lots of expertise in stock market analysis and investment
       strategies that is working for a super important customer.""",
       verbose=True,
+      llm=ollama_openchat,
       tools=[
         BrowserTools.scrape_and_summarize_website,
         SearchTools.search_internet,
@@ -36,6 +45,7 @@ class StockAnalysisAgents():
       and market sentiments. Now you're working on a super 
       important customer""",
       verbose=True,
+      llm=ollama_openchat,
       tools=[
         BrowserTools.scrape_and_summarize_website,
         SearchTools.search_internet,
@@ -56,6 +66,7 @@ class StockAnalysisAgents():
       strategic investment advice. You are now working for
       a super important customer you need to impress.""",
       verbose=True,
+      llm=ollama_openchat,
       tools=[
         BrowserTools.scrape_and_summarize_website,
         SearchTools.search_internet,

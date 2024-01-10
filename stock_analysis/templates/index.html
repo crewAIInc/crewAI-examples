@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Analyzer AI Agent</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Analyzer AI Agent</h1>
+        <form id="analysisForm">
+            <label for="company">Enter Company Name:</label><br>
+            <input type="text" id="company" name="company" required><br>
+            <button type="submit">Analyze</button>
+        </form>
+
+        <div id="statusMessage" class="status">
+            <p>Status: <span id="statusText">Waiting...</span></p>
+        </div>
+
+        <button id="showResult" style="display:none;">Show Analysis</button>
+
+        <div id="result">
+            <!-- Analysis Result Will Be Displayed Here -->
+        </div>
+    </div>
+    <script src="../static/script.js"></script>
+</body>
+</html>
