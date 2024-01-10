@@ -10,3 +10,4 @@ By [@joaomdmoura](https://x.com/joaomdmoura).
 - [Stock Analysis](https://github.com/joaomdmoura/crewAI-examples/tree/main/stock_analysis)
 - [Landing Page Generator](https://github.com/joaomdmoura/crewAI-examples/tree/main/landing_page_generator)
 - [Create Instagram Post](https://github.com/joaomdmoura/crewAI-examples/tree/main/instagram_post)
+- [Markdown Validator](https://github.com/joaomdmoura/crewAI-examples/tree/main/markdown_validator)
