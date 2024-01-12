@@ -11,3 +11,4 @@ By [@joaomdmoura](https://x.com/joaomdmoura).
 - [Landing Page Generator](https://github.com/joaomdmoura/crewAI-examples/tree/main/landing_page_generator)
 - [Create Instagram Post](https://github.com/joaomdmoura/crewAI-examples/tree/main/instagram_post)
 - [Markdown Validator](https://github.com/joaomdmoura/crewAI-examples/tree/main/markdown_validator)
+- [Using Azure OpenAI API](https://github.com/joaomdmoura/crewAI-examples/tree/main/azure_model)
