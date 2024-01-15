@@ -1,0 +1,7 @@
+#ignore this in github
+
+# environment variables
+.env
+
+#Cache folders
+__pycache__/
