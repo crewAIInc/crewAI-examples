@@ -20,6 +20,7 @@ researcher = Agent(
   role='Senior Researcher',
   goal='Discover groundbreaking technologies',
   verbose=True,
+  llm=default_llm,
   backstory='A curious mind fascinated by cutting-edge innovation and the potential to change the world, you know everything about tech.'
 )
 
