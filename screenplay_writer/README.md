@@ -7,6 +7,8 @@ Demonstrates:
 - multiple API endpoints (offical Mistral, Together.ai, Anyscale)
 - running single tasks: spam detection and scoring
 - running a crew to create a screenplay from a newsgroup post by first analyzing the text, creating a dialogue and ultimately formatting it
+
+
 By [Toon Beerten](toon@neontreebot.be)
 
 ## Running the Script
