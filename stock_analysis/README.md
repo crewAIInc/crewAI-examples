@@ -27,7 +27,7 @@ not to, and by doing so it will cost you money.*
 - **Execute the Script**: Run `python main.py` and input your idea.
 
 ## Details & Explanation
-- **Running the Script**: Execute `python main.py`` and input your idea when prompted. The script will leverage the CrewAI framework to process the idea and generate a landing page.
+- **Running the Script**: Execute `python main.py`` and input the company to be analyzed when prompted. The script will leverage the CrewAI framework to analyze the company and generate a detailed report.
 - **Key Components**:
   - `./main.py`: Main script file.
   - `./stock_analysis_tasks.py`: Main file with the tasks prompts.
