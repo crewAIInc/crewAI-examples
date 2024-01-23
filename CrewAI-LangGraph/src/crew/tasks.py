@@ -49,7 +49,11 @@ class EmailFilterTasks:
 				Based on the action-required emails identified, draft responses for each.
 				Ensure that each response is tailored to address the specific needs
 				and context outlined in the email.
-				Assume the persona of the user and mimic the communication style in the thread.
+
+				- Assume the persona of the user and mimic the communication style in the thread.
+				- Feel free to do research on the topic to provide a more detailed response, IF NECESSARY.
+				- IF a research is necessary do it BEFORE drafting the response.
+				- If you need to pull the thread again do it using only the actual Thread ID.
 
 				Use the tool provided to draft each of the responses.
 				When using the tool pass the following input:
