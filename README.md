@@ -13,3 +13,4 @@ By [@joaomdmoura](https://x.com/joaomdmoura).
 - [Markdown Validator](https://github.com/joaomdmoura/crewAI-examples/tree/main/markdown_validator)
 - [Using Azure OpenAI API](https://github.com/joaomdmoura/crewAI-examples/tree/main/azure_model)
 - [Game Generator](https://github.com/joaomdmoura/crewAI-examples/tree/main/game-builder-crew)
+- [CrewAI + LangGraph](https://github.com/joaomdmoura/crewAI-examples/tree/main/CrewAI-LangGraph)
