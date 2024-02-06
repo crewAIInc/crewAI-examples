@@ -9,7 +9,7 @@ load_dotenv()
 
 
 hermes_llm = Ollama(model="openhermes")
-coder_llm = Ollama(model="deepseek-coder")
+coder_llm = Ollama(model="codellama:7b", temperature=0.8)
 
 def update_code(filename):
     """
@@ -24,64 +24,38 @@ def update_code(filename):
 
     """
 
-    # Define general agent
+    # Define the agents
     general_agent  = Agent(role='Requirements Manager',
-      goal="""Provide a detailed list of the provided markdown 
-              linting results. Give a summary with actionable 
-              tasks to address the validation results. Write your 
-              response as if you were handing it to a developer 
-              to fix the issues.
-              DO NOT provide examples of how to fix the issues.""",
+      goal="""Help to communicate the changes that need to be made 
+      to the code and summarize the work that was done.""",
       backstory="""You are an expert business analyst 
       and software QA specialist. You provide high quality, 
       thorough, insightful and actionable feedback via 
       detailed list of changes and actionable tasks.""",
       allow_delegation=False, 
       verbose=True,
-      tools=[],
+      tools=[aider_coder_tool],
       llm=hermes_llm)
     
-    file_editor_agent = Agent(role='Software QA Engineer',
-                    goal=f"""To reivew the code in the provided file,
-                    create a detailed list of the changes to be made,
-                    and provide the list to aider to make the changes to {filename}.""",
-                    backstory="""You are an expert developer and software QA specialist.
-                    You are responsible for reviewing code in files provided to you and 
-                    excel in creating detailed lists of changes to be made.""",
-                    allow_delegation=False, 
-                    verbose=True,
-                    tools=[aider_coder_tool],
-                    llm=hermes_llm)
-
-
-    # Define Tasks Using Crew Tools
-    # syntax_review_task = Task(description=f"""
-    # 	Use the markdown_validation_tool to review 
-    # 	the file(s) at this path: {filename}            
-    # 	Be sure to pass only the file path to the markdown_validation_tool.
-    # 	Use the following format to call the markdown_validation_tool:
-    # 	Do I need to use a tool? Yes
-    # 	Action: markdown_validation_tool
-    # 	Action Input: {filename}
-
-    # 	Get the validation results from the tool 
-    # 	and then summarize it into a list of changes
-    # 	the developer should make to the document.
-    #         DO NOT include examples of how to fix the issues.
-    #         DO NOT change any of the content of the document or
-    #         add content to it. It is critical to your task to
-    #         only respond with a list of changes.
-      
-    # 	If you already know the answer or if you do not need 
-    # 	to use a tool, return it as your Final Answer.""",
-    #          agent=general_agent)
-
+    code_review_agent = Agent(role='Software QA Engineer',
+      goal="""To reivew the code in the provided file,
+      create a detailed list of the changes to be made.
+      These changes should include spelling fixes, formatting changes, and
+      error fixes. Also suggest filling in any missing documentation.""",
+      backstory="""You are an expert developer and software QA specialist.
+      You are responsible for reviewing code in files provided to you and 
+      excel in creating detailed lists of changes to be made.""",
+      allow_delegation=False, 
+      verbose=True,
+      tools=[],
+      llm=coder_llm)
 
     # read code from file
     code = ""
     with open(filename, 'r') as file:
         code = file.read()
 
+    # define the tasks
     code_review_task = Task(description=f"""
 			Review the following code and return a list of recommended changes:
                             
@@ -94,12 +68,14 @@ def update_code(filename):
       add content to it. It is critical to your task to
       only respond with a list of changes in the following format:
 
-      Final answer:
+      Final Answer:
       <BEGIN_CHANGES>
       [insert your response here]
       <END_CHANGES>
+
+      Code review complete.
       """,
-      agent=file_editor_agent)  
+      agent=code_review_agent)  
     
     edit_file_task = Task(description=f"""
 			Use the changes provided to you to edit the specified 
@@ -118,11 +94,22 @@ def update_code(filename):
 			Do I need to use a tool? Yes
 			Action: aider_coder_tool
 			Action Input: {filename}|<the full set of instructions>
+            
+      Return the result from the tool as your Final Answer in this format:
+
+      Final Answer:
+      <BEGIN_UPDATES>
+      [Replace this with the result returned by the aider_coder_tool]
+      <END_UPDATES>
 			""",
-      agent=file_editor_agent)  
+      agent=general_agent)  
     
-    file_edit_crew = Crew(tasks=[code_review_task, edit_file_task], 
-                          agents=[general_agent,file_editor_agent], 
+    summary_task = Task(description=f"""Summaize the updates that were applied
+      to {filename} based on the output of the edit_file_task.""",
+      agent=general_agent)
+    
+    file_edit_crew = Crew(tasks=[code_review_task, edit_file_task, summary_task], 
+                          agents=[general_agent,code_review_agent], 
                           process=Process.sequential)
     
     result = file_edit_crew.kickoff()
