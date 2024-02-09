@@ -35,7 +35,7 @@ not to, and by doing so it will cost you money.*
   - `./tools`: Contains tool classes used by the agents.
 
 ## Using GPT 3.5
-CrewAI allow you to pass an llm argument to the agent construtor, that will be it's brain, so changing the agent to use GPT-3.5 instead of GPT-4 is as simple as passing that argument on the agent you want to use that LLM (in `main.py`).
+CrewAI allow you to pass an llm argument to the agent constructor, that will be it's brain, so changing the agent to use GPT-3.5 instead of GPT-4 is as simple as passing that argument on the agent you want to use that LLM (in `main.py`).
 ```python
 from langchain.chat_models import ChatOpenAI
 
