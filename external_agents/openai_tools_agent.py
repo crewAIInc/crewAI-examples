@@ -1,7 +1,7 @@
 from typing import Any, Optional, List
 
 from langchain.agents import AgentExecutor, create_openai_tools_agent
-from langchain_core.messages import HumanMessage
+from langchain_core.messages import AIMessage
 from langchain_community.chat_models import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -29,18 +29,22 @@ class OpenAIToolsAgent(AgentWrapperParent):
     def execute_task(
         self,
         task: str,
-        context: Optional[str] = None,
+        context: Optional[List[str]] = None,
         tools: Optional[List[Any]] = None,
     ) -> str:
         # Most agents require their tools list to be known at creation time,
         # so might need to re-create the agent if there are new tools added
-        # TODO: compare whether they're actually the same tools!
+        # TODO: also compare whether they're actually the same tools!
         if tools is not None and len(tools) != len(self._tools):
             self.init_tools(tools)
 
-        # TODO: better wrap the context as a sequence of messages
+        if context:
+            context = [AIMessage(content=ctx) for ctx in context]
+        else:
+            context = []
+
         return self.data["agent_executor"].invoke(
-            {"input": task, "chat_history": [HumanMessage(content=context)]}
+            {"input": task, "chat_history": context}
         )["output"]
 
     def init_tools(self, tools: List[Any]) -> None:
