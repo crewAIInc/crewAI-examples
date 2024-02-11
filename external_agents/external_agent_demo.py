@@ -1,4 +1,7 @@
 import os
+
+from uuid import uuid4
+
 from crewai import Agent, Task, Crew
 from openai_tools_agent import OpenAIToolsAgent
 
@@ -6,14 +9,26 @@ from langchain import hub
 from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_openai import ChatOpenAI
 
-from agent_games.credentials import credentials
+os.environ["OPENAI_API_KEY"] = ...
 
-os.environ["OPENAI_API_KEY"] = credentials["OPENAI_API_KEY"]
+# You can delete this block if you don't want to use Langsmith
+unique_id = uuid4().hex[0:8]
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = f"Tracing Walkthrough - {unique_id}"
+os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
+os.environ["LANGCHAIN_API_KEY"] = ...
+from langsmith import Client
+
+client = Client()
+# End of Langsmith block
 
 
 search_tool = DuckDuckGoSearchRun()
 
 prompt = hub.pull("hwchase17/openai-tools-agent")
+prompt2 = hub.pull("hwchase17/react-json")
+prompt3 = hub.pull("cpatrickalves/react-chat-agent")
+
 llm = ChatOpenAI(model="gpt-4-0125-preview", temperature=0)
 researcher = OpenAIToolsAgent(
     llm=llm, prompt=prompt, tools=[search_tool], role="Senior Research Analyst"
