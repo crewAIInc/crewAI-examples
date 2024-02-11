@@ -1,7 +1,5 @@
 from typing import Any, Optional, List
 
-from pydantic import PrivateAttr
-
 from langchain.agents import AgentExecutor, create_openai_tools_agent
 from langchain_core.messages import HumanMessage
 from langchain_community.chat_models import ChatOpenAI
@@ -11,12 +9,6 @@ from crewai.agents.agent_interface import AgentWrapperParent
 
 
 class OpenAIToolsAgent(AgentWrapperParent):
-    _llm: ChatOpenAI = PrivateAttr()
-    _prompt: ChatPromptTemplate = PrivateAttr()
-    _tools: List[Any] = PrivateAttr(default=[])
-    _role: str = PrivateAttr(default="")
-    _allow_delegation: bool = PrivateAttr(default=False)
-    _agent_executor: Any = PrivateAttr(default=None)
 
     def __init__(
         self,
@@ -28,11 +20,11 @@ class OpenAIToolsAgent(AgentWrapperParent):
         **data: Any
     ):
         super().__init__(**data)
-        self._llm = llm
-        self._prompt = prompt
-        self._role = role
-        self._allow_delegation = allow_delegation
-        self.init(tools)
+        self.data["llm"] = llm
+        self.data["prompt"] = prompt
+        self.data["role"] = role
+        self.data["allow_delegation"] = allow_delegation
+        self.init_tools(tools)
 
     def execute_task(
         self,
@@ -44,28 +36,30 @@ class OpenAIToolsAgent(AgentWrapperParent):
         # so might need to re-create the agent if there are new tools added
         # TODO: compare whether they're actually the same tools!
         if tools is not None and len(tools) != len(self._tools):
-            self.init(tools)
+            self.init_tools(tools)
 
         # TODO: better wrap the context as a sequence of messages
-        return self._agent_executor.invoke(
+        return self.data["agent_executor"].invoke(
             {"input": task, "chat_history": [HumanMessage(content=context)]}
         )["output"]
 
-    def init(self, tools: List[Any]) -> None:
-        self._tools = tools
-        agent = create_openai_tools_agent(self._llm, tools, self._prompt)
+    def init_tools(self, tools: List[Any]) -> None:
+        self.data["tools"] = tools
+        agent = create_openai_tools_agent(self.data["llm"], tools, self.data["prompt"])
 
         # Create an agent executor by passing in the agent and tools
-        self._agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+        self.data["agent_executor"] = AgentExecutor(
+            agent=agent, tools=tools, verbose=True
+        )
 
     @property
     def allow_delegation(self) -> bool:
-        return self._allow_delegation
+        return self.data["allow_delegation"]
 
     @property
     def role(self) -> str:
-        return self._role
+        return self.data["role"]
 
     @property
     def tools(self) -> List[Any]:
-        return self._tools
+        return self.data["tools"]
