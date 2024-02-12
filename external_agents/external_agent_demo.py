@@ -1,6 +1,6 @@
 import os
 from typing import Any, List
-
+import copy
 from uuid import uuid4
 
 from crewai import Agent, Task, Crew
@@ -29,20 +29,31 @@ client = Client()
 
 
 search_tool = DuckDuckGoSearchRun()
+tools = [search_tool]
 
 researcher_prompt = hub.pull("hwchase17/openai-tools-agent")
 llm = ChatOpenAI(model="gpt-4-0125-preview", temperature=0)
 
-
-def researcher_from_tools(tools: List[Any]) -> AgentExecutor:
-    agent = create_openai_tools_agent(llm, tools, researcher_prompt)
-    return AgentExecutor(agent=agent, tools=tools, verbose=True)
-
+researcher_agent = AgentExecutor(
+    agent=create_openai_tools_agent(llm, tools, researcher_prompt),
+    tools=tools,
+    verbose=True,
+)
+writer_agent = AgentExecutor(
+    agent=create_openai_tools_agent(llm, [], researcher_prompt), tools=[], verbose=True
+)
 
 researcher = LangchainAgent(
-    agent_from_tools=researcher_from_tools,
+    agent=researcher_agent,
     tools=[search_tool],
     role="Senior Research Analyst",
+    allow_delegation=False,
+)
+
+writer = LangchainAgent(
+    agent=writer_agent,
+    role="Tech Content Strategist",
+    allow_delegation=True,
 )
 
 # From here onwards it's exactly like the original example
