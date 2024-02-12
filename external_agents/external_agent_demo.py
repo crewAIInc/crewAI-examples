@@ -11,9 +11,7 @@ from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_openai_tools_agent
 
-from agent_games.credentials import credentials
-
-os.environ["OPENAI_API_KEY"] = credentials["OPENAI_API_KEY"]
+os.environ["OPENAI_API_KEY"] = ...
 
 # You can delete this block if you don't want to use Langsmith
 from langsmith import Client
@@ -22,14 +20,14 @@ unique_id = uuid4().hex[0:8]
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_PROJECT"] = f"Tracing Walkthrough - {unique_id}"
 os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
-os.environ["LANGCHAIN_API_KEY"] = credentials["LANGCHAIN_API_KEY"]
+os.environ["LANGCHAIN_API_KEY"] = ...
 
 client = Client()
 # End of Langsmith block
 
 
 search_tool = DuckDuckGoSearchRun()
-tools = [search_tool]
+tools = [DuckDuckGoSearchRun()]
 
 researcher_prompt = hub.pull("hwchase17/openai-tools-agent")
 llm = ChatOpenAI(model="gpt-4-0125-preview", temperature=0)
@@ -58,15 +56,6 @@ writer = LangchainAgent(
 
 # From here onwards it's exactly like the original example
 
-writer = Agent(
-    role="Tech Content Strategist",
-    goal="Craft compelling content on tech advancements",
-    backstory="""You are a renowned Content Strategist, known for your insightful and engaging articles.
-  You transform complex concepts into compelling narratives.""",
-    verbose=True,
-    allow_delegation=True,
-)
-
 # Create tasks for your agents
 task1 = Task(
     description="""Conduct a comprehensive analysis of the latest advancements in AI in 2024.
@@ -87,7 +76,7 @@ task2 = Task(
 # Instantiate your crew with a sequential process
 crew = Crew(
     agents=[researcher, writer],
-    tasks=[task2],
+    tasks=[task1, task2],
     verbose=2,  # You can set it to 1 or 2 to different logging levels
 )
 

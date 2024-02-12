@@ -12,21 +12,25 @@ An implementation for langchain agent is already provided and can be used as in 
     from langchain import hub
     from langchain.agents import create_openai_tools_agent
     from langchain_openai import ChatOpenAI
+    from langchain_community.tools import DuckDuckGoSearchRun
     
     from crewai.agents.langchain_agent import LangchainAgent
     
-    researcher_prompt = hub.pull("hwchase17/openai-tools-agent")
     llm = ChatOpenAI(model="gpt-4-0125-preview", temperature=0)
-    
-    def researcher_from_tools(tools: List[Any]):
-        agent = create_openai_tools_agent(llm, tools, researcher_prompt)
-        return AgentExecutor(agent=agent, tools=tools, verbose=True)
-    
+    tools = [DuckDuckGoSearchRun()]    
+    researcher_prompt = hub.pull("hwchase17/openai-tools-agent")
+
+    researcher_agent = AgentExecutor(
+        agent=create_openai_tools_agent(llm, tools, researcher_prompt),
+        tools=tools,
+        verbose=True,
+    )
     
     researcher = LangchainAgent(
-        agent_from_tools=researcher_from_tools,
+        agent=researcher_agent,
         tools=[search_tool],
         role="Senior Research Analyst",
+        allow_delegation=False,
     )
 
 You need to pass a function that creates the desired agent from the list of its tools, to enable adding other agents as tools at runtime (for delegation).
