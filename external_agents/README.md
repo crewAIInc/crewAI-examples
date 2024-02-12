@@ -14,7 +14,7 @@ An implementation for langchain agent is already provided and can be used as in 
     from langchain_openai import ChatOpenAI
     from langchain_community.tools import DuckDuckGoSearchRun
     
-    from crewai.agents.langchain_agent import LangchainAgent
+    from crewai.agents.langchain_agent import LangchainCrewAgent
     
     llm = ChatOpenAI(model="gpt-4-0125-preview", temperature=0)
     tools = [DuckDuckGoSearchRun()]    
@@ -26,7 +26,7 @@ An implementation for langchain agent is already provided and can be used as in 
         verbose=True,
     )
     
-    researcher = LangchainAgent(
+    researcher = LangchainCrewAgent(
         agent=researcher_agent,
         tools=[search_tool],
         role="Senior Research Analyst",
