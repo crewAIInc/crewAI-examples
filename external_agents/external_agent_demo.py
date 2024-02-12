@@ -4,14 +4,15 @@ import copy
 from uuid import uuid4
 
 from crewai import Agent, Task, Crew
-from crewai.agents.langchain_agent import LangchainAgent
+from crewai.agents.langchain_agent import LangchainCrewAgent
 
 from langchain import hub
 from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_openai_tools_agent
 
-os.environ["OPENAI_API_KEY"] = ...
+# Please set the OPENAI_API_KEY environment variable to your OpenAI API key
+# os.environ["OPENAI_API_KEY"] = ...
 
 # You can delete this block if you don't want to use Langsmith
 from langsmith import Client
@@ -20,7 +21,9 @@ unique_id = uuid4().hex[0:8]
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_PROJECT"] = f"Tracing Walkthrough - {unique_id}"
 os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
-os.environ["LANGCHAIN_API_KEY"] = ...
+
+# Replace the LANGCHAIN_API_KEY with your Langsmith API key
+# os.environ["LANGCHAIN_API_KEY"] = ...
 
 client = Client()
 # End of Langsmith block
@@ -41,16 +44,19 @@ writer_agent = AgentExecutor(
     agent=create_openai_tools_agent(llm, [], researcher_prompt), tools=[], verbose=True
 )
 
-researcher = LangchainAgent(
+researcher = LangchainCrewAgent(
     agent=researcher_agent,
     tools=[search_tool],
     role="Senior Research Analyst",
     allow_delegation=False,
 )
 
-writer = LangchainAgent(
-    agent=writer_agent,
+writer = Agent(
     role="Tech Content Strategist",
+    goal="Craft compelling content on tech advancements",
+    backstory="""You are a renowned Content Strategist, known for your insightful and engaging articles.
+  You transform complex concepts into compelling narratives.""",
+    verbose=True,
     allow_delegation=True,
 )
 
@@ -76,7 +82,7 @@ task2 = Task(
 # Instantiate your crew with a sequential process
 crew = Crew(
     agents=[researcher, writer],
-    tasks=[task1, task2],
+    tasks=[task2],
     verbose=2,  # You can set it to 1 or 2 to different logging levels
 )
 
