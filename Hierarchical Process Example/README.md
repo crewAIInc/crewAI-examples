@@ -6,6 +6,7 @@ To execute this example, the Gemini API is utilized for model calls. Ensure you 
 
 ## Running the Notebook
 Before running the notebook, confirm that the country in `!curl ipinfo.io` is among the countries with access to the Google Gemini API. Refer to the available regions [here](https://ai.google.dev/available_regions#available_regions).
+If your country is not in the access list try to restart your runtime and try again, The runtime location is independent of your location.
 
 Follow these steps:
 
