@@ -17,7 +17,7 @@ class GameAgents():
 	def qa_engineer_agent(self):
 		return Agent(
 			role='Software Quality Control Engineer',
-  		goal='Create prefect code, by analyzing the code that is given for errors',
+  		goal='Create perfect code, by analyzing the code that is given for errors',
   		backstory=dedent("""\
 				You are a software engineer that specializes in checking code
   			for errors. You have an eye for detail and a knack for finding
