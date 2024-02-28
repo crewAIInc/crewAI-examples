@@ -2,7 +2,7 @@
 ## Introduction
 This project is an example using the CrewAI framework to automate the process of creating landing pages from a single idea. CrewAI orchestrates autonomous AI agents, enabling them to collaborate and execute complex tasks efficiently.
 
-*Disclaimer: Templates are not inlcuded as they are Tailwind templates. Place Tailwind individual template folders in `./templates`, if you have a lincese you can download them at (https://tailwindui.com/templates), their references are at `config/templates.json`, this was not tested this with other templates, prompts in `tasks.py` might require some changes for that to work.*
+*Disclaimer: Templates are not included as they are Tailwind templates. Place Tailwind individual template folders in `./templates`, if you have a license you can download them at (https://tailwindui.com/templates), their references are at `config/templates.json`, this was not tested this with other templates, prompts in `tasks.py` might require some changes for that to work.*
 
 By [@joaomdmoura](https://x.com/joaomdmoura)
 
@@ -26,13 +26,13 @@ not to, and by doing so it will cost you money (~2-9 USD).
 The full run might take around ~10-45m. Enjoy your time back*
 
 
-- **Configure Environment**: Copy ``.env.example` and set up the environment variables for [Browseless](https://www.browserless.io/), [Serper](https://serper.dev/) and [OpenAI](https://platform.openai.com/api-keys)
+- **Configure Environment**: Copy `.env.example` and set up the environment variables for [Browseless](https://www.browserless.io/), [Serper](https://serper.dev/) and [OpenAI](https://platform.openai.com/api-keys)
 - **Install Dependencies**: Run `poetry install --no-root`.
 - **Add Tailwind Templates**: Place Tailwind individual template folders in `./templates`, if you have a linces you can download them at (https://tailwindui.com/templates), their references are at `config/templates.json`, I haven't tested this with other templates, prompts in `tasks.py` might require some changes for that to work.
 - **Execute the Script**: Run `poetry run python main.py` and input your idea.
 
 ## Details & Explanation
-- **Running the Script**: Execute `python main.py`` and input your idea when prompted. The script will leverage the CrewAI framework to process the idea and generate a landing page.
+- **Running the Script**: Execute `python main.py` and input your idea when prompted. The script will leverage the CrewAI framework to process the idea and generate a landing page.
 - **Output**: The generated landing page will be zipped in the a `workdir.zip` file you can download.
 - **Key Components**:
   - `./main.py`: Main script file.
