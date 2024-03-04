@@ -1,8 +1,8 @@
 from crewai import Agent
-from crewai_tools.tools import WebsiteSearchTool, SeperDevTool, FileReadTool
+from crewai_tools.tools import WebsiteSearchTool, SerperDevTool, FileReadTool
 
 web_search_tool = WebsiteSearchTool()
-seper_dev_tool = SeperDevTool()
+seper_dev_tool = SerperDevTool()
 file_read_tool = FileReadTool(
 	file_path='job_description_example.md',
 	description='A tool to read the job description example file.'
