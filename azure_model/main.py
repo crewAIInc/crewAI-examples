@@ -27,6 +27,7 @@ researcher = Agent(
 # Task for the researcher
 research_task = Task(
   description='Identify the next big trend in AI',
+  expected_output='A paragarph naming the next big trend in AI and describing it in detail.',
   agent=researcher  # Assigning the task to the researcher
 )
 
