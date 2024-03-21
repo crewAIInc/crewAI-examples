@@ -1,0 +1,13 @@
+FROM llama2
+
+# Set parementers
+
+PARAMETER temperature 0.3  
+PARAMETER stop Result
+
+# Sets a custom system message to specify the behavior of 
+# the chat assistant
+
+# Leaving it blank for now.
+
+SYSTEM """You are an expert in any required domain"""
