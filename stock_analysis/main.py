@@ -1,4 +1,4 @@
-from crewai import Crew
+from crewai import Crew, Process
 from textwrap import dedent
 
 from stock_analysis_agents import StockAnalysisAgents

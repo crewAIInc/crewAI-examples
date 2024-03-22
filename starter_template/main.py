@@ -25,6 +25,7 @@ class CustomCrew:
     def __init__(self, var1, var2):
         self.var1 = var1
         self.var2 = var2
+        self.openai = ChatOpenAI()
 
     def run(self):
         # Define your custom agents and tasks in agents.py and tasks.py
@@ -51,6 +52,9 @@ class CustomCrew:
             agents=[custom_agent_1, custom_agent_2],
             tasks=[custom_task_1, custom_task_2],
             verbose=True,
+            process = Process.hierarchical,  # or Process.Sequential
+            manager_llm = self.openai
+
         )
 
         result = crew.kickoff()

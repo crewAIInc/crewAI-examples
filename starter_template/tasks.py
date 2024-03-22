@@ -23,6 +23,7 @@ class CustomTasks:
             And also this variable: {var2}
         """
             ),
+            expected_output = "Expected output",
             agent=agent,
         )
 
@@ -37,5 +38,6 @@ class CustomTasks:
             Make sure to do something else.
         """
             ),
+            expected_output = "Expected Output"
             agent=agent,
         )
