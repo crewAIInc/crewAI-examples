@@ -23,10 +23,15 @@ class StockAnalysisTasks():
   
         Selected company by the customer: {company}
       """),
+      expected_output= f"""A detailed summary of news articles, press releases
+      and market analyses related to the stock and the financial industry guided
+      by the market sentiment.
+      """,
+      async_execution = True,
       agent=agent
     )
     
-  def financial_analysis(self, agent): 
+  def financial_analysis(self, agent, context): 
     return Task(description=dedent(f"""
         Conduct a thorough analysis of the stock's financial
         health and market performance. 
@@ -44,10 +49,14 @@ class StockAnalysisTasks():
 
         Make sure to use the most recent data possible.
       """),
+      expected_output=f"""An output of a detailed financial analysis
+      for the stock, containing P/E ratio, EPS growth, revenue trends
+      debt-to-equity ratio and any other information you find relevant""",
+      context = context,
       agent=agent
     )
 
-  def filings_analysis(self, agent):
+  def filings_analysis(self, agent, context):
     return Task(description=dedent(f"""
         Analyze the latest 10-Q and 10-K filings from EDGAR for
         the stock in question. 
@@ -63,10 +72,14 @@ class StockAnalysisTasks():
         your customer.
         {self.__tip_section()}        
       """),
+      expected_output= f"A detailed filings analysis containing Management's
+      Discussion and Analysis, financial statements, insider trading activity,
+      and any other disclosed risks that you find relevant",
+      context = context,
       agent=agent
     )
 
-  def recommend(self, agent):
+  def recommend(self, agent, context):
     return Task(description=dedent(f"""
         Review and synthesize the analyses provided by the
         Financial Analyst and the Research Analyst.
@@ -86,6 +99,10 @@ class StockAnalysisTasks():
         Make it pretty and well formatted for your customer.
         {self.__tip_section()}
       """),
+      expected_output = f'A comprehensive investment recommendation based on
+        the context provided by the financial analyst, research analyst and
+        filing analyst',
+      context = context,
       agent=agent
     )
 

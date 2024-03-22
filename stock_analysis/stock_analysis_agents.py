@@ -1,13 +1,25 @@
+import os
 from crewai import Agent
+from langchain_community.chat_models import ChatOllama
+from langchain_openai.chat_models import ChatOpenAI
+from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
 
 from tools.browser_tools import BrowserTools
 from tools.calculator_tools import CalculatorTools
 from tools.search_tools import SearchTools
 from tools.sec_tools import SECTools
 
-from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
+from dotenv import load_dotenv
+load_dotenv
+
+api_key = os.getenv("OPENAI_API_KEY")
 
 class StockAnalysisAgents():
+  def __init__(self):
+    self.mistral = ChatOllama(model="crewai-mistral")
+    self.llama2 = ChatOllama(model= "crewai-llama2")
+    self.openai = ChatOpenAI(api_key=api_key)
+
   def financial_analyst(self):
     return Agent(
       role='The Best Financial Analyst',
@@ -23,7 +35,9 @@ class StockAnalysisAgents():
         CalculatorTools.calculate,
         SECTools.search_10q,
         SECTools.search_10k
-      ]
+      ],
+      max_iter = 15,
+      llm = self.openai
     )
 
   def research_analyst(self):
@@ -43,7 +57,9 @@ class StockAnalysisAgents():
         YahooFinanceNewsTool(),
         SECTools.search_10q,
         SECTools.search_10k
-      ]
+      ],
+      allow_delegation = True,
+      llm = self.openai
   )
 
   def investment_advisor(self):
@@ -62,5 +78,6 @@ class StockAnalysisAgents():
         SearchTools.search_news,
         CalculatorTools.calculate,
         YahooFinanceNewsTool()
-      ]
+      ],
+      llm = self.openai
     )
