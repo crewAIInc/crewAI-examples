@@ -3,7 +3,9 @@ import os
 import shutil
 from textwrap import dedent
 
-from crewai import Agent, Crew, Task
+from langchain_openai.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOllama
+from crewai import Agent, Crew, Task, Process
 from langchain.agents.agent_toolkits import FileManagementToolkit
 from tasks import TaskPrompts
 
@@ -15,11 +17,14 @@ from tools.template_tools import TemplateTools
 from dotenv import load_dotenv
 load_dotenv()
 
+api_key = os.getenv("OPENAI_API_KEY")
+
 class LandingPageCrew():
   def __init__(self, idea):
     self.agents_config = json.loads(open("config/agents.json", "r").read())
     self.idea = idea
     self.__create_agents()
+    self.openai = ChatOpenAI(api_key= api_key)
 
   def run(self):
     expanded_idea = self.__expand_idea()
@@ -29,16 +34,20 @@ class LandingPageCrew():
   def __expand_idea(self):
     expand_idea_task = Task(
       description=TaskPrompts.expand().format(idea=self.idea),
+      expected_output="A detailed and correct output",
       agent=self.idea_analyst
     )
     refine_idea_task = Task(
       description=TaskPrompts.refine_idea(),
+      expected_output = "A detailed and correct output",
       agent=self.communications_strategist
     )
     crew = Crew(
       agents=[self.idea_analyst, self.communications_strategist],
       tasks=[expand_idea_task, refine_idea_task],
-      verbose=True
+      verbose=True,
+      process = Process.sequential,
+      manager_llm = self.openai
     )
     expanded_idea = crew.kickoff()
     return expanded_idea
@@ -48,18 +57,22 @@ class LandingPageCrew():
         description=TaskPrompts.choose_template().format(
           idea=self.idea
         ),
-        agent=self.react_developer
+        agent=self.react_developer,
+        expected_output = "A detailed and relevant output"
     )
     update_page = Task(
       description=TaskPrompts.update_page().format(
         idea=self.idea
       ),
-      agent=self.react_developer
+      agent=self.react_developer,
+      expected_output = " A detailed and correct output"
     )
     crew = Crew(
       agents=[self.react_developer],
       tasks=[choose_template_task, update_page],
-      verbose=True
+      verbose=True,
+      process = Process.sequential,
+      manager_llm = self.openai
     )
     components = crew.kickoff()
     return components
@@ -79,6 +92,7 @@ class LandingPageCrew():
           file_content=file_content,
           component=component
         ),
+        expected_output = "A detailed and correct output",
         agent=self.content_editor_agent
       )
       update_component = Task(
@@ -86,18 +100,23 @@ class LandingPageCrew():
           component=component,
           file_content=file_content
         ),
+        expected_output = "A detailed and correct output"
         agent=self.react_developer
       )
       qa_component = Task(
         description=TaskPrompts.qa_component().format(
           component=component
         ),
-        agent=self.react_developer
+        agent=self.react_developer,
+        expected_output= "A detailed and correct output"
       )
       crew = Crew(
         agents=[self.content_editor_agent, self.react_developer],
         tasks=[create_content, update_component, qa_component],
-        verbose=True
+        verbose=True,
+        process = Process.sequential,
+        manager_llm = self.openai
+
       )
       crew.kickoff()
 
@@ -118,7 +137,8 @@ class LandingPageCrew():
       tools=[
         SearchTools.search_internet,
         BrowserTools.scrape_and_summarize_website
-      ]
+      ],
+      llm = self.openai
     )
 
     self.communications_strategist = Agent(
@@ -127,12 +147,14 @@ class LandingPageCrew():
       tools=[
           SearchTools.search_internet,
           BrowserTools.scrape_and_summarize_website,
-      ]
+      ],
+      llm= self.openai
     )
 
     self.react_developer = Agent(
       **developer_config,
       verbose=True,
+      llm= self.openai,
       tools=[
           SearchTools.search_internet,
           BrowserTools.scrape_and_summarize_website,
@@ -140,6 +162,7 @@ class LandingPageCrew():
           TemplateTools.copy_landing_page_template_to_project_folder,
           FileTools.write_file
       ] + toolkit.get_tools()
+      
     )
 
     self.content_editor_agent = Agent(
@@ -147,7 +170,8 @@ class LandingPageCrew():
       tools=[
           SearchTools.search_internet,
           BrowserTools.scrape_and_summarize_website,
-      ]
+      ],
+      llm = self.openai
     )
 
 if __name__ == "__main__":

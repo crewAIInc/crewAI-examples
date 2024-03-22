@@ -60,7 +60,7 @@ class TripCrew:
         crew = Crew(
             agents=[city_selector_agent, local_expert_agent, travel_concierge_agent],
             tasks=[identify_task, gather_task, plan_task],
-            process= Process.Sequential,     #try out the previous Hierarchical process
+            process= Process.sequential,     #try out the previous Hierarchical process
             manager_llm=self.openai
             #manager_llm = self.mistral
         )

@@ -11,6 +11,7 @@ class GameTasks():
 
 			Your Final answer must be the full python code, only the python code and nothing else.
 			"""),
+			expected_output="Full python code of required function",
 			agent=agent
 		)
 
@@ -28,6 +29,7 @@ class GameTasks():
 
 			Your Final answer must be the full python code, only the python code and nothing else.
 			"""),
+			expected_output= "Fully functional python code of the required functions",
 			agent=agent
 		)
 
@@ -44,5 +46,6 @@ class GameTasks():
 
 			Your Final answer must be the full python code, only the python code and nothing else.
 			"""),
+			expected_output= "Fully functional code of the required function",
 			agent=agent
 		)

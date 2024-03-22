@@ -1,13 +1,20 @@
+import os 
+
 from dotenv import load_dotenv
 load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
 
-from crewai import Crew
+
+from crewai import Crew, Process
+from langchain_openai.chat_models import ChatOpenAI
 
 from tasks import Tasks
 from agents import Agents
 
 tasks = Tasks()
 agents = Agents()
+
+llm = ChatOpenAI(api_key=api_key)
 
 company_description = input("What is the company description?\n")
 company_domain = input("What is the company domain?\n")
@@ -35,7 +42,9 @@ crew = Crew(
         research_role_requirements_task,
         draft_job_posting_task,
         review_and_edit_job_posting_task
-    ]
+    ],
+    process = Process.sequential,
+    manager_llm = llm
 )
 
 # Kick off the process

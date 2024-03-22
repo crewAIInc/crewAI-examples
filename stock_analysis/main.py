@@ -40,7 +40,7 @@ class FinancialCrew:
         filings_task,
         recommend_task
       ],
-      process = Process.Sequential,   # Another option is Hierarichical process
+      process = Process.sequential,   # Another option is Hierarichical process
       verbose=True,
       manager_llm = self.openai
     )
