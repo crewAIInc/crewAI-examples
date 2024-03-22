@@ -1,10 +1,17 @@
-from crewai import Crew
+import os
+
+from crewai import Crew, Process
 from textwrap import dedent
 from trip_agents import TripAgents
 from trip_tasks import TripTasks
 
+from langchain_openai.chat_models import ChatOpenAI
+from langchain_community.chat_models import chatOllama
+
 from dotenv import load_dotenv
 load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY") #pulled from .env file
 
 class TripCrew:
 
@@ -13,6 +20,9 @@ class TripCrew:
     self.origin = origin
     self.interests = interests
     self.date_range = date_range
+    self.openai = ChatOpenAI(api_key = api_key, temperature = 0.3)
+    #change model name to one of the available ollama model. (Performance will vary based on the model)
+    self.mistral = ChatOllama(model = "crewai-mistral")      
 
   def run(self):
     agents = TripAgents()
@@ -22,33 +32,39 @@ class TripCrew:
     local_expert_agent = agents.local_expert()
     travel_concierge_agent = agents.travel_concierge()
 
-    identify_task = tasks.identify_task(
-      city_selector_agent,
-      self.origin,
-      self.cities,
-      self.interests,
-      self.date_range
-    )
-    gather_task = tasks.gather_task(
-      local_expert_agent,
-      self.origin,
-      self.interests,
-      self.date_range
-    )
-    plan_task = tasks.plan_task(
-      travel_concierge_agent, 
-      self.origin,
-      self.interests,
-      self.date_range
-    )
+            identify_task = tasks.identify_task(
+            agent=city_selector_agent,
+            origin=self.origin,
+            cities=self.cities,
+            interests=self.interests,
+            range=self.date_range
+        )
 
-    crew = Crew(
-      agents=[
-        city_selector_agent, local_expert_agent, travel_concierge_agent
-      ],
-      tasks=[identify_task, gather_task, plan_task],
-      verbose=True
-    )
+        gather_task = tasks.gather_task(
+            agent=local_expert_agent,
+            origin=self.origin,
+            interests=self.interests,
+            range=self.date_range,
+            context=[identify_task]   # can take in a list of context
+
+        )
+
+        plan_task = tasks.plan_task(
+            agent=travel_concierge_agent,
+            origin=self.origin,
+            interests=self.interests,
+            range=self.date_range,
+            context=[gather_task]
+        )
+
+        crew = Crew(
+            agents=[city_selector_agent, local_expert_agent, travel_concierge_agent],
+            tasks=[identify_task, gather_task, plan_task],
+            process= Process.Sequential,     #try out the previous Hierarchical process
+            manager_llm=self.openai
+            #manager_llm = self.mistral
+        )
+
 
     result = crew.kickoff()
     return result

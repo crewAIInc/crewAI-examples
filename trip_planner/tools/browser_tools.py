@@ -1,10 +1,15 @@
-import json
 import os
-
+import json
 import requests
+
 from crewai import Agent, Task
 from langchain.tools import tool
 from unstructured.partition.html import partition_html
+
+from dotenv import load_dotenv
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY") #pulled from .env file
 
 
 class BrowserTools():
@@ -24,14 +29,17 @@ class BrowserTools():
       agent = Agent(
           role='Principal Researcher',
           goal=
-          'Do amazing researches and summaries based on the content you are working with',
+          'Perform thorough research and generate insightful summaries based on the content at hand.',
           backstory=
           "You're a Principal Researcher at a big company and you need to do a research about a given topic.",
-          allow_delegation=False)
+          allow_delegation=False,
+          llm = ChatOpenAI(api_key = api_key, temperature = 0))
       task = Task(
           agent=agent,
-          description=
-          f'Analyze and summarize the content bellow, make sure to include the most relevant information in the summary, return only the summary nothing else.\n\nCONTENT\n----------\n{chunk}'
+          expected_output="Detailed summary of the content information",
+          description= f'Analyze and summarize the content below, making sure to include the most relevant 
+                        information in the summary. Return only the summary, nothing else.\n\nCONTENT\n----
+                        ------\n{chunk}'
       )
       summary = task.execute()
       summaries.append(summary)
