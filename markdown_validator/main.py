@@ -2,18 +2,17 @@ import sys
 from crewai import Agent, Task
 import os
 from dotenv import load_dotenv
-from langchain.tools import tool
-from langchain.chat_models.openai import ChatOpenAI
-from pymarkdown.api import PyMarkdownApi, PyMarkdownApiException
+from langchain_openai import ChatOpenAI
 from MarkdownTools import markdown_validation_tool
+import agentops
 
 load_dotenv()
+agentops.init()
 
 defalut_llm = ChatOpenAI(openai_api_base=os.environ.get("OPENAI_API_BASE_URL", "https://api.openai.com/v1"),
                         openai_api_key=os.environ.get("OPENAI_API_KEY"),
                         temperature=0.1,                        
-                        model_name=os.environ.get("MODEL_NAME", "gpt-3.5-turbo"),
-                        top_p=0.3)
+                        model_name=os.environ.get("MODEL_NAME", "gpt-3.5-turbo"))
 
 
 
@@ -70,7 +69,8 @@ def process_markdown_document(filename):
 			
 			If you already know the answer or if you do not need 
 			to use a tool, return it as your Final Answer.""",
-            agent=general_agent)
+            agent=general_agent,
+            expected_output="")
     
     updated_markdown = syntax_review_task.execute()
 
@@ -81,6 +81,11 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         filename = sys.argv[1]
+        processed_document = process_markdown_document(filename)
+        print(processed_document)
+
+    else:
+        filename = "README.md"
         processed_document = process_markdown_document(filename)
         print(processed_document)
 

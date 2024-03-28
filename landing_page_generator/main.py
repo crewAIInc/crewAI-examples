@@ -11,9 +11,11 @@ from tools.browser_tools import BrowserTools
 from tools.file_tools import FileTools
 from tools.search_tools import SearchTools
 from tools.template_tools import TemplateTools
+import agentops
 
 from dotenv import load_dotenv
 load_dotenv()
+agentops.init()
 
 class LandingPageCrew():
   def __init__(self, idea):
