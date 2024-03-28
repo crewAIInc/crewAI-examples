@@ -18,7 +18,8 @@ class MarketingAnalysisTasks:
 			Keep in mind, attention to detail is crucial for
 			a comprehensive analysis. It's currenlty 2024.
 			"""),
-			agent=agent
+			agent=agent,
+			expected_output="output"
 		)
 
 	def competitor_analysis(self, agent, product_website, product_details):
@@ -32,7 +33,8 @@ class MarketingAnalysisTasks:
 			Your final report MUST include BOTH all context about {product_website}
 			and a detailed comparison to whatever competitor they have competitors.
 			"""),
-			agent=agent
+			agent=agent,
+			expected_output="output"
 		)
 
 	def campaign_development(self, agent, product_website, product_details):
@@ -49,7 +51,8 @@ class MarketingAnalysisTasks:
 			Your final answer MUST be ideas that will resonate with the audience and
 			also include ALL context you have about the product and the customer.
 			"""),
-			agent=agent
+			agent=agent,
+			expected_output="output"
 		)
 
 	def instagram_ad_copy(self, agent):
@@ -70,7 +73,8 @@ class MarketingAnalysisTasks:
 			Your final answer MUST be 3 options for an ad copy for instagram that
 			not only informs but also excites and persuades the audience.
 			"""),
-			agent=agent
+			agent=agent,
+			expected_output="output"
 		)
 
 	def take_photograph_task(self, agent, copy, product_website, product_details):
@@ -95,7 +99,8 @@ class MarketingAnalysisTasks:
 			Your final answer must be 3 options of photographs, each with 1 paragraph
 			describing the photograph exactly like the examples provided above.
 			"""),
-			agent=agent
+			agent=agent,
+			expected_output="output"
 		)
 
 	def review_photo(self, agent, product_website, product_details):
@@ -117,5 +122,6 @@ class MarketingAnalysisTasks:
 			Your final answer must be 3 reviewed options of photographs,
 			each with 1 paragraph description following the examples provided above.
 			"""),
-			agent=agent
+			agent=agent,
+			expected_output="output"
 		)

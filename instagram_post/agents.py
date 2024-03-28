@@ -9,7 +9,7 @@ from langchain.llms import Ollama
 
 class MarketingAnalysisAgents:
 	def __init__(self):
-		self.llm = Ollama(model=os.environ['MODEL'])
+		self.llm = Ollama(model=os.environ.get('MODEL'))
 
 	def product_competitor_agent(self):
 		return Agent(
