@@ -5,7 +5,7 @@ from agents import Agents
 import agentops
 load_dotenv()
 
-agentops.init()
+agentops.init(tags=['job-posting'])
 
 tasks = Tasks()
 agents = Agents()

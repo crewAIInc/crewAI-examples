@@ -7,7 +7,7 @@ from MarkdownTools import markdown_validation_tool
 import agentops
 
 load_dotenv()
-agentops.init()
+agentops.init(tags=['markdown_validator'])
 
 defalut_llm = ChatOpenAI(openai_api_base=os.environ.get("OPENAI_API_BASE_URL", "https://api.openai.com/v1"),
                         openai_api_key=os.environ.get("OPENAI_API_KEY"),
