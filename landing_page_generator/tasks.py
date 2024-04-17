@@ -34,11 +34,11 @@ class TaskPrompts():
   def choose_template():
     return dedent("""
       Learn the templates options choose and copy 
-      the one that suits the idea bellow the best, 
+      the one that suits the idea below the best, 
       YOU MUST COPY, and then YOU MUST read the src/component 
       in the directory you just copied, to decide what 
       component files should be updated to make the 
-      landing page about the idea bellow.
+      landing page about the idea below.
       
       - YOU MUST READ THE DIRECTORY BEFORE CHOOSING THE FILES.      
       - YOU MUST NOT UPDATE any Pricing components.
@@ -78,7 +78,7 @@ class TaskPrompts():
       You'll get a $100 tip if you follow all the rules!
 
       Also update any necessary text to reflect this landing page
-      is about the idea bellow.
+      is about the idea below.
       
       IDEA 
       ----------
@@ -87,10 +87,10 @@ class TaskPrompts():
 
   def component_content():
     return dedent("""
-      A engineer will update the {component} (code bellow),
+      A engineer will update the {component} (code below),
       return a list of good options of texts to replace 
       EACH INDIVIDUAL existing text on the component, 
-      the suggestion MUST be based on the idea bellow, 
+      the suggestion MUST be based on the idea below, 
       and also MUST be similar in length with the original 
       text, we need to replace ALL TEXT.
       
@@ -145,7 +145,7 @@ class TaskPrompts():
   def qa_component():
     return dedent("""
       Check the React component code to make sure 
-      it's valid and abide by the rules bellow, 
+      it's valid and abide by the rules below, 
       if it doesn't then write the correct version to 
       the file system using the write file tool into 
       the following path: {component}.
