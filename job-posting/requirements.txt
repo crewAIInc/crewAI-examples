@@ -1,5 +1,4 @@
-python-dotenv==1.0.1
-crewai==0.14.3
-agentops==0.1.0
+crewai==0.28.8
+agentops==0.1.9
 crewai-tools==0.1.1
-python-dotenv==1.0.1
+python-dotenv==1.0.0
