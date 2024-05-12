@@ -34,7 +34,8 @@ class BrowserTools():
       task = Task(
           agent=agent,
           description=
-          f'Analyze and make a LONG summary the content bellow, make sure to include the ALL relevant information in the summary, return only the summary nothing else.\n\nCONTENT\n----------\n{chunk}'
+          f'Analyze and make a LONG summary the content bellow, make sure to include the ALL relevant information in the summary, return only the summary nothing else.\n\nCONTENT\n----------\n{chunk}',
+          expected_output= "A detailed summary of the content"
       )
       summary = task.execute()
       summaries.append(summary)

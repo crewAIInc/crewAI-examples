@@ -1,7 +1,18 @@
+import os
+
+from langchain_openai.chat_models import ChatOpenAI
 from textwrap import dedent
 from crewai import Agent
 
+from dotenv import load_dotenv()
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY")
+
 class GameAgents():
+	def __init__(self):
+		self.llm = ChatOpenAI(api_key = api_key)
+
 	def senior_engineer_agent(self):
 		return Agent(
 			role='Senior Software Engineer',
@@ -11,6 +22,7 @@ class GameAgents():
 				Your expertise in programming in python. and do your best to
 				produce perfect code"""),
 			allow_delegation=False,
+			llm= self.llm,
 			verbose=True
 		)
 
@@ -26,7 +38,8 @@ class GameAgents():
 				brackets and syntax errors.
   			You also check for security vulnerabilities, and logic errors"""),
 			allow_delegation=False,
-			verbose=True
+			verbose=True,
+			llm = self.llm
 		)
 
 	def chief_qa_engineer_agent(self):
@@ -37,5 +50,6 @@ class GameAgents():
 				You feel that programmers always do only half the job, so you are
 				super dedicate to make high quality code."""),
 			allow_delegation=True,
-			verbose=True
+			verbose=True,
+			llm = self.llm
 		)

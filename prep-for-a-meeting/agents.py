@@ -1,9 +1,17 @@
 from textwrap import dedent
 from crewai import Agent
 
+from lanchain_openai.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOllama
 from tools.ExaSearchTool import ExaSearchTool
 
 class MeetingPreparationAgents():
+
+	def __init__(self):
+        self.mistral = ChatOllama(model="crewai-mistral")
+        self.llama2 = ChatOllama(model="crewai-llama2")
+        self.openai = ChatOpenAI(api_key = api_key, temperature=0)
+
 	def research_agent(self):
 		return Agent(
 			role='Research Specialist',
@@ -13,7 +21,8 @@ class MeetingPreparationAgents():
 					As a Research Specialist, your mission is to uncover detailed information
 					about the individuals and entities participating in the meeting. Your insights
 					will lay the groundwork for strategic meeting preparation."""),
-			verbose=True
+			verbose=True,
+			llm = self.openai
 		)
 
 	def industry_analysis_agent(self):
@@ -25,7 +34,8 @@ class MeetingPreparationAgents():
 					As an Industry Analyst, your analysis will identify key trends,
 					challenges facing the industry, and potential opportunities that
 					could be leveraged during the meeting for strategic advantage."""),
-			verbose=True
+			verbose=True,
+			llm = self.openai
 		)
 
 	def meeting_strategy_agent(self):
@@ -37,7 +47,8 @@ class MeetingPreparationAgents():
 					As a Strategy Advisor, your expertise will guide the development of
 					talking points, insightful questions, and strategic angles
 					to ensure the meeting's objectives are achieved."""),
-			verbose=True
+			verbose=True,
+			llm = self.openai
 		)
 
 	def summary_and_briefing_agent(self):
@@ -48,5 +59,7 @@ class MeetingPreparationAgents():
 			backstory=dedent("""\
 					As the Briefing Coordinator, your role is to consolidate the research,
 					analysis, and strategic insights."""),
-			verbose=True
+			verbose=True,
+			llm = self.openai
+
 		)

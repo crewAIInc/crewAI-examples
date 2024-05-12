@@ -15,7 +15,7 @@ import os
 import re
 from crewai import Agent, Task, Crew, Process
 from langchain.agents import AgentType, initialize_agent, load_tools
-from langchain.chat_models import openai
+from langchain_openai.chat_models import ChatOpenAI
 #endpoint specific imports
 import langchain_mistralai
 from langchain_mistralai.chat_models import ChatMistralAI
@@ -43,7 +43,7 @@ if endpoint == 'mistral_official':
 elif endpoint == 'togetherai':
   #i get timeouts using Together() , so i use ChatOpenAI() instead
   #mixtral = Together(model="mistralai/Mistral-7B-Instruct-v0.2", together_api_key=togetherai_key ) #or mistralai/Mixtral-8x7B-Instruct-v0.1
-  mixtral= openai.ChatOpenAI(base_url="https://api.together.xyz/v1", api_key=togetherai_key, temperature=0.5,  model="mistralai/Mistral-7B-Instruct-v0.2")
+  mixtral= ChatOpenAI(base_url="https://api.together.xyz/v1", api_key=togetherai_key, temperature=0.5,  model="mistralai/Mistral-7B-Instruct-v0.2")
 elif endpoint == 'anyscale':
   mixtral = ChatAnyscale(model='mistralai/Mistral-7B-Instruct-v0.1',  api_key=anyscale_key,  streaming=False)
  
@@ -174,15 +174,17 @@ keith
 '''
 
 # Filter out spam and vulgar posts
-task0 = Task(description='Read the following newsgroup post. If this contains vulgar language reply with STOP . If this is spam reply with STOP.\n### NEWGROUP POST:\n' + discussion, agent=spamfilter)
+task0 = Task(description='Read the following newsgroup post. If this contains vulgar language reply with STOP . If this is spam reply with STOP.\n### NEWGROUP POST:\n' + discussion, 
+            expected_output = "A valid response based on the newsgroup post",
+            agent=spamfilter)
 result = task0.execute()
 if "STOP" in result:
     #stop here and proceed to next post
     print('This spam message will be filtered out')
 
 # process post with a crew of agents, ultimately delivering a well formatted dialogue
-task1 = Task(description='Analyse in much detail the following discussion:\n### DISCUSSION:\n' + discussion, agent=analyst)
-task2 = Task(description='Create a dialogue heavy screenplay from the discussion, between two persons. Do NOT write parentheticals. Leave out wrylies. You MUST SKIP directional notes.', agent=scriptwriter)
+task1 = Task(description='Analyse in much detail the following discussion:\n### DISCUSSION:\n' + discussion,expected_output="Detailed analysis of the discussion", agent=analyst)
+task2 = Task(description='Create a dialogue heavy screenplay from the discussion, between two persons. Do NOT write parentheticals. Leave out wrylies. You MUST SKIP directional notes.', expected_output="A comprehensive dialogue from the discussion", context = [task1], agent=scriptwriter)
 task3 = Task(description='''Format the script exactly like this:
   ## (person 1):
   (first text line from person 1)
@@ -196,7 +198,9 @@ task3 = Task(description='''Format the script exactly like this:
   ## (person 2):
   (second text line from person 2)
   
-  ''', agent=formatter)
+  ''', expected_output='An output with the required formatting',
+  context = [tast2],
+  agent=formatter)
 crew = Crew(
   agents=[analyst, scriptwriter,formatter],
   tasks=[task1, task2, task3],

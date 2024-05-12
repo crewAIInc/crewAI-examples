@@ -1,4 +1,4 @@
-from crewai import Crew
+from crewai import Crew, Process
 from textwrap import dedent
 
 from stock_analysis_agents import StockAnalysisAgents
@@ -7,9 +7,13 @@ from stock_analysis_tasks import StockAnalysisTasks
 from dotenv import load_dotenv
 load_dotenv()
 
+api_key = os.getenv("OPENAI_API_KEY")
+
 class FinancialCrew:
   def __init__(self, company):
     self.company = company
+    self.mistral = ChatOllama(model="mistral")
+    self.openai = ChatOpenAI(api_key=api_key, temperature=0)
 
   def run(self):
     agents = StockAnalysisAgents()
@@ -20,9 +24,9 @@ class FinancialCrew:
     investment_advisor_agent = agents.investment_advisor()
 
     research_task = tasks.research(research_analyst_agent, self.company)
-    financial_task = tasks.financial_analysis(financial_analyst_agent)
-    filings_task = tasks.filings_analysis(financial_analyst_agent)
-    recommend_task = tasks.recommend(investment_advisor_agent)
+    financial_task = tasks.financial_analysis(financial_analyst_agent, [research_task])
+    filings_task = tasks.filings_analysis(financial_analyst_agent, [research_task, financial_task])
+    recommend_task = tasks.recommend(investment_advisor_agent, [research_task, financial_task, filings_task])
 
     crew = Crew(
       agents=[
@@ -36,7 +40,9 @@ class FinancialCrew:
         filings_task,
         recommend_task
       ],
-      verbose=True
+      process = Process.sequential,   # Another option is Hierarichical process
+      verbose=True,
+      manager_llm = self.openai
     )
 
     result = crew.kickoff()

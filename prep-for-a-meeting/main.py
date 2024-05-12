@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from crewai import Crew
+from crewai import Crew, Process
 
 from tasks import MeetingPreparationTasks
 from agents import MeetingPreparationAgents
@@ -43,7 +43,9 @@ crew = Crew(
 		industry_analysis,
 		meeting_strategy,
 		summary_and_briefing
-	]
+	],
+	process = Process.sequential,
+	manager_llm = self.openai
 )
 
 game = crew.kickoff()

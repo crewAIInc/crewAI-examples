@@ -1,5 +1,5 @@
 import sys
-from crewai import Agent, Task
+from crewai import Agent, Task, Process
 import os
 from dotenv import load_dotenv
 from langchain.tools import tool
@@ -70,6 +70,7 @@ def process_markdown_document(filename):
 			
 			If you already know the answer or if you do not need 
 			to use a tool, return it as your Final Answer.""",
+            expected_output = "Valid markdown script",
             agent=general_agent)
     
     updated_markdown = syntax_review_task.execute()
