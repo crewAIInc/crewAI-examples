@@ -1,0 +1,19 @@
+I am just attempting to clean up the examples here and update them to the current standard:
+
+I Am Currently Working On: game_builder_crew
+
+Then In This Order:
+job_posting
+prep_for_a_meeting
+stock_analysis
+trip_planner
+
+I Do Not Plan On Doing the following:
+starter_template (not needed now use 'crewai create')
+azure_model
+markdown_validator
+screenplay_writer
+
+These Are Still Op For Debate:
+CrewAI-LangGraph  (maybe later)
+landing_page_generator (maybe later)

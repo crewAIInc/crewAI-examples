@@ -1,44 +1,57 @@
-# AI Crew for Instagram Post
-## Introduction
-This project is an example using the CrewAI framework to automate the process of coming up with an instagram post. CrewAI orchestrates autonomous AI agents, enabling them to collaborate and execute complex tasks efficiently.
+# InstagramPost Crew
 
-#### Instagram Post
-[![Instagram Post](https://img.youtube.com/vi/lcD0nT8IVTg/0.jpg)](https://www.youtube.com/watch?v=lcD0nT8IVTg "Instagram Post")
+Welcome to the InstagramPost Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
 
-By [@joaomdmoura](https://x.com/joaomdmoura)
+## Installation
 
-- [CrewAI Framework](#crewai-framework)
-- [Running the script](#running-the-script)
-- [Details & Explanation](#details--explanation)
-- [Using Local Models with Ollama](#using-local-models-with-ollama)
-- [License](#license)
+Ensure you have Python >=3.10 <=3.13 installed on your system. This project uses [Poetry](https://python-poetry.org/) for dependency management and package handling, offering a seamless setup and execution experience.
 
-## CrewAI Framework
-CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to give a complete stock analysis and investment recommendation
+First, if you haven't already, install Poetry:
 
-## Running the Script
-This example uses OpenHermes 2.5 through Ollama by default so you should to download [Ollama](ollama.ai) and [OpenHermes](https://ollama.ai/library/openhermes).
+```bash
+pip install poetry
+```
 
-You can change the model by changing the `MODEL` env var in the `.env` file.
+Next, navigate to your project directory and install the dependencies:
 
-- **Configure Environment**: Copy ``.env.example` and set up the environment variables for [Browseless](https://www.browserless.io/), [Serper](https://serper.dev/).
-- **Install Dependencies**: Run `poetry install --no-root`.
-- **Execute the Script**: Run `python main.py` and input your idea.
+1. First lock the dependencies and then install them:
+```bash
+poetry lock
+```
+```bash
+poetry install
+```
+### Customizing
 
-## Details & Explanation
-- **Running the Script**: Execute `python main.py`` and input your idea when prompted. The script will leverage the CrewAI framework to process the idea and generate a landing page.
-- **Key Components**:
-  - `./main.py`: Main script file.
-  - `./tasks.py`: Main file with the tasks prompts.
-  - `./agents.py`: Main file with the agents creation.
-  - `./tools/`: Contains tool classes used by the agents.
+**Add your `OPENAI_API_KEY` into the `.env` file**
 
-## Using Local Models with Ollama
-This example run enterily local models, the CrewAI framework supports integration with both closed and local models, by using tools such as Ollama, for enhanced flexibility and customization. This allows you to utilize your own models, which can be particularly useful for specialized tasks or data privacy concerns.
+- Modify `src/instagram_post/config/agents.yaml` to define your agents
+- Modify `src/instagram_post/config/tasks.yaml` to define your tasks
+- Modify `src/instagram_post/crew.py` to add your own logic, tools and specific args
+- Modify `src/instagram_post/main.py` to add custom inputs for your agents and tasks
 
-### Setting Up Ollama
-- **Install Ollama**: Ensure that Ollama is properly installed in your environment. Follow the installation guide provided by Ollama for detailed instructions.
-- **Configure Ollama**: Set up Ollama to work with your local model. You will probably need to [tweak the model using a Modelfile](https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md), I'd recommend playing with `top_p` and `temperature`.
+## Running the Project
 
-## License
-This project is released under the MIT License.
+To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+
+```bash
+poetry run instagram_post
+```
+
+This command initializes the instagram_post Crew, assembling the agents and assigning them tasks as defined in your configuration.
+
+This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+
+## Understanding Your Crew
+
+The instagram_post Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+
+## Support
+
+For support, questions, or feedback regarding the InstagramPost Crew or crewAI.
+- Visit our [documentation](https://docs.crewai.com)
+- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
+- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
+- [Chat with our docs](https://chatg.pt/DWjSBZn)
+
+Let's create wonders together with the power and simplicity of crewAI.
