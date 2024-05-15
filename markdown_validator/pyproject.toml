@@ -10,6 +10,8 @@ crewai = "^0.11.0"
 python-dotenv = "1.0.0"
 markdown = "3.4.3"
 pymarkdownlnt = "0.9.15"
+langchain_openai = "0.1.1"
+agentops = "0.1.9"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md

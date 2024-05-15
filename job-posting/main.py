@@ -1,10 +1,11 @@
 from dotenv import load_dotenv
-load_dotenv()
-
 from crewai import Crew
-
 from tasks import Tasks
 from agents import Agents
+import agentops
+load_dotenv()
+
+agentops.init(tags=['job-posting'])
 
 tasks = Tasks()
 agents = Agents()
