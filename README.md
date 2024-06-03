@@ -20,4 +20,4 @@ Starting your own example
 - [Stock Analysis](./stock_analysis)
 - [Landing Page Generator](./landing_page_generator)
 - [CrewAI + LangGraph](./CrewAI-LangGraph)
-- [Flight Booker with Browserbase](./browserbase_flights)
+- [Flight Booker with Browserbase](./flight_search)

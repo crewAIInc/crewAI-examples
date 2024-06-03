@@ -9,18 +9,25 @@ from time import sleep
 def browserbase(url: str):
     """
     Loads a URL using a headless webbrowser
+
+    :param url: The URL to load
+    :return: The text content of the page
     """
     with sync_playwright() as playwright:
         browser = playwright.chromium.connect_over_cdp(
-            "wss://connect.browserbase.com?apiKey=" + os.environ["BROWSERBASE_API_KEY"]
+            "wss://connect.browserbase.com?enableProxy=true&apiKey="
+            + os.environ["BROWSERBASE_API_KEY"]
         )
         context = browser.contexts[0]
         page = context.pages[0]
         page.goto(url)
 
+        # Wait for async content of the page to load
         sleep(5)
 
-        page.screenshot(path="screenshot.png")
+        # Optionally take a screenshot to debug current page
+        # page.screenshot(path="screenshot.png")
+
         content = html2text(page.content())
         browser.close()
         return content
