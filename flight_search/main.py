@@ -67,7 +67,7 @@ crew = Crew(
 result = crew.kickoff(
     inputs={
         "request": sys.argv[1] or "Flights from Sofia to Berlin on 2th July",
-        "current_year": 2024,
+        "current_year": datetime.date.today().year,
     }
 )
 
