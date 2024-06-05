@@ -18,9 +18,9 @@ pip install crewai 'crewai[tools]' html2text playwright dotenv
 Set the required environment variables in a `.env` file:
 
 ```
-export OPENAI_API_KEY=
-export BROWSERBASE_API_KEY=
-export BROWSERBASE_PROJECT_ID=
+OPENAI_API_KEY=
+BROWSERBASE_API_KEY=
+BROWSERBASE_PROJECT_ID=
 ```
 
 Optional, but recommended. Set a different model type in CrewAI to avoid token size limits:
