@@ -7,10 +7,9 @@ class GameTasks():
 
 			Instructions
 			------------
-    	{game}
-
-			Your Final answer must be the full python code, only the python code and nothing else.
+			{game}
 			"""),
+			expected_output="Your Final answer must be the full python code, only the python code and nothing else.",
 			agent=agent
 		)
 
@@ -25,9 +24,8 @@ class GameTasks():
 			Using the code you got, check for errors. Check for logic errors,
 			syntax errors, missing imports, variable declarations, mismatched brackets,
 			and security vulnerabilities.
-
-			Your Final answer must be the full python code, only the python code and nothing else.
 			"""),
+			expected_output="Your Final answer must be the full python code, only the python code and nothing else.",
 			agent=agent
 		)
 
@@ -41,8 +39,7 @@ class GameTasks():
 
 			You will look over the code to insure that it is complete and
 			does the job that it is supposed to do.
-
-			Your Final answer must be the full python code, only the python code and nothing else.
 			"""),
+			expected_output="Your Final answer must be the full python code, only the python code and nothing else.",
 			agent=agent
 		)
