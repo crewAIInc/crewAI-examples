@@ -24,10 +24,10 @@ not to, and by doing so it will cost you money.*
 
 - **Configure Environment**: Copy ``.env.example` and set up the environment variables for [Browseless](https://www.browserless.io/), [Serper](https://serper.dev/), [SEC-API](https://sec-api.io) and [OpenAI](https://platform.openai.com/api-keys)
 - **Install Dependencies**: Run `poetry install --no-root`.
-- **Execute the Script**: Run `python main.py` and input your idea.
+- **Execute the Script**: Run `poetry run python main.py` and input your idea.
 
 ## Details & Explanation
-- **Running the Script**: Execute `python main.py`` and input the company to be analyzed when prompted. The script will leverage the CrewAI framework to analyze the company and generate a detailed report.
+- **Running the Script**: Execute `poetry run python main.py` and input the company to be analyzed when prompted. The script will leverage the CrewAI framework to analyze the company and generate a detailed report.
 - **Key Components**:
   - `./main.py`: Main script file.
   - `./stock_analysis_tasks.py`: Main file with the tasks prompts.
