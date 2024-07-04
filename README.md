@@ -5,9 +5,9 @@ This is a collection of examples of different ways to use the crewAI framework t
 By [@joaomdmoura](https://x.com/joaomdmoura).
 
 ## Examples
-- [Marketing Posts](https://github.com/joaomdmoura/crewAI-examples/tree/main/marketing%20strategy)
-- [Surprise Trip](https://github.com/joaomdmoura/crewAI-examples/tree/main/surprise%20trip)
-- [Match to Proposal]()
+- [Marketing Strategy](https://github.com/joaomdmoura/crewAI-examples/tree/main/marketing_strategy)
+- [Surprise Trip](https://github.com/joaomdmoura/crewAI-examples/tree/main/surprise_trip)
+- [Match to Proposal](https://github.com/joaomdmoura/crewAI-examples/tree/main/match_profile_to_positions)
 
 ## Old Examples, need to be updated
 
