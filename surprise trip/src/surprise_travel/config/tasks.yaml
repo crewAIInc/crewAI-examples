@@ -1,0 +1,59 @@
+personalized_activity_planning_task:
+  description: >
+    Research and find cool things to do at {destination}.
+    Focus on activities and events that match the traveler's interests and age group.
+    Utilize internet search tools and recommendation engines to gather the information.
+
+
+    Traveler's information:
+
+
+    - origin: {origin}
+
+    - destination: {destination}
+
+    - age of the traveler: {age}
+
+    - hotel localtion: {hotel_location}
+
+    - flight infromation: {flight_information}
+
+    - how long is the trip: {trip_duration}
+  expected_output: >
+    A list of recommended activities and events for each day of the trip.
+    Each entry should include the activity name, location, a brief description, and why it's suitable for the traveler.
+    And potential reviews and ratings of the activities.
+
+restaurant_scenic_location_scout_task:
+  description: >
+    Find highly-rated restaurants and dining experiences at {destination}.
+    Recommend scenic locations and fun activities that align with the traveler's preferences.
+    Use internet search tools, restaurant review sites, and travel guides.
+    Make sure to find a variety of options to suit different tastes and budgets, and ratings for them.
+
+    Traveler's information:
+
+
+    - origin: {origin}
+
+    - destination: {destination}
+
+    - age of the traveler: {age}
+
+    - hotel localtion: {hotel_location}
+
+    - flight infromation: {flight_information}
+
+    - how long is the trip: {trip_duration}
+  expected_output: >
+    A list of recommended restaurants, scenic locations, and fun activities for each day of the trip.
+    Each entry should include the name, location (address), type of cuisine or activity, and a brief description and ratings.
+
+itinerary_compilation_task:
+  description: >
+    Compile all researched information into a comprehensive day-by-day itinerary for the trip to {destination}.
+    Ensure the itinerary integrates flights, hotel information, and all planned activities and dining experiences.
+    Use text formatting and document creation tools to organize the information.
+  expected_output: >
+    A detailed itinerary document, the itinerary should include a day-by-day
+    plan with flights, hotel details, activities, restaurants, and scenic locations.

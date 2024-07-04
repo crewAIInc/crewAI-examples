@@ -5,8 +5,8 @@ This is a collection of examples of different ways to use the crewAI framework t
 By [@joaomdmoura](https://x.com/joaomdmoura).
 
 ## Examples
+- [Marketing Posts](https://github.com/joaomdmoura/crewAI-examples/tree/main/marketing_posts_example)
 - [Company Report]()
-- [Marketing Posts]()
 - [Match to Proposal]()
 - [Surprise Trip]()
 - [Recruitment]()
