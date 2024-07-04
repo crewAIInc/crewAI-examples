@@ -1,4 +1,3 @@
-import agentops
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 
@@ -88,7 +87,6 @@ class SurpriseTravelCrew():
 
     @crew
     def crew(self) -> Crew:
-        agentops.init()
         """Creates the SurpriseTravel crew"""
         return Crew(
             agents=self.agents, # Automatically created by the @agent decorator

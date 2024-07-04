@@ -6,10 +6,10 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
-crewai = {extras = ["agentops", "tools"], path="/Users/joaomoura/workspace/crewAI"}
+crewai = { extras = ["tools"], version = "^0.35.8" }
+crewai-tools = "^0.4.6"
 pip = "^24.1.1"
 install = "^1.3.5"
-agentops = "^0.1.9"
 
 [tool.poetry.scripts]
 surprise_travel = "surprise_travel.main:run"
