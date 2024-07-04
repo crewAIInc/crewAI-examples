@@ -12,7 +12,7 @@ class Agents:
             goal="Analyze the provided information and if needed write code and run it to generate insights.",
             backstory="Expert in analyzing company cultures and identifying key values and needs from various sources, including websites and brief descriptions.",
             verbose=True,
-            allow_code_execution=True,
+            allow_code_execution=True,  # This allows the Agent to generate code and run it
             allow_delegation=False,
         )
 
