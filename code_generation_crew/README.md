@@ -3,7 +3,7 @@
 This project is an example using the CrewAI framework to run agents that generate code, run it, and report the results. The Agent with `enable_code_execution=True` will be responsible for creating the code based on the tasks goal. The code will be executed and then the output will be passed to the reporting analyst.
 
 
-#### Jobs postings
+#### Code Generation Crew
 
 - [CrewAI Framework](#crewai-framework)
 - [Requirements](#requirements)
