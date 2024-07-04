@@ -27,5 +27,5 @@ crew = Crew(
 result = crew.kickoff()
 
 print("Financial Analysis Process Completed.")
-print("Final Job Posting:")
+print("Final Financial Analysis:")
 print(result)
