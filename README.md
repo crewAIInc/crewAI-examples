@@ -5,6 +5,12 @@ This is a collection of examples of different ways to use the crewAI framework t
 By [@joaomdmoura](https://x.com/joaomdmoura).
 
 ## Examples
+- [Marketing Strategy](https://github.com/joaomdmoura/crewAI-examples/tree/main/marketing_strategy)
+- [Surprise Trip](https://github.com/joaomdmoura/crewAI-examples/tree/main/surprise_trip)
+- [Match to Proposal](https://github.com/joaomdmoura/crewAI-examples/tree/main/match_profile_to_positions)
+- [Find Job Candidades Demo](https://github.com/joaomdmoura/crewAI-examples/tree/main/recruitment)
+
+## Old Examples, need to be updated
 
 ### Basic Examples
 - [Create Job Posting](https://github.com/joaomdmoura/crewAI-examples/tree/main/job-posting)

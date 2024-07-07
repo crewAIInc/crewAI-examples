@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "surprise_travel"
+version = "0.1.0"
+description = "surprise-travel using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = "^0.35.8" }
+crewai-tools = "^0.4.6"
+pip = "^24.1.1"
+install = "^1.3.5"
+
+[tool.poetry.scripts]
+surprise_travel = "surprise_travel.main:run"
+train = "surprise_travel.main:train"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
