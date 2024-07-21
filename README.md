@@ -8,7 +8,7 @@ By [@joaomdmoura](https://x.com/joaomdmoura).
 - [Marketing Strategy](https://github.com/joaomdmoura/crewAI-examples/tree/main/marketing_strategy)
 - [Surprise Trip](https://github.com/joaomdmoura/crewAI-examples/tree/main/surprise_trip)
 - [Match to Proposal](https://github.com/joaomdmoura/crewAI-examples/tree/main/match_profile_to_positions)
-- [Ollama Examples](https://github.com/joaomdmoura/crewAI-examples/tree/main/ollama_examples)
+
 
 ## Old Examples, need to be updated
 
