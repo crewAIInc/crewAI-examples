@@ -14,16 +14,18 @@ class TripTasks():
         conditions, upcoming cultural or seasonal events, and
         overall travel expenses. 
         
-        Your final answer must be a detailed
-        report on the chosen city, and everything you found out
-        about it, including the actual flight costs, weather 
-        forecast and attractions.
         {self.__tip_section()}
 
         Traveling from: {origin}
         City Options: {cities}
         Trip Date: {range}
         Traveler Interests: {interests}
+      """),
+                expected_output=dedent("""
+        Your final answer must be a detailed
+        report on the chosen city, and everything you found out
+        about it, including the actual flight costs, weather
+        forecast and attractions.
       """),
                 agent=agent)
 
@@ -41,14 +43,16 @@ class TripTasks():
         hotspots, must-visit landmarks, weather forecasts, and
         high level costs.
         
-        The final answer must be a comprehensive city guide, 
-        rich in cultural insights and practical tips, 
-        tailored to enhance the travel experience.
         {self.__tip_section()}
 
         Trip Date: {range}
         Traveling from: {origin}
         Traveler Interests: {interests}
+      """),
+                expected_output=dedent("""
+        The final answer must be a comprehensive city guide,
+        rich in cultural insights and practical tips,
+        tailored to enhance the travel experience.
       """),
                 agent=agent)
 
@@ -65,19 +69,21 @@ class TripTasks():
         This itinerary should cover all aspects of the trip, 
         from arrival to departure, integrating the city guide
         information with practical travel logistics.
-        
+
+        Trip Date: {range}
+        Traveling from: {origin}
+        Traveler Interests: {interests}
+      """),
+                expected_output=dedent(f"""
         Your final answer MUST be a complete expanded travel plan,
         formatted as markdown, encompassing a daily schedule,
         anticipated weather conditions, recommended clothing and
         items to pack, and a detailed budget, ensuring THE BEST
         TRIP EVER, Be specific and give it a reason why you picked
         # up each place, what make them special! {self.__tip_section()}
-
-        Trip Date: {range}
-        Traveling from: {origin}
-        Traveler Interests: {interests}
       """),
                 agent=agent)
+
 
   def __tip_section(self):
     return "If you do your BEST WORK, I'll tip you $100!"
