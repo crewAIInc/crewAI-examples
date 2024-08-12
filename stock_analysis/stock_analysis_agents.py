@@ -6,8 +6,12 @@ from tools.search_tools import SearchTools
 from tools.sec_tools import SECTools
 
 from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
+from langchain.chat_models import ChatOpenAI
 
 class StockAnalysisAgents():
+  def __init__(self):
+    self.llm=ChatOpenAI(model='llama',base_url='https://llama.us.gaianet.network/v1',api_key='NA')
+
   def financial_analyst(self):
     return Agent(
       role='The Best Financial Analyst',
@@ -23,7 +27,8 @@ class StockAnalysisAgents():
         CalculatorTools.calculate,
         SECTools.search_10q,
         SECTools.search_10k
-      ]
+      ],
+      llm=self.llm
     )
 
   def research_analyst(self):
@@ -43,7 +48,8 @@ class StockAnalysisAgents():
         YahooFinanceNewsTool(),
         SECTools.search_10q,
         SECTools.search_10k
-      ]
+      ],
+      llm=self.llm
   )
 
   def investment_advisor(self):
@@ -62,5 +68,6 @@ class StockAnalysisAgents():
         SearchTools.search_news,
         CalculatorTools.calculate,
         YahooFinanceNewsTool()
-      ]
+      ],
+      llm=self.llm
     )

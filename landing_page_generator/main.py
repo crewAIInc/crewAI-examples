@@ -5,6 +5,7 @@ from textwrap import dedent
 
 from crewai import Agent, Crew, Task
 from langchain.agents.agent_toolkits import FileManagementToolkit
+from langchain.chat_models import ChatOpenAI
 from tasks import TaskPrompts
 
 from tools.browser_tools import BrowserTools
@@ -14,6 +15,8 @@ from tools.template_tools import TemplateTools
 
 from dotenv import load_dotenv
 load_dotenv()
+
+llm=ChatOpenAI(model='llama',base_url='https://llama.us.gaianet.network/v1',api_key='NA')
 
 class LandingPageCrew():
   def __init__(self, idea):
@@ -118,7 +121,8 @@ class LandingPageCrew():
       tools=[
         SearchTools.search_internet,
         BrowserTools.scrape_and_summarize_website
-      ]
+      ],
+      llm=llm
     )
 
     self.communications_strategist = Agent(
@@ -127,7 +131,8 @@ class LandingPageCrew():
       tools=[
           SearchTools.search_internet,
           BrowserTools.scrape_and_summarize_website,
-      ]
+      ],
+      llm=llm
     )
 
     self.react_developer = Agent(
@@ -139,7 +144,8 @@ class LandingPageCrew():
           TemplateTools.learn_landing_page_options,
           TemplateTools.copy_landing_page_template_to_project_folder,
           FileTools.write_file
-      ] + toolkit.get_tools()
+      ] + toolkit.get_tools(),
+      llm=llm
     )
 
     self.content_editor_agent = Agent(
@@ -147,7 +153,8 @@ class LandingPageCrew():
       tools=[
           SearchTools.search_internet,
           BrowserTools.scrape_and_summarize_website,
-      ]
+      ],
+      llm=llm
     )
 
 if __name__ == "__main__":
