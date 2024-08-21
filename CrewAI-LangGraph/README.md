@@ -32,7 +32,7 @@ This example uses GPT-4.
 	- `./src/nodes.py`: Class with the function for each node.
 	- `./src/state.py`: State declaration.
 	- `./src/crew/agents.py`: Class defining the CrewAI Agents.
-	- `./src/crew/taks.py`: Class definig the CrewAI Tasks.
+	- `./src/crew/tasks.py`: Class definig the CrewAI Tasks.
 	- `./src/crew/crew.py`: Class defining the CrewAI Crew.
 	- `./src/crew/tools.py`: Class implementing the GmailDraft Tool.
 
