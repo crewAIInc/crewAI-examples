@@ -31,8 +31,17 @@ It uses GPT-4o by default so you should have access to that to run it.
 - **Custom Tools**: You can find custom tools at `recruitment/src/recruitment/tools/`.
 - **Execute the Script**: Run `poetry run recruitment` and input your project details.
 
+### Stepts to get Linkedin Cookie (LI_AT)
+- Navigate to www.linkedin.com and log in
+- Open browser developer tools (Ctrl-Shift-I or right click -> inspect element)
+- Select the appropriate tab for your browser (Application on Chrome, Storage on Firefox)
+- Click the Cookies dropdown on the left-hand menu, and select the www.linkedin.com option
+- Find and copy the li_at value and add it to your .env file
+- Be sure to fetch the cookies again if selenium doesnt login to linkedin after a while
+
 ## Details & Explanation
 - **Running the Script**: Execute `poetry run recruitment`. The script will leverage the CrewAI framework to automate recruitment tasks and generate a detailed report.
+- **Running Training**: Execute `poetry run train n` where n is the number of training iterations.
 - **Key Components**:
   - `src/recruitment/main.py`: Main script file.
   - `src/recruitment/crew.py`: Main crew file where agents and tasks come together, and the main logic is executed.
