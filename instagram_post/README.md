@@ -14,7 +14,7 @@ By [@joaomdmoura](https://x.com/joaomdmoura)
 - [License](#license)
 
 ## CrewAI Framework
-CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to give a complete stock analysis and investment recommendation
+CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to generate a creative and trendy instagram post.
 
 ## Running the Script
 This example uses OpenHermes 2.5 through Ollama by default so you should to download [Ollama](ollama.ai) and [OpenHermes](https://ollama.ai/library/openhermes).
