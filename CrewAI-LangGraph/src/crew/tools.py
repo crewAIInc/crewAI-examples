@@ -15,12 +15,12 @@ class CreateDraftTool():
     email, subject, message = data.split('|')
     gmail = GmailToolkit()
     draft = GmailCreateDraft(api_resource=gmail.api_resource)
-    resutl = draft({
+    result = draft({
 				'to': [email],
 				'subject': subject,
 				'message': message
 		})
-    return f"\nDraft created: {resutl}\n"
+    return f"\nDraft created: {result}\n"
 
 
 
