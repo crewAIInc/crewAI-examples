@@ -34,7 +34,7 @@ class TaskPrompts():
   def choose_template():
     return dedent("""
       Learn the templates options choose and copy 
-      the one that suits the idea bellow the best, 
+      the one that suits the idea below the best, 
       YOU MUST COPY, and then YOU MUST read the src/component 
       in the directory you just copied, to decide what 
       component files should be updated to make the 
