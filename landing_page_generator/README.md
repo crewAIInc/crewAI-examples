@@ -2,7 +2,7 @@
 ## Introduction
 This project is an example using the CrewAI framework to automate the process of creating landing pages from a single idea. CrewAI orchestrates autonomous AI agents, enabling them to collaborate and execute complex tasks efficiently.
 
-*Disclaimer: Templates are not inlcuded as they are Tailwind templates. Place Tailwind individual template folders in `./templates`, if you have a lincese you can download them at (https://tailwindui.com/templates), their references are at `config/templates.json`, this was not tested this with other templates, prompts in `tasks.py` might require some changes for that to work.*
+*Disclaimer: Templates are not included as they are Tailwind templates. Place Tailwind individual template folders in `./templates`, if you have a lincese you can download them at (https://tailwindui.com/templates), their references are at `config/templates.json`, this was not tested this with other templates, prompts in `tasks.py` might require some changes for that to work.*
 
 By [@joaomdmoura](https://x.com/joaomdmoura)
 

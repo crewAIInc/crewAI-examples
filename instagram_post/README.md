@@ -14,7 +14,7 @@ By [@joaomdmoura](https://x.com/joaomdmoura)
 - [License](#license)
 
 ## CrewAI Framework
-CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to give a complete stock analysis and investment recommendation
+CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to generate a creative and trendy instagram post.
 
 ## Running the Script
 This example uses OpenHermes 2.5 through Ollama by default so you should to download [Ollama](ollama.ai) and [OpenHermes](https://ollama.ai/library/openhermes).
@@ -26,7 +26,7 @@ You can change the model by changing the `MODEL` env var in the `.env` file.
 - **Execute the Script**: Run `python main.py` and input your idea.
 
 ## Details & Explanation
-- **Running the Script**: Execute `python main.py`` and input your idea when prompted. The script will leverage the CrewAI framework to process the idea and generate a landing page.
+- **Running the Script**: Execute `python main.py`` and input your idea when prompted. The script will leverage the CrewAI framework to process the idea and generate an instagram post.
 - **Key Components**:
   - `./main.py`: Main script file.
   - `./tasks.py`: Main file with the tasks prompts.

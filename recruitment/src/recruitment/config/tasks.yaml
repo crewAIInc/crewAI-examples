@@ -1,0 +1,38 @@
+research_candidates_task:
+  description: >
+    Conduct thorough research to find potential candidates for the specified job.
+    Utilize various online resources and databases to gather a comprehensive list of potential candidates.
+    Ensure that the candidates meet the job requirements provided.
+
+    Job Requirements:
+    {job_requirements}
+  expected_output: >
+    A list of 10 potential candidates with their contact information and brief profiles highlighting their suitability.
+
+match_and_score_candidates_task:
+  description: >
+    Evaluate and match the candidates to the best job positions based on their qualifications and suitability.
+    Score each candidate to reflect their alignment with the job requirements, ensuring a fair and transparent assessment process.
+    Don't try to scrape people's linkedin, since you don't have access to it.
+
+    Job Requirements:
+    {job_requirements}
+  expected_output: >
+    A ranked list of candidates with detailed scores and justifications for each job position.
+
+outreach_strategy_task:
+  description: >
+    Develop a comprehensive strategy to reach out to the selected candidates.
+    Create effective outreach methods and templates that can engage the candidates and encourage them to consider the job opportunity.
+
+    Job Requirements:
+    {job_requirements}
+  expected_output: >
+    A detailed list of outreach methods and templates ready for implementation, including communication strategies and engagement tactics.
+
+report_candidates_task:
+  description: >
+    Compile a comprehensive report for recruiters on the best candidates to put forward.
+    Summarize the findings from the previous tasks and provide clear recommendations based on the job requirements.
+  expected_output: >
+    A detailed report with the best candidates to pursue, no need to include the job requirements formatted as markdown without '```', including profiles, scores, and outreach strategies.
