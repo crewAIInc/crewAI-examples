@@ -1,4 +1,5 @@
 from crewai import Agent
+from crewai_tools import ScrapeWebsiteTool
 
 from tools.browser_tools import BrowserTools
 from tools.calculator_tools import CalculatorTools
@@ -6,8 +7,13 @@ from tools.search_tools import SearchTools
 from tools.sec_tools import SECTools
 
 from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
+from langchain.chat_models import ChatOpenAI
 
 class StockAnalysisAgents():
+  llm_chatgpt3 = ChatOpenAI(model='gpt-3.5-turbo')
+  llm_chatgpt4 = ChatOpenAI(model='gpt-4')
+  scrape_and_summarize_website = ScrapeWebsiteTool()
+  
   def financial_analyst(self):
     return Agent(
       role='The Best Financial Analyst',
@@ -17,8 +23,9 @@ class StockAnalysisAgents():
       lots of expertise in stock market analysis and investment
       strategies that is working for a super important customer.""",
       verbose=True,
+      llm=self.llm_chatgpt3,
       tools=[
-        BrowserTools.scrape_and_summarize_website,
+        self.scrape_and_summarize_website,
         SearchTools.search_internet,
         CalculatorTools.calculate,
         SECTools.search_10q,
@@ -36,8 +43,9 @@ class StockAnalysisAgents():
       and market sentiments. Now you're working on a super 
       important customer""",
       verbose=True,
+      llm=self.llm_chatgpt3,
       tools=[
-        BrowserTools.scrape_and_summarize_website,
+        self.scrape_and_summarize_website,
         SearchTools.search_internet,
         SearchTools.search_news,
         YahooFinanceNewsTool(),
@@ -56,8 +64,9 @@ class StockAnalysisAgents():
       strategic investment advice. You are now working for
       a super important customer you need to impress.""",
       verbose=True,
+      llm=self.llm_chatgpt3,
       tools=[
-        BrowserTools.scrape_and_summarize_website,
+        self.scrape_and_summarize_website,
         SearchTools.search_internet,
         SearchTools.search_news,
         CalculatorTools.calculate,
