@@ -23,11 +23,6 @@ BROWSERBASE_API_KEY=
 BROWSERBASE_PROJECT_ID=
 ```
 
-Optional, but recommended. Set a different model type in CrewAI to avoid token size limits:
-
-```
-export OPENAI_MODEL_NAME=gpt-4-turbo
-```
 
 ### Running the Demo
 
