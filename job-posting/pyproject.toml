@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "job_posting"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.12,<=3.13"
+crewai = {extras = ["tools"], version = "^0.41.1"}
+python-dotenv = "^1.0.1"
+
+[tool.poetry.scripts]
+job_posting = "job_posting.main:run"
+train = "job_posting.main:train"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -2,3 +2,4 @@
 jobposting-api
 db
 __pycache__
+poetry.lock
