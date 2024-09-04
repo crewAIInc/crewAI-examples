@@ -1,3 +1,6 @@
 .env
 .DS_Store
 __pycache__
+poetry.lock
+tools/__pycache__
+db
