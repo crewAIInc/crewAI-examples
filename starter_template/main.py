@@ -4,8 +4,8 @@ from langchain_openai import ChatOpenAI
 from decouple import config
 
 from textwrap import dedent
-from agents import CustomAgents
-from tasks import CustomTasks
+from agents import ScriptAgents
+from tasks import ScriptTasks
 
 # Install duckduckgo-search for this example:
 # !pip install -U duckduckgo-search
@@ -21,38 +21,51 @@ os.environ["OPENAI_ORGANIZATION"] = config("OPENAI_ORGANIZATION_ID")
 # You can define as many agents and tasks as you want in agents.py and tasks.py
 
 
-class CustomCrew:
-    def __init__(self, var1, var2):
-        self.var1 = var1
-        self.var2 = var2
+# Main class to run the agents and tasks cooperatively
+class ScriptCrew:
+    def __init__(self, background_list, character_list):
+        self.background_list = background_list
+        self.character_list = character_list
 
     def run(self):
-        # Define your custom agents and tasks in agents.py and tasks.py
-        agents = CustomAgents()
-        tasks = CustomTasks()
+        # Initialize agents and tasks
+        agents = ScriptAgents()
+        tasks = ScriptTasks()
 
-        # Define your custom agents and tasks here
-        custom_agent_1 = agents.agent_1_name()
-        custom_agent_2 = agents.agent_2_name()
+        # Create instances of each agent
+        background_selector_agent = agents.background_selector()
+        character_selector_agent = agents.character_selector()
+        storyline_writer_agent = agents.storyline_writer()
+        dialogue_writer_agent = agents.dialogue_writer()
+        director_agent = agents.director()
 
-        # Custom tasks include agent name and variables as input
-        custom_task_1 = tasks.task_1_name(
-            custom_agent_1,
-            self.var1,
-            self.var2,
-        )
+        # Define the cooperative tasks
+        background_task = tasks.select_background(background_selector_agent, self.background_list)
+        character_task = tasks.select_characters(character_selector_agent, self.character_list)
+        storyline_task = tasks.create_storyline(storyline_writer_agent, character_task())
+        dialogue_task = tasks.write_dialogue(dialogue_writer_agent, storyline_task(), character_task(), background_task())
+        oversee_task = tasks.oversee_script(director_agent, storyline_task(), dialogue_task())
 
-        custom_task_2 = tasks.task_2_name(
-            custom_agent_2,
-        )
-
-        # Define your custom crew here
+        # Create and run the Crew with agents and tasks
         crew = Crew(
-            agents=[custom_agent_1, custom_agent_2],
-            tasks=[custom_task_1, custom_task_2],
-            verbose=True,
+            agents=[
+                background_selector_agent,
+                character_selector_agent,
+                storyline_writer_agent,
+                dialogue_writer_agent,
+                director_agent
+            ],
+            tasks=[
+                background_task,
+                character_task,
+                storyline_task,
+                dialogue_task,
+                oversee_task
+            ],
+            verbose=True  # Optional: Enables detailed output
         )
 
+        # Run the crew and return the result
         result = crew.kickoff()
         return result
 
@@ -61,10 +74,10 @@ class CustomCrew:
 if __name__ == "__main__":
     print("## Welcome to Crew AI Template")
     print("-------------------------------")
-    var1 = input(dedent("""Enter variable 1: """))
-    var2 = input(dedent("""Enter variable 2: """))
+    background_list = # put background_list
+    character_list = # put character_list
 
-    custom_crew = CustomCrew(var1, var2)
+    custom_crew = ScriptCrew(background_list, character_list)
     result = custom_crew.run()
     print("\n\n########################")
     print("## Here is you custom crew run result:")

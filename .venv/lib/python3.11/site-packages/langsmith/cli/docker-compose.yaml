@@ -1,0 +1,127 @@
+version: "4"
+services:
+  langchain-playground:
+    image: langchain/${_LANGSMITH_IMAGE_PREFIX-}langchainplus-playground:${_LANGSMITH_IMAGE_VERSION:-latest}
+    ports:
+      - 3001:3001
+  langchain-frontend:
+    image: langchain/${_LANGSMITH_IMAGE_PREFIX-}langchainplus-frontend-dynamic:${_LANGSMITH_IMAGE_VERSION:-latest}
+    ports:
+      - 80:80
+    depends_on:
+      - langchain-backend
+      - langchain-playground
+      - langchain-hub
+  langchain-backend:
+    image: langchain/${_LANGSMITH_IMAGE_PREFIX-}langchainplus-backend:${_LANGSMITH_IMAGE_VERSION:-latest}
+    environment:
+      - PORT=1984
+      - LANGCHAIN_ENV=local_docker
+      - LOG_LEVEL=warning
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - LANGSMITH_LICENSE_KEY=${LANGSMITH_LICENSE_KEY}
+    ports:
+      - 1984:1984
+    depends_on:
+      langchain-db:
+        condition: service_healthy
+      langchain-redis:
+        condition: service_healthy
+      clickhouse-setup:
+        condition: service_completed_successfully
+    restart: always
+  langchain-queue:
+    image: langchain/${_LANGSMITH_IMAGE_PREFIX-}langchainplus-backend:${_LANGSMITH_IMAGE_VERSION:-latest}
+    environment:
+      - LANGCHAIN_ENV=local_docker
+      - LOG_LEVEL=warning
+      - LANGSMITH_LICENSE_KEY=${LANGSMITH_LICENSE_KEY}
+    entrypoint: "rq worker --with-scheduler -u redis://langchain-redis:6379 --serializer lc_database.queue.serializer.ORJSONSerializer --worker-class lc_database.queue.worker.Worker --connection-class lc_database.queue.connection.RedisRetry --job-class lc_database.queue.job.AsyncJob"
+    depends_on:
+      langchain-db:
+        condition: service_healthy
+      langchain-redis:
+        condition: service_healthy
+      clickhouse-setup:
+        condition: service_completed_successfully
+    restart: always
+  langchain-hub:
+    image: langchain/${_LANGSMITH_IMAGE_PREFIX-}langchainhub-backend:${_LANGSMITH_IMAGE_VERSION:-latest}
+    environment:
+      - PORT=1985
+      - LANGCHAIN_ENV=local_docker
+      - LOG_LEVEL=warning
+      - LANGSMITH_LICENSE_KEY=${LANGSMITH_LICENSE_KEY}
+    ports:
+      - 1985:1985
+    depends_on:
+      - langchain-db
+  langchain-db:
+    image: postgres:14.7
+    command:
+      [
+        "postgres",
+        "-c",
+        "log_min_messages=WARNING",
+        "-c",
+        "client_min_messages=WARNING",
+      ]
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - langchain-db-data:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  langchain-redis:
+    image: redis:7
+    ports:
+      - 63791:6379
+    volumes:
+      - langchain-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  langchain-clickhouse:
+    image: clickhouse/clickhouse-server:23.9
+    user: "101:101"
+    restart: always
+    environment:
+      - CLICKHOUSE_DB=default
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=password
+    volumes:
+      - langchain-clickhouse-data:/var/lib/clickhouse
+      - ./users.xml:/etc/clickhouse-server/users.d/users.xml
+    ports:
+      - 8124:8123
+      - 9001:9000
+    healthcheck:
+      test: ["CMD", "clickhouse-client", "--query", "SELECT 1"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  clickhouse-setup:
+    image: langchain/${_LANGSMITH_IMAGE_PREFIX-}langchainplus-backend:${_LANGSMITH_IMAGE_VERSION:-latest}
+    depends_on:
+      langchain-clickhouse:
+        condition: service_healthy
+    restart: "no"
+    entrypoint:
+      [
+        "bash",
+        "-c",
+        "migrate -source file://clickhouse/migrations -database 'clickhouse://langchain-clickhouse:9000?username=default&password=password&database=default&x-multi-statement=true&x-migrations-table-engine=MergeTree' up",
+      ]
+volumes:
+  langchain-db-data:
+  langchain-redis-data:
+  langchain-clickhouse-data:

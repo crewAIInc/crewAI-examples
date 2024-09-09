@@ -1,0 +1,225 @@
+Metadata-Version: 2.1
+Name: langchain
+Version: 0.1.4
+Summary: Building applications with LLMs through composability
+Home-page: https://github.com/langchain-ai/langchain
+License: MIT
+Requires-Python: >=3.8.1,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Provides-Extra: all
+Provides-Extra: azure
+Provides-Extra: clarifai
+Provides-Extra: cli
+Provides-Extra: cohere
+Provides-Extra: docarray
+Provides-Extra: embeddings
+Provides-Extra: extended-testing
+Provides-Extra: javascript
+Provides-Extra: llms
+Provides-Extra: openai
+Provides-Extra: qdrant
+Provides-Extra: text-helpers
+Requires-Dist: PyYAML (>=5.3)
+Requires-Dist: SQLAlchemy (>=1.4,<3)
+Requires-Dist: aiohttp (>=3.8.3,<4.0.0)
+Requires-Dist: aiosqlite (>=0.19.0,<0.20.0) ; extra == "extended-testing"
+Requires-Dist: aleph-alpha-client (>=2.15.0,<3.0.0) ; extra == "extended-testing"
+Requires-Dist: anthropic (>=0.3.11,<0.4.0) ; extra == "extended-testing"
+Requires-Dist: arxiv (>=1.4,<2.0) ; extra == "extended-testing"
+Requires-Dist: assemblyai (>=0.17.0,<0.18.0) ; extra == "extended-testing"
+Requires-Dist: async-timeout (>=4.0.0,<5.0.0) ; python_version < "3.11"
+Requires-Dist: atlassian-python-api (>=3.36.0,<4.0.0) ; extra == "extended-testing"
+Requires-Dist: azure-ai-formrecognizer (>=3.2.1,<4.0.0) ; extra == "azure"
+Requires-Dist: azure-ai-textanalytics (>=5.3.0,<6.0.0) ; extra == "azure"
+Requires-Dist: azure-ai-vision (>=0.11.1b1,<0.12.0) ; extra == "azure"
+Requires-Dist: azure-cognitiveservices-speech (>=1.28.0,<2.0.0) ; extra == "azure"
+Requires-Dist: azure-core (>=1.26.4,<2.0.0) ; extra == "azure"
+Requires-Dist: azure-cosmos (>=4.4.0b1,<5.0.0) ; extra == "azure"
+Requires-Dist: azure-identity (>=1.12.0,<2.0.0) ; extra == "azure"
+Requires-Dist: azure-search-documents (==11.4.0b8) ; extra == "azure"
+Requires-Dist: beautifulsoup4 (>=4,<5) ; extra == "extended-testing"
+Requires-Dist: bibtexparser (>=1.4.0,<2.0.0) ; extra == "extended-testing"
+Requires-Dist: cassio (>=0.1.0,<0.2.0) ; extra == "extended-testing"
+Requires-Dist: chardet (>=5.1.0,<6.0.0) ; extra == "text-helpers" or extra == "extended-testing"
+Requires-Dist: clarifai (>=9.1.0) ; extra == "llms" or extra == "clarifai"
+Requires-Dist: cohere (>=4,<5) ; extra == "llms" or extra == "cohere" or extra == "extended-testing"
+Requires-Dist: couchbase (>=4.1.9,<5.0.0) ; extra == "extended-testing"
+Requires-Dist: dashvector (>=1.0.1,<2.0.0) ; extra == "extended-testing"
+Requires-Dist: databricks-vectorsearch (>=0.21,<0.22) ; extra == "extended-testing"
+Requires-Dist: dataclasses-json (>=0.5.7,<0.7)
+Requires-Dist: datasets (>=2.15.0,<3.0.0) ; extra == "extended-testing"
+Requires-Dist: dgml-utils (>=0.3.0,<0.4.0) ; extra == "extended-testing"
+Requires-Dist: docarray[hnswlib] (>=0.32.0,<0.33.0) ; extra == "docarray"
+Requires-Dist: esprima (>=4.0.1,<5.0.0) ; extra == "javascript" or extra == "extended-testing"
+Requires-Dist: faiss-cpu (>=1,<2) ; extra == "extended-testing"
+Requires-Dist: feedparser (>=6.0.10,<7.0.0) ; extra == "extended-testing"
+Requires-Dist: fireworks-ai (>=0.9.0,<0.10.0) ; extra == "extended-testing"
+Requires-Dist: geopandas (>=0.13.1,<0.14.0) ; extra == "extended-testing"
+Requires-Dist: gitpython (>=3.1.32,<4.0.0) ; extra == "extended-testing"
+Requires-Dist: google-cloud-documentai (>=2.20.1,<3.0.0) ; extra == "extended-testing"
+Requires-Dist: gql (>=3.4.1,<4.0.0) ; extra == "extended-testing"
+Requires-Dist: hologres-vector (>=0.0.6,<0.0.7) ; extra == "extended-testing"
+Requires-Dist: html2text (>=2020.1.16,<2021.0.0) ; extra == "extended-testing"
+Requires-Dist: huggingface_hub (>=0,<1) ; extra == "llms"
+Requires-Dist: javelin-sdk (>=0.1.8,<0.2.0) ; extra == "extended-testing"
+Requires-Dist: jinja2 (>=3,<4) ; extra == "extended-testing"
+Requires-Dist: jq (>=1.4.1,<2.0.0) ; extra == "extended-testing"
+Requires-Dist: jsonpatch (>=1.33,<2.0)
+Requires-Dist: jsonschema (>1) ; extra == "extended-testing"
+Requires-Dist: langchain-community (>=0.0.14,<0.1)
+Requires-Dist: langchain-core (>=0.1.16,<0.2)
+Requires-Dist: langchain-openai (>=0.0.2,<0.1) ; extra == "extended-testing"
+Requires-Dist: langsmith (>=0.0.83,<0.1)
+Requires-Dist: lxml (>=4.9.2,<5.0.0) ; extra == "extended-testing"
+Requires-Dist: manifest-ml (>=0.0.1,<0.0.2) ; extra == "llms"
+Requires-Dist: markdownify (>=0.11.6,<0.12.0) ; extra == "extended-testing"
+Requires-Dist: motor (>=3.3.1,<4.0.0) ; extra == "extended-testing"
+Requires-Dist: msal (>=1.25.0,<2.0.0) ; extra == "extended-testing"
+Requires-Dist: mwparserfromhell (>=0.6.4,<0.7.0) ; extra == "extended-testing"
+Requires-Dist: mwxml (>=0.3.3,<0.4.0) ; extra == "extended-testing"
+Requires-Dist: newspaper3k (>=0.2.8,<0.3.0) ; extra == "extended-testing"
+Requires-Dist: nlpcloud (>=1,<2) ; extra == "llms"
+Requires-Dist: numexpr (>=2.8.6,<3.0.0) ; extra == "extended-testing"
+Requires-Dist: numpy (>=1,<2)
+Requires-Dist: openai (<2) ; extra == "llms" or extra == "openai" or extra == "azure" or extra == "extended-testing" or extra == "extended-testing"
+Requires-Dist: openapi-pydantic (>=0.3.2,<0.4.0) ; extra == "extended-testing"
+Requires-Dist: openlm (>=0.0.5,<0.0.6) ; extra == "llms"
+Requires-Dist: pandas (>=2.0.1,<3.0.0) ; extra == "extended-testing"
+Requires-Dist: pdfminer-six (>=20221105,<20221106) ; extra == "extended-testing"
+Requires-Dist: pgvector (>=0.1.6,<0.2.0) ; extra == "extended-testing"
+Requires-Dist: praw (>=7.7.1,<8.0.0) ; extra == "extended-testing"
+Requires-Dist: psychicapi (>=0.8.0,<0.9.0) ; extra == "extended-testing"
+Requires-Dist: py-trello (>=0.19.0,<0.20.0) ; extra == "extended-testing"
+Requires-Dist: pydantic (>=1,<3)
+Requires-Dist: pymupdf (>=1.22.3,<2.0.0) ; extra == "extended-testing"
+Requires-Dist: pypdf (>=3.4.0,<4.0.0) ; extra == "extended-testing"
+Requires-Dist: pypdfium2 (>=4.10.0,<5.0.0) ; extra == "extended-testing"
+Requires-Dist: pyspark (>=3.4.0,<4.0.0) ; extra == "extended-testing"
+Requires-Dist: qdrant-client (>=1.3.1,<2.0.0) ; (python_full_version >= "3.8.1" and python_version < "3.12") and (extra == "qdrant")
+Requires-Dist: rank-bm25 (>=0.2.2,<0.3.0) ; extra == "extended-testing"
+Requires-Dist: rapidfuzz (>=3.1.1,<4.0.0) ; extra == "extended-testing"
+Requires-Dist: rapidocr-onnxruntime (>=1.3.2,<2.0.0) ; (python_full_version >= "3.8.1" and python_version < "3.12") and (extra == "extended-testing")
+Requires-Dist: requests (>=2,<3)
+Requires-Dist: requests-toolbelt (>=1.0.0,<2.0.0) ; extra == "extended-testing"
+Requires-Dist: rspace_client (>=2.5.0,<3.0.0) ; extra == "extended-testing"
+Requires-Dist: scikit-learn (>=1.2.2,<2.0.0) ; extra == "extended-testing"
+Requires-Dist: sentence-transformers (>=2,<3) ; extra == "embeddings"
+Requires-Dist: sqlite-vss (>=0.1.2,<0.2.0) ; extra == "extended-testing"
+Requires-Dist: streamlit (>=1.18.0,<2.0.0) ; (python_full_version >= "3.8.1" and python_full_version != "3.9.7" and python_version < "4.0") and (extra == "extended-testing")
+Requires-Dist: sympy (>=1.12,<2.0) ; extra == "extended-testing"
+Requires-Dist: telethon (>=1.28.5,<2.0.0) ; extra == "extended-testing"
+Requires-Dist: tenacity (>=8.1.0,<9.0.0)
+Requires-Dist: tiktoken (>=0.3.2,<0.6.0) ; (python_version >= "3.9") and (extra == "openai")
+Requires-Dist: timescale-vector (>=0.0.1,<0.0.2) ; extra == "extended-testing"
+Requires-Dist: torch (>=1,<3) ; extra == "llms"
+Requires-Dist: tqdm (>=4.48.0) ; extra == "extended-testing"
+Requires-Dist: transformers (>=4,<5) ; extra == "llms"
+Requires-Dist: typer (>=0.9.0,<0.10.0) ; extra == "cli"
+Requires-Dist: upstash-redis (>=0.15.0,<0.16.0) ; extra == "extended-testing"
+Requires-Dist: xata (>=1.0.0a7,<2.0.0) ; extra == "extended-testing"
+Requires-Dist: xmltodict (>=0.13.0,<0.14.0) ; extra == "extended-testing"
+Project-URL: Repository, https://github.com/langchain-ai/langchain
+Description-Content-Type: text/markdown
+
+# 🦜️🔗 LangChain
+
+⚡ Building applications with LLMs through composability ⚡
+
+[![Release Notes](https://img.shields.io/github/release/langchain-ai/langchain)](https://github.com/langchain-ai/langchain/releases)
+[![lint](https://github.com/langchain-ai/langchain/actions/workflows/lint.yml/badge.svg)](https://github.com/langchain-ai/langchain/actions/workflows/lint.yml)
+[![test](https://github.com/langchain-ai/langchain/actions/workflows/test.yml/badge.svg)](https://github.com/langchain-ai/langchain/actions/workflows/test.yml)
+[![Downloads](https://static.pepy.tech/badge/langchain/month)](https://pepy.tech/project/langchain)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/langchainai.svg?style=social&label=Follow%20%40LangChainAI)](https://twitter.com/langchainai)
+[![](https://dcbadge.vercel.app/api/server/6adMQxSpJS?compact=true&style=flat)](https://discord.gg/6adMQxSpJS)
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/langchain-ai/langchain)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/langchain-ai/langchain)
+[![GitHub star chart](https://img.shields.io/github/stars/langchain-ai/langchain?style=social)](https://star-history.com/#langchain-ai/langchain)
+[![Dependency Status](https://img.shields.io/librariesio/github/langchain-ai/langchain)](https://libraries.io/github/langchain-ai/langchain)
+[![Open Issues](https://img.shields.io/github/issues-raw/langchain-ai/langchain)](https://github.com/langchain-ai/langchain/issues)
+
+
+Looking for the JS/TS version? Check out [LangChain.js](https://github.com/langchain-ai/langchainjs).
+
+To help you ship LangChain apps to production faster, check out [LangSmith](https://smith.langchain.com). 
+[LangSmith](https://smith.langchain.com) is a unified developer platform for building, testing, and monitoring LLM applications. 
+Fill out [this form](https://airtable.com/appwQzlErAS2qiP0L/shrGtGaVBVAz7NcV2) to get off the waitlist or speak with our sales team
+
+## Quick Install
+
+`pip install langchain`
+or
+`pip install langsmith && conda install langchain -c conda-forge`
+
+## 🤔 What is this?
+
+Large language models (LLMs) are emerging as a transformative technology, enabling developers to build applications that they previously could not. However, using these LLMs in isolation is often insufficient for creating a truly powerful app - the real power comes when you can combine them with other sources of computation or knowledge.
+
+This library aims to assist in the development of those types of applications. Common examples of these applications include:
+
+**❓ Question Answering over specific documents**
+
+- [Documentation](https://python.langchain.com/docs/use_cases/question_answering/)
+- End-to-end Example: [Question Answering over Notion Database](https://github.com/hwchase17/notion-qa)
+
+**💬 Chatbots**
+
+- [Documentation](https://python.langchain.com/docs/use_cases/chatbots/)
+- End-to-end Example: [Chat-LangChain](https://github.com/langchain-ai/chat-langchain)
+
+**🤖 Agents**
+
+- [Documentation](https://python.langchain.com/docs/modules/agents/)
+- End-to-end Example: [GPT+WolframAlpha](https://huggingface.co/spaces/JavaFXpert/Chat-GPT-LangChain)
+
+## 📖 Documentation
+
+Please see [here](https://python.langchain.com) for full documentation on:
+
+- Getting started (installation, setting up the environment, simple examples)
+- How-To examples (demos, integrations, helper functions)
+- Reference (full API docs)
+- Resources (high-level explanation of core concepts)
+
+## 🚀 What can this help with?
+
+There are six main areas that LangChain is designed to help with.
+These are, in increasing order of complexity:
+
+**📃 LLMs and Prompts:**
+
+This includes prompt management, prompt optimization, a generic interface for all LLMs, and common utilities for working with LLMs.
+
+**🔗 Chains:**
+
+Chains go beyond a single LLM call and involve sequences of calls (whether to an LLM or a different utility). LangChain provides a standard interface for chains, lots of integrations with other tools, and end-to-end chains for common applications.
+
+**📚 Data Augmented Generation:**
+
+Data Augmented Generation involves specific types of chains that first interact with an external data source to fetch data for use in the generation step. Examples include summarization of long pieces of text and question/answering over specific data sources.
+
+**🤖 Agents:**
+
+Agents involve an LLM making decisions about which Actions to take, taking that Action, seeing an Observation, and repeating that until done. LangChain provides a standard interface for agents, a selection of agents to choose from, and examples of end-to-end agents.
+
+**🧠 Memory:**
+
+Memory refers to persisting state between calls of a chain/agent. LangChain provides a standard interface for memory, a collection of memory implementations, and examples of chains/agents that use memory.
+
+**🧐 Evaluation:**
+
+[BETA] Generative models are notoriously hard to evaluate with traditional metrics. One new way of evaluating them is using language models themselves to do the evaluation. LangChain provides some prompts/chains for assisting in this.
+
+For more information on these concepts, please see our [full documentation](https://python.langchain.com).
+
+## 💁 Contributing
+
+As an open-source project in a rapidly developing field, we are extremely open to contributions, whether it be in the form of a new feature, improved infrastructure, or better documentation.
+
+For detailed information on how to contribute, see the [Contributing Guide](https://python.langchain.com/docs/contributing/).
+

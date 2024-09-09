@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: langchain-exa
+Version: 0.0.1
+Summary: An integration package connecting Exa and LangChain
+Home-page: https://github.com/langchain-ai/langchain
+License: MIT
+Requires-Python: >=3.8.1,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Dist: exa-py (>=1.0.7,<2.0.0)
+Requires-Dist: langchain-core (>=0.0.12)
+Project-URL: Repository, https://github.com/langchain-ai/langchain
+Project-URL: Source Code, https://github.com/langchain-ai/langchain/tree/master/libs/partners/exa
+Description-Content-Type: text/markdown
+
+# langchain-exa
+
