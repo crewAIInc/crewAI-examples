@@ -1,0 +1,38 @@
+read_jd_task:
+  description: >
+    Extract relevant information from the given JD. Focus on the role level, role compentency expectations and candidate expectations
+    Ensure to capture the expectations around execution mindset, techincal expertise and strengthening organization.
+
+    JD file: ./src/match_to_proposal/data/mlswejd.md
+  expected_output: >
+    A structured summary of the JD, including:
+    - Role level
+    - Technical Skills
+    - Soft skills
+    - Responsibilites of the role
+read_hp_task:
+  description: >
+    Extract relevant information from the given Hiring Plan template. Focus on extracting the questions in the job profile, areas of key responsibility, measurements of success & major key performance objectives and the Job requirements sections
+    HP file: ./src/match_to_proposal/data/hp.md'
+  expected_output: >
+    A structured list of questions for each section including:
+    - Job profile
+    - Areas of key responsibility
+    - Measurements of success & major key performance objectives 
+    - Job requirements
+
+hp_generator_task:
+  description: >
+    Answer the questions in the different sections of the hiring plan using data from the JD. 
+    Don't add any information that doesn't exist in the JD. Keep the answers very concise. 2-3 bullet points only
+    Finally, suggest a set of behavioral questions to ask the candidates based on the company's expected behaviors by level. See behaviors.csv for the expected behaviors
+
+    JD file: ./src/match_to_proposal/data/mlswejd.md
+    HP file: ./src/match_to_proposal/data/hp.md'
+    Behaviors file: ./src/match_to_proposal/data/behaviors.csv
+  expected_output: >
+  A structured output that contains answers for each question in the list of questions for each section including:
+    - Job profile
+    - Areas of key responsibility
+    - Measurements of success & major key performance objectives 
+    - Job requirements
