@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "write_a_book_with_flows"
+version = "0.1.0"
+description = "write_a_book_with_flows using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = {path="/Users/brandonhancock/Code/crewai/crewAI", extras = ["tools"]}
+asyncio = "*"
+
+[tool.poetry.scripts]
+write_a_book_with_flows = "write_a_book_with_flows.main:main"
+run_crew = "write_a_book_with_flows.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

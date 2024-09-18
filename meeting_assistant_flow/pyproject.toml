@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "meeting_assistant_flow"
+version = "0.1.0"
+description = "meeting_assistant_flow using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = {path="/Users/brandonhancock/Code/crewai/crewAI", extras = ["tools"]}
+asyncio = "*"
+
+[tool.poetry.scripts]
+meeting_assistant_flow = "meeting_assistant_flow.main:main"
+run_crew = "meeting_assistant_flow.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
