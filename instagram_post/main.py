@@ -13,8 +13,14 @@ agents = MarketingAnalysisAgents()
 print("## Welcome to the marketing Crew")
 print('-------------------------------')
 product_website = input("What is the product website you want a marketing strategy for?\n")
-product_details = input("Any extra details about the product and or the instagram post you want?\n")
+if not product_website:
+	print("## You gave an empty value, no worries, we will use the default one")
+	product_website = "https://heycurio.com/product/gabbo"
 
+product_details =  input("Any extra details about the product and or the instagram post you want?\n")
+if not product_details:
+	print("## You gave an empty value, no worries, we will use the default one")
+	product_details = "Gabbo is robot toy built for children to help them disconnect from the digital world and connect to the real world."
 
 # Create Agents
 product_competitor_agent = agents.product_competitor_agent()
