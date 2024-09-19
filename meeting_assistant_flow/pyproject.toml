@@ -6,8 +6,9 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
-crewai = {path="/Users/brandonhancock/Code/crewai/crewAI", extras = ["tools"]}
+crewai = {path="/Users/brandonhancock/Code/crewai/crewAI", develop=true}
 asyncio = "*"
+slack-sdk = "^3.33.1"
 
 [tool.poetry.scripts]
 meeting_assistant_flow = "meeting_assistant_flow.main:main"

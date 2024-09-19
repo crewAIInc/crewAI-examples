@@ -4,13 +4,15 @@ import csv
 import os
 from typing import List
 
-from crewai.flow.flow import Flow, listen, router, start
+from crewai.flow.flow import Flow, listen, start
 from pydantic import BaseModel
 
 from meeting_assistant_flow.crews.meeting_assistant_crew.meeting_assistant_crew import (
     MeetingAssistantCrew,
 )
 from meeting_assistant_flow.types import MeetingTask
+from meeting_assistant_flow.utils.slack_helper import send_message_to_channel
+from meeting_assistant_flow.utils.trello_helper import save_tasks_to_trello
 
 
 class MeetingState(BaseModel):
@@ -45,10 +47,7 @@ class MeetingFlow(Flow[MeetingState]):
     @listen(generate_tasks_from_meeting_transcript)
     def add_tasks_to_trello(self):
         print("Adding Tasks to Trello")
-        for task in self.state.tasks:
-            print("Adding task to Trello:", task)
-            # Add task to Trello
-            pass
+        save_tasks_to_trello(self.state.tasks)
 
     @listen(generate_tasks_from_meeting_transcript)
     def save_new_tasks_to_csv(self):
@@ -64,9 +63,8 @@ class MeetingFlow(Flow[MeetingState]):
     @listen(generate_tasks_from_meeting_transcript)
     def send_slack_notification(self):
         print("Sending Slack Notification")
-        print(f"Added {len(self.state.tasks)} new tasks to Trello")
-        # Send a Slack notification
-        pass
+        message = f"{len(self.state.tasks)} New tasks have been added to Trello!"
+        send_message_to_channel(message)
 
 
 async def run():

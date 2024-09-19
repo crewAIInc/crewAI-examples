@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 class MeetingTask(BaseModel):
     name: str
-    desc: str
+    description: str
 
 
 class MeetingTaskList(BaseModel):

@@ -1,18 +1,21 @@
 import os
+from typing import List
 
 import requests
 from dotenv import load_dotenv
+
+from meeting_assistant_flow.types import MeetingTask
 
 # Load environment variables from .env file
 load_dotenv()
 
 # Your Trello API credentials loaded from environment variables
-API_KEY = os.getenv("API_KEY")
-TOKEN = os.getenv("TOKEN")
+API_KEY = os.getenv("TRELLO_API_KEY")
+TOKEN = os.getenv("TRELLO_TOKEN")
 
 # The ID of the Trello board and list where you want to add the cards
-BOARD_ID = os.getenv("BOARD_ID")
-LIST_ID = os.getenv("LIST_ID")
+BOARD_ID = os.getenv("TRELLO_BOARD_ID")
+LIST_ID = os.getenv("TRELLO_LIST_ID")
 
 
 def create_trello_card(task_title, task_description):
@@ -29,8 +32,8 @@ def create_trello_card(task_title, task_description):
         "key": API_KEY,
         "token": TOKEN,
         "idList": LIST_ID,
-        "name": task_title,  # Trello card title
-        "desc": task_description,  # Trello card description
+        "name": task_title,
+        "desc": task_description,
     }
 
     response = requests.post(url, params=query)
@@ -44,20 +47,17 @@ def create_trello_card(task_title, task_description):
     return response
 
 
-def save_tasks_to_trello(tasks):
+def save_tasks_to_trello(tasks: List[MeetingTask]):
     """
     Save a list of tasks to Trello. Each task is a dictionary with 'title' and 'body'.
 
     :param tasks: List of tasks, where each task is a dict with 'title' and 'body'
     """
     for task in tasks:
-        task_title = task.get("title")
-        task_description = task.get("body")
-
-        if task_title and task_description:
-            create_trello_card(task_title, task_description)
+        if task.name and task.description:
+            create_trello_card(task.name, task.description)
         else:
-            print(f"Task '{task_title}' is missing a title or description. Skipping...")
+            print("Task is missing a title or description. Skipping...")
 
 
 # Example usage
