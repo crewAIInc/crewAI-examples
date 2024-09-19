@@ -1,14 +1,12 @@
 import sys
-from stock_analysis.crew import StockAnalysisCrew
+from crew import StockAnalysisCrew
 
 def run():
     inputs = {
-        'query': 'What is the best running shoe for beginner',
+        'query': 'What is the company you want to analyze?',
         'company_stock': 'AMZN',
     }
-    StockAnalysisCrew().crew().kickoff(inputs=inputs)
-
-
+    return StockAnalysisCrew().crew().kickoff(inputs=inputs)
 
 def train():
     """
@@ -23,3 +21,12 @@ def train():
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
+    
+if __name__ == "__main__":
+    print("## Welcome to Stock Analysis Crew")
+    print('-------------------------------')
+    result = run()
+    print("\n\n########################")
+    print("## Here is the Report")
+    print("########################\n")
+    print(result)

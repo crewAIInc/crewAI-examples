@@ -2,10 +2,16 @@ from typing import List
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 
-from stock_analysis.tools.calculator_tool import CalculatorTool
-from stock_analysis.tools.sec_tools import SEC10KTool, SEC10QTool
+from tools.calculator_tool import CalculatorTool
+from tools.sec_tools import SEC10KTool, SEC10QTool
 
 from crewai_tools import WebsiteSearchTool, ScrapeWebsiteTool, TXTSearchTool
+
+from dotenv import load_dotenv
+load_dotenv()
+
+from langchain.llms import Ollama
+llm = Ollama(model="llama3.1")
 
 @CrewBase
 class StockAnalysisCrew:
@@ -17,6 +23,7 @@ class StockAnalysisCrew:
         return Agent(
             config=self.agents_config['financial_analyst'],
             verbose=True,
+            llm=llm,
             tools=[
                 ScrapeWebsiteTool(),
                 WebsiteSearchTool(),
@@ -39,6 +46,7 @@ class StockAnalysisCrew:
         return Agent(
             config=self.agents_config['research_analyst'],
             verbose=True,
+            llm=llm,
             tools=[
                 ScrapeWebsiteTool(),
                 # WebsiteSearchTool(), 
@@ -59,6 +67,7 @@ class StockAnalysisCrew:
         return Agent(
             config=self.agents_config['financial_analyst'],
             verbose=True,
+            llm=llm,
             tools=[
                 ScrapeWebsiteTool(),
                 WebsiteSearchTool(),
@@ -87,6 +96,7 @@ class StockAnalysisCrew:
         return Agent(
             config=self.agents_config['investment_advisor'],
             verbose=True,
+            llm=llm,
             tools=[
                 ScrapeWebsiteTool(),
                 WebsiteSearchTool(),
@@ -109,5 +119,5 @@ class StockAnalysisCrew:
             agents=self.agents,  
             tasks=self.tasks, 
             process=Process.sequential,
-            verbose=2,
+            verbose=True,
         )
