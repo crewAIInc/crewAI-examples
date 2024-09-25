@@ -1,57 +1,39 @@
-# {{crew_name}} Crew
+# Email Auto Responder Flow
 
-Welcome to the {{crew_name}} Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+## Introduction
 
-## Installation
+Welcome to the Email Auto Responder Flow project, powered by [crewAI](https://crewai.com). This example demonstrates how you can leverage Flows from crewAI to accomplish tasks that previously required LangGraph. By utilizing Flows, the process becomes much simpler and more efficient.
 
-Ensure you have Python >=3.10 <=3.13 installed on your system. This project uses [Poetry](https://python-poetry.org/) for dependency management and package handling, offering a seamless setup and execution experience.
+In this project, we've taken one of our old example repositories, [CrewAI-LangGraph](https://github.com/crewAIInc/crewAI-examples/tree/main/CrewAI-LangGraph), and repurposed it to now use Flows. This showcases the power and simplicity of Flows in orchestrating AI agents to automate tasks like checking emails and creating drafts.
 
-First, if you haven't already, install Poetry:
+![High-level Diagram](./Email_Flow.png)
 
-```bash
-pip install poetry
-```
+- [CrewAI Framework](#crewai-framework)
+- [Running the Code](#running-the-code)
+- [Details & Explanation](#details--explanation)
+- [License](#license)
 
-Next, navigate to your project directory and install the dependencies:
+## CrewAI Framework
 
-1. First lock the dependencies and then install them:
+CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together using Flows to automatically check emails and create draft responses. Flows simplify the orchestration process, making it more straightforward than previous implementations with LangGraph.
 
-```bash
-crewai install
-```
+## Running the Code
 
-### Customizing
+This example uses GPT-4o.
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+- **Configure Environment**: Copy `.env.example` to `.env` and set up your environment variables, including your `OPENAI_API_KEY`.
+- **Setup a `credentials.json`**: Follow the [Google Gmail API instructions](https://developers.google.com/gmail/api/quickstart/python#authorize_credentials_for_a_desktop_application). Once you’ve downloaded the file, name it `credentials.json` and add it to the root of the project.
+- **Install Dependencies**: Run `poetry install`
+- **Execute the Script**: First open the new shell with the poetry environment by running `poetry shell`. Then run `crewai run`.
 
-- Modify `src/write_a_book_with_flows/config/agents.yaml` to define your agents
-- Modify `src/write_a_book_with_flows/config/tasks.yaml` to define your tasks
-- Modify `src/write_a_book_with_flows/crew.py` to add your own logic, tools and specific args
-- Modify `src/write_a_book_with_flows/main.py` to add custom inputs for your agents and tasks
+## Details & Explanation
 
-## Running the Project
+- **Key Components**:
+  - `./src/email_auto_responder_flow/main.py`: Main script that initiates the flow.
+  - `./src/email_auto_responder_flow/crews/email_filter_crew/`: Contains the crew definition using Flows.
+  - `./src/email_auto_responder_flow/utils/`: Utility functions for email processing.
+  - `./src/email_auto_responder_flow/types.py`: Defines the data models used in the project.
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+## License
 
-```bash
-crewai run
-```
-
-This command initializes the write_a_book_with_flows Crew, assembling the agents and assigning them tasks as defined in your configuration.
-
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
-
-## Understanding Your Crew
-
-The write_a_book_with_flows Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the {{crew_name}} Crew or crewAI.
-
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+This project is released under the MIT License.

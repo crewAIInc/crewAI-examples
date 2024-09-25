@@ -23,3 +23,13 @@ def send_message_to_channel(text: str):
         return response
     except SlackApiError as e:
         print(f"Error sending message: {e.response['error']}")
+
+
+if __name__ == "__main__":
+    # Example usage
+    message = "Hello, world! This is a test message from the Slack Helper."
+    response = send_message_to_channel(message)
+    if response:
+        print("Message sent successfully!")
+    else:
+        print("Failed to send message.")

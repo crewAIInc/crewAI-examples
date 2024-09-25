@@ -44,6 +44,12 @@ class EmailAutoResponderFlow(Flow[AutoResponderState]):
         print("Waiting for 180 seconds")
         time.sleep(180)
 
+    @listen(generate_draft_responses)
+    def save_to_a_excel(self):
+        print("Saving to excel")
+
+        pass
+
 
 async def run():
     """

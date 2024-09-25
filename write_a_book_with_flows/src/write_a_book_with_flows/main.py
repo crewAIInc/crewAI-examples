@@ -112,6 +112,7 @@ class BookFlow(Flow[BookState]):
             file.write(book_content)
 
         print(f"Book saved as {filename}")
+        return book_content
 
 
 async def run():
