@@ -32,15 +32,16 @@ Next, navigate to your project directory and install the dependencies:
 crewai install
 ```
 
-### Customizing
+### Customizing & Dependencies
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+**Add your `OPENAI_API_KEY` into the `.env` file**  
 **Add your `SERPER_API_KEY` into the `.env` file**
 
-- Modify `src/write_a_book_with_flows/config/agents.yaml` to define your agents
-- Modify `src/write_a_book_with_flows/config/tasks.yaml` to define your tasks
-- Modify `src/write_a_book_with_flows/crew.py` to add your own logic, tools and specific args
-- Modify `src/write_a_book_with_flows/main.py` to add custom inputs for your agents and tasks
+To customize the behavior of the book writing flow, you can update the agents and tasks defined in the `OutlineCrew` and `WriteBookChapterCrew`. If you want to adjust the flow itself, you will need to modify the flow in `main.py`.
+
+- **Agents and Tasks**: Modify `src/write_a_book_with_flows/config/agents.yaml` to define your agents and `src/write_a_book_with_flows/config/tasks.yaml` to define your tasks. This is where you can customize how the book outline is generated and how chapters are written.
+
+- **Flow Adjustments**: Modify `src/write_a_book_with_flows/main.py` to adjust the flow. This is where you can change how the flow orchestrates the different crews and tasks.
 
 ## Running the Project
 
@@ -54,7 +55,7 @@ This command initializes the write_a_book_with_flows Crew, assembling the agents
 
 When you kickstart the flow, it will orchestrate multiple crews to perform the tasks. The flow will first generate a book outline, then create and run a crew for each chapter, and finally join all the chapters into a single markdown file.
 
-## Understanding Your Crew
+## Understanding Your Flow
 
 The write_a_book_with_flows Flow is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your flow.
 

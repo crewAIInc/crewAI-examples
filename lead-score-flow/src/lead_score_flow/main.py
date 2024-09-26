@@ -117,17 +117,17 @@ class EmailAutoResponderFlow(Flow[LeadScoreState]):
             return "scored_leads_feedback"
         elif choice == "3":
             print("\nProceeding to write emails to all leads.")
-            return "write_emails"
+            return "generate_emails"
         else:
             print("\nInvalid choice. Please try again.")
             return "human_in_the_loop"
 
-    @listen("write_emails")
-    async def send_emails(self):
+    @listen("generate_emails")
+    async def write_and_save_emails(self):
         import re
         from pathlib import Path
 
-        print("Sending emails to all leads.")
+        print("Writing and saving emails for all leads.")
 
         # Determine the top 3 candidates to proceed with
         top_candidate_ids = {
@@ -141,7 +141,7 @@ class EmailAutoResponderFlow(Flow[LeadScoreState]):
         print("output_dir:", output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        async def send_email(candidate):
+        async def write_email(candidate):
             # Check if the candidate is among the top 3
             proceed_with_candidate = candidate.id in top_candidate_ids
 
@@ -174,14 +174,14 @@ class EmailAutoResponderFlow(Flow[LeadScoreState]):
 
         # Create tasks for all candidates
         for candidate in self.state.hydrated_candidates:
-            task = asyncio.create_task(send_email(candidate))
+            task = asyncio.create_task(write_email(candidate))
             tasks.append(task)
 
-        # Run all email-sending tasks concurrently and collect results
+        # Run all email-writing tasks concurrently and collect results
         email_results = await asyncio.gather(*tasks)
 
         # After all emails have been generated and saved
-        print("\nAll emails have been generated and saved to 'email_responses' folder.")
+        print("\nAll emails have been written and saved to 'email_responses' folder.")
         for message in email_results:
             print(message)
 

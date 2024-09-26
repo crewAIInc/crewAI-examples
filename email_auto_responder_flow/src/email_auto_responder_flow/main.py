@@ -44,12 +44,6 @@ class EmailAutoResponderFlow(Flow[AutoResponderState]):
         print("Waiting for 180 seconds")
         time.sleep(180)
 
-    @listen(generate_draft_responses)
-    def save_to_a_excel(self):
-        print("Saving to excel")
-
-        pass
-
 
 async def run():
     """
@@ -61,25 +55,6 @@ async def run():
 
 def main():
     asyncio.run(run())
-    # emails = """
-    #     EMAILS ID: 191fb61dc03a7c47
-    #     - Thread ID: 191fb10965995fa5
-    #     - Snippet: @monami44 pushed 1 commit. ba31f59 simple stuck, lock — View it on GitHub or unsubscribe. You are receiving this because you are subscribed to this thread. Message ID: &lt;bhancockio/fullstack-ai-
-    #     - From: Maksym <notifications@github.com>
-    #     --------
-    #     ID: 191fb22a49692a31
-    #     - Thread ID: 191fb22a49692a31
-    #     - Snippet: Hi Brandon, I&#39;m excited to share something revolutionary in the AI space with you. Our latest video dives deep into the capabilities of advanced AI bots and how they can transform your business.
-    #     - From: James Hurst <james@jameshurst.ddxweb.com>
-    #     --------
-    #     ID: 191f856c481fc45b
-    #     - Thread ID: 191f7338692ab387
-    #     - Snippet: Meeting summary with AI Companion now supports additional languages in preview. Learn More Meeting summary for Brandon Hancock&#39;s Zoom Meeting (09/16/2024) Quick recap Brandon and Maksym discussed
-    #     - From: Meeting Summary with AI Companion <no-reply@zoom.us>
-    #     --------
-    # """
-
-    # EmailFilterCrew().crew().kickoff(inputs={"emails": emails})
 
 
 if __name__ == "__main__":
