@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "game-crew"
+name = "game_builder_crew"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
-crewai = "^0.11.0"
+crewai = "^0.63.6"
 python-dotenv = "1.0.0"
 
 [tool.pyright]
@@ -18,6 +18,10 @@ exclude = [".cache"]
 # https://beta.ruff.rs/docs/configuration/
 select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']
 ignore = ['W291', 'W292', 'W293']
+
+[tool.poetry.scripts]
+game_builder_crew = "game_builder_crew.main:run"
+train = "game_builder_crew.main:train"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
