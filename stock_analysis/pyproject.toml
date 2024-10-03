@@ -10,6 +10,7 @@ python = ">=3.12,<=3.13"
 crewai = {extras = ["tools"], version = "^0.41.1"}
 python-dotenv = "^1.0.1"
 html2text = "^2024.2.26"
+sec-api = "^1.0.20"
 
 [tool.poetry.scripts]
 stock_analysis = "stock_analysis.main:run"
