@@ -34,7 +34,7 @@ You can change the model by changing the `MODEL` env var in the `.env` file.
   - `./tools/`: Contains tool classes used by the agents.
 
 ## Using Local Models with Ollama
-This example run enterily local models, the CrewAI framework supports integration with both closed and local models, by using tools such as Ollama, for enhanced flexibility and customization. This allows you to utilize your own models, which can be particularly useful for specialized tasks or data privacy concerns.
+This example run entirely local models, the CrewAI framework supports integration with both closed and local models, by using tools such as Ollama, for enhanced flexibility and customization. This allows you to utilize your own models, which can be particularly useful for specialized tasks or data privacy concerns.
 
 ### Setting Up Ollama
 - **Install Ollama**: Ensure that Ollama is properly installed in your environment. Follow the installation guide provided by Ollama for detailed instructions.
