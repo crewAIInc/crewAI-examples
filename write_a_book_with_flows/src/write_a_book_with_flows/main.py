@@ -115,16 +115,28 @@ class BookFlow(Flow[BookState]):
         return book_content
 
 
-async def run():
+async def run_flow():
     """
     Run the flow.
     """
     book_flow = BookFlow()
-    await book_flow.kickoff()
+    book_flow.kickoff()
+
+
+async def plot_flow():
+    """
+    Plot the flow.
+    """
+    book_flow = BookFlow()
+    book_flow.plot()
 
 
 def main():
-    asyncio.run(run())
+    asyncio.run(run_flow())
+
+
+def plot():
+    asyncio.run(plot_flow())
 
 
 if __name__ == "__main__":

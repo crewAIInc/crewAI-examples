@@ -19,7 +19,7 @@ class LeadScoreState(BaseModel):
     scored_leads_feedback: str = ""
 
 
-class EmailAutoResponderFlow(Flow[LeadScoreState]):
+class LeadScoreFlow(Flow[LeadScoreState]):
     initial_state = LeadScoreState
 
     @start()
@@ -186,16 +186,28 @@ class EmailAutoResponderFlow(Flow[LeadScoreState]):
             print(message)
 
 
-async def run():
+async def run_flow():
     """
     Run the flow.
     """
-    email_auto_response_flow = EmailAutoResponderFlow()
-    await email_auto_response_flow.kickoff()
+    lead_score_flow = LeadScoreFlow()
+    lead_score_flow.kickoff()
+
+
+async def plot_flow():
+    """
+    Plot the flow.
+    """
+    lead_score_flow = LeadScoreFlow()
+    lead_score_flow.plot()
 
 
 def main():
-    asyncio.run(run())
+    asyncio.run(run_flow())
+
+
+def plot():
+    asyncio.run(plot_flow())
 
 
 if __name__ == "__main__":

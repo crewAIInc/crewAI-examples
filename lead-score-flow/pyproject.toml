@@ -6,16 +6,19 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
-crewai = {path="/Users/brandonhancock/Code/crewai/crewAI", develop=true}
+crewai = { extras = ["tools"], version = ">=0.67.1,<1.0.0" }
 asyncio = "*"
 langchain-tools = "^0.1.34"
 crewai-tools = "^0.12.0"
 google-auth-oauthlib = "^1.2.1"
 google-api-python-client = "^2.145.0"
+pyvis = "^0.3.2"
 
 [tool.poetry.scripts]
 lead_score_flow = "lead_score_flow.main:main"
-run_crew = "lead_score_flow.main:main"
+run_flow = "lead_score_flow.main:main"
+plot_flow = "lead_score_flow.main:plot"
+
 
 [build-system]
 requires = ["poetry-core"]

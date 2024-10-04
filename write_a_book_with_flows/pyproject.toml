@@ -6,12 +6,13 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
-crewai = {path="/Users/brandonhancock/Code/crewai/crewAI", extras = ["tools"]}
+crewai = { extras = ["tools"], version = ">=0.67.1,<1.0.0" }
 asyncio = "*"
 
 [tool.poetry.scripts]
 write_a_book_with_flows = "write_a_book_with_flows.main:main"
-run_crew = "write_a_book_with_flows.main:main"
+run_flow = "write_a_book_with_flows.main:main"
+plot_flow = "write_a_book_with_flows.main:plot"
 
 [build-system]
 requires = ["poetry-core"]

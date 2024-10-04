@@ -67,16 +67,28 @@ class MeetingFlow(Flow[MeetingState]):
         send_message_to_channel(message)
 
 
-async def run():
+async def run_flow():
     """
     Run the flow.
     """
     meeting_flow = MeetingFlow()
-    await meeting_flow.kickoff()
+    meeting_flow.kickoff()
+
+
+async def plot_flow():
+    """
+    Plot the flow.
+    """
+    meeting_flow = MeetingFlow()
+    meeting_flow.plot()
 
 
 def main():
-    asyncio.run(run())
+    asyncio.run(run_flow())
+
+
+def plot():
+    asyncio.run(plot_flow())
 
 
 if __name__ == "__main__":

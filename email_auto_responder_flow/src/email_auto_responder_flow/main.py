@@ -45,16 +45,28 @@ class EmailAutoResponderFlow(Flow[AutoResponderState]):
         time.sleep(180)
 
 
-async def run():
+async def run_flow():
     """
     Run the flow.
     """
     email_auto_response_flow = EmailAutoResponderFlow()
-    await email_auto_response_flow.kickoff()
+    email_auto_response_flow.kickoff()
+
+
+async def plot_flow():
+    """
+    Plot the flow.
+    """
+    email_auto_response_flow = EmailAutoResponderFlow()
+    email_auto_response_flow.plot()
 
 
 def main():
-    asyncio.run(run())
+    asyncio.run(run_flow())
+
+
+def plot():
+    asyncio.run(plot_flow())
 
 
 if __name__ == "__main__":
