@@ -1,0 +1,13 @@
+analyze_meeting:
+  description: >
+    Analyze the provided meeting transcript and generate a set of detailed, 
+    well-organized issues based on the discussion.
+    Focus on breaking down the transcript into manageable tasks or issues, 
+    making sure to document each issue thoroughly with steps to reproduce, acceptance criteria, 
+    and any other relevant details.
+
+    Here is the meeting transcript for your reference:\n\n {transcript}
+  expected_output: >
+    A JSON list of issues with titles and bodies, containing clear instructions, 
+    steps to reproduce, and acceptance criteria where applicable.
+  agent: meeting_analyzer

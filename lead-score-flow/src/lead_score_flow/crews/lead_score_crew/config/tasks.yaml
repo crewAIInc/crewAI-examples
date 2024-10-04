@@ -1,0 +1,32 @@
+evaluate_candidate:
+  description: >
+    Evaluate a candidate's bio based on the provided job description.
+
+    Use your expertise to carefully assess how well the candidate fits the job requirements. Consider key factors such as:
+    - Skill match
+    - Relevant experience
+    - Cultural fit
+    - Growth potential
+
+    CANDIDATE BIO
+    -------------
+    Candidate ID: {candidate_id}
+    Name: {name}
+    Bio:
+    {bio}
+
+    JOB DESCRIPTION
+    ---------------
+    {job_description}
+
+    ADDITIONAL INSTRUCTIONS
+    -----------------------
+    Your final answer MUST include:
+    - The candidates unique ID
+    - A score between 1 and 100. Don't use numbers like 100, 75, or 50. Instead, use specific numbers like 87, 63, or 42.
+    - A detailed reasoning, considering the candidate’s skill match, experience, cultural fit, and growth potential.
+    {additional_instructions}
+
+  expected_output: >
+    A very specific score from 1 to 100 for the candidate, along with a detailed reasoning explaining why you assigned this score.
+  agent: hr_evaluation_agent
