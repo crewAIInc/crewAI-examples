@@ -55,7 +55,8 @@ class TaskPrompts():
   def update_page():
     return dedent("""
       READ the ./[chosen_template]/src/app/page.jsx OR
-      ./[chosen_template]/src/app/(main)/page.jsx (main with the parenthesis) 
+      ./[chosen_template]/src/app/(main)/page.jsx (main with the parenthesis) OR
+      ./[chosen_template]/[chosen_template_folder]/src/pages/Dashboard.jsx
       to learn its content and then write an updated 
       version to the filesystem that removes any 
       section related components that are not in our 
@@ -67,6 +68,8 @@ class TaskPrompts():
 
       RULES
       -----
+      - replace [chosen_template] with the chosen template name in the path.
+      - replace [chosen_template_folder] with the chosen template folder name in the path.
       - NEVER ADD A FINAL DOT to the file content.
       - NEVER WRITE \\n (newlines as string) on the file, just the code.
       - NEVER FORGET TO CLOSE THE FINAL BRACKET (}}) in the file.

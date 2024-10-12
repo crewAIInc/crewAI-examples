@@ -1,0 +1,59 @@
+/* Buttons */
+.btn,
+.btn-sm {
+  @apply inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all;
+}
+
+.btn {
+  @apply px-4 py-[11px] shadow-lg;
+}
+
+.btn-sm {
+  @apply px-3 py-[5px] shadow;
+}
+
+/* Forms */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+  @apply border border-gray-200 bg-white focus:border-blue-300;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox {
+  @apply rounded-lg;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+  @apply px-4 py-2.5 text-sm shadow-sm;
+}
+
+.form-input,
+.form-textarea {
+  @apply placeholder-gray-400;
+}
+
+.form-select {
+  @apply pr-10;
+}
+
+.form-checkbox,
+.form-radio {
+  @apply rounded-sm text-gray-800;
+}

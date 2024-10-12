@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Spotlight",
+    "theme": "Personal Website Template",
+    "folder": "tailwindui-spotlight/spotlight-js",
+    "description": "A personal website so nice you’ll actually be inspired to publish on it."
+  },
+  {
+    "name": "Protocol",
+    "theme": "API Reference Template",
+    "folder": "tailwindui-protocol/protocol-js",
+    "description": "Probably the nicest API documentation website you've ever seen."
+  },
+  {
+    "name": "Commit",
+    "theme": "Changelog Template",
+    "folder": "tailwindui-commit/commit-js",
+    "description": "Share your work in progress with this beautiful changelog template."
+  },
+  {
+    "name": "Primer",
+    "theme": "Info Product Template",
+    "folder": "tailwindui-primer/primer-js",
+    "description": "A stunning landing page for your first course or ebook."
+  },
+  {
+    "name": "Studio",
+    "theme": "Agency Template",
+    "folder": "tailwindui-studio/studio-js",
+    "description": "Showcase your work and find new clients with this sophisticated agency template."
+  },
+  {
+    "name": "Salient",
+    "theme": "Template for SaaS products",
+    "folder": "tailwindui-salient/salient-js",
+    "description": "A SaaS landing page to announce your next big product."
+  },
+  {
+    "name": "Transmit",
+    "theme": "Podcast Template",
+    "folder": "tailwindui-transmit/transmit-js",
+    "description": "A clean and professional podcast template fit for any show."
+  },
+  {
+    "name": "Pocket",
+    "theme": "App Marketing Template",
+    "folder": "tailwindui-pocket/pocket-js",
+    "description": "The perfect website template for your exciting new mobile app."
+  },
+  {
+    "name": "Syntax",
+    "theme": "Documentation Template",
+    "folder": "tailwindui-syntax/syntax-js",
+    "description": "Educate your users in style with this documentation template."
+  },
+  {
+    "name": "Keynote",
+    "theme": "Conference / Meetup Template",
+    "folder": "tailwindui-keynote/keynote-js",
+    "description": "Launch your next conference or meetups with a splash with this eye-catching template."
+  }
+]
