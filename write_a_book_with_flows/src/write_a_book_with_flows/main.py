@@ -120,7 +120,7 @@ async def run_flow():
     Run the flow.
     """
     book_flow = BookFlow()
-    book_flow.kickoff()
+    await book_flow.kickoff()
 
 
 async def plot_flow():
@@ -128,7 +128,7 @@ async def plot_flow():
     Plot the flow.
     """
     book_flow = BookFlow()
-    book_flow.plot()
+    await book_flow.plot()
 
 
 def main():
