@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "agencia_noticias"
+version = "0.1.0"
+description = "agencia_noticias using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = ">=0.70.1,<1.0.0" }
+
+
+[tool.poetry.scripts]
+agencia_noticias = "agencia_noticias.main:run"
+run_crew = "agencia_noticias.main:run"
+train = "agencia_noticias.main:train"
+replay = "agencia_noticias.main:replay"
+test = "agencia_noticias.main:test"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
