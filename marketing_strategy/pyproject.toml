@@ -1,18 +1,23 @@
-[tool.poetry]
+[project]
 name = "marketing_posts"
 version = "0.1.0"
 description = "marketing-posts using crewAI"
-authors = ["Your Name <you@example.com>"]
+authors = [
+    { name = "Your Name", email = "you@example.com" },
+]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.35.8",
+    "crewai-tools>=0.4.6",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<=3.13"
-crewai = { extras = ["tools"], version = "^0.35.8" }
-crewai-tools = "^0.4.6"
-
-[tool.poetry.scripts]
+[project.scripts]
 marketing_posts = "marketing_posts.main:run"
 train = "marketing_posts.main:train"
+run_crew = "marketing_posts.main:run"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = [
+    "hatchling",
+]
+build-backend = "hatchling.build"
