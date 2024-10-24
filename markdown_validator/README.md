@@ -9,10 +9,12 @@ This example uses the OpenAI API to call a model. This can be through a locally 
 =======
 - **Configure Environment**: Rename `.env.example` to `.env` and set up the environment variables the model, endpoint url, and api key.
 - **Install Dependencies**: Run `poetry install --no-root`.
+- **Install Dependencies**: Run `poetry lock`.
 - **Execute the Script**: Run `python main.py README.md` to see a list of recommended changes to this document.
 
 ## Details & Explanation
-- **Running the Script**: Execute `python main.py <path to markdown file>`. The script will leverage the CrewAI framework to process the specified file and return a list of changes.
+- **Running the Script**: Execute `poetry run markdown_validator {filename}`. The script will leverage the CrewAI framework to process the specified file and return a list of changes.
+- **Running the Script with agent training**: Execute `poetry run train {number_of_iterations} {filename}`. The script will leverage the CrewAI framework to process the specified file and return a list of changes, and updates the changes according to the user's feedback.
 
 ## License
 This project is released under the MIT License.
