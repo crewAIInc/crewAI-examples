@@ -1,0 +1,30 @@
+verify_x_post:
+  description: >
+    Verify that the given X post meets the following criteria:
+    - It is between 200 and 280 characters inclusive.
+    - It contains no emojis.
+    - It contains only the post itself, without additional commentary.
+
+    The post should follow the 1-3-1 rule:
+    - 1 bold statement to hook the reader
+    - 3 lines of supporting information
+    - 1 sentence to summarize the post
+
+    Additionally, if you believe there are any issues with the post 
+    or ways it could be improved, such as the structure of the post,
+    rhythm, word choice, please provide feedback.
+
+    If any of the criteria are not met, the post is considered invalid.
+    Provide actionable changes about what is wrong and what actions
+    need to be taken to fix the post.
+    
+    Your final response must include:
+    - Valid: True/False
+    - Feedback: Provide commentary if the post fails any of the criteria.
+
+    X Post to Verify: 
+    {x_post}
+  expected_output: >
+    Pass: True/False
+    Feedback: Commentary here if failed.
+  agent: x_post_verifier

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import asyncio
 import time
 from typing import List
 
@@ -45,7 +44,7 @@ class EmailAutoResponderFlow(Flow[AutoResponderState]):
         time.sleep(180)
 
 
-async def run_flow():
+def kickoff():
     """
     Run the flow.
     """
@@ -53,7 +52,7 @@ async def run_flow():
     email_auto_response_flow.kickoff()
 
 
-async def plot_flow():
+def plot_flow():
     """
     Plot the flow.
     """
@@ -61,13 +60,5 @@ async def plot_flow():
     email_auto_response_flow.plot()
 
 
-def main():
-    asyncio.run(run_flow())
-
-
-def plot():
-    asyncio.run(plot_flow())
-
-
 if __name__ == "__main__":
-    main()
+    kickoff()

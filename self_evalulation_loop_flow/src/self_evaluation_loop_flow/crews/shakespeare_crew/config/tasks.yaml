@@ -1,0 +1,12 @@
+write_x_post:
+  description: >
+    Given the topic '{topic}', compose a humorous hot take in the style of Shakespeare. 
+    The tone should be sarcastic and playful. The final short form social media post 
+    must be over 200 characters and not exceed 280 characters, and emojis are strictly forbidden.
+
+    Please incorporate the following feedback if present: 
+    {feedback}
+  expected_output: >
+    A witty, Shakespearean hot take between 200 and 280 characters [Inclusive].
+  agent: shakespearean_bard
+
