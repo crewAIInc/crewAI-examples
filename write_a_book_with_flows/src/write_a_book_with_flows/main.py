@@ -54,10 +54,10 @@ class BookFlow(Flow[BookState]):
         tasks = []
 
         async def write_single_chapter(chapter_outline):
-            output = await (
+            output = (
                 WriteBookChapterCrew()
                 .crew()
-                .kickoff_async(
+                .kickoff(
                     inputs={
                         "goal": self.state.goal,
                         "topic": self.state.topic,
