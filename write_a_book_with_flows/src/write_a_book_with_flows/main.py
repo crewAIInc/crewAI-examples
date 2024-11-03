@@ -54,10 +54,10 @@ class BookFlow(Flow[BookState]):
         tasks = []
 
         async def write_single_chapter(chapter_outline):
-            output = await (
+            output = (
                 WriteBookChapterCrew()
                 .crew()
-                .kickoff_async(
+                .kickoff(
                     inputs={
                         "goal": self.state.goal,
                         "topic": self.state.topic,
@@ -115,29 +115,15 @@ class BookFlow(Flow[BookState]):
         return book_content
 
 
-async def run_flow():
-    """
-    Run the flow.
-    """
-    book_flow = BookFlow()
-    book_flow.kickoff()
-
-
-async def plot_flow():
-    """
-    Plot the flow.
-    """
-    book_flow = BookFlow()
-    book_flow.plot()
-
-
-def main():
-    asyncio.run(run_flow())
+def kickoff():
+    poem_flow = BookFlow()
+    poem_flow.kickoff()
 
 
 def plot():
-    asyncio.run(plot_flow())
+    poem_flow = BookFlow()
+    poem_flow.plot()
 
 
 if __name__ == "__main__":
-    main()
+    kickoff()

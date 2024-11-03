@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import asyncio
 import csv
 import os
 from typing import List
@@ -67,7 +66,7 @@ class MeetingFlow(Flow[MeetingState]):
         send_message_to_channel(message)
 
 
-async def run_flow():
+def kickoff():
     """
     Run the flow.
     """
@@ -75,7 +74,7 @@ async def run_flow():
     meeting_flow.kickoff()
 
 
-async def plot_flow():
+def plot():
     """
     Plot the flow.
     """
@@ -83,13 +82,5 @@ async def plot_flow():
     meeting_flow.plot()
 
 
-def main():
-    asyncio.run(run_flow())
-
-
-def plot():
-    asyncio.run(plot_flow())
-
-
 if __name__ == "__main__":
-    main()
+    kickoff()

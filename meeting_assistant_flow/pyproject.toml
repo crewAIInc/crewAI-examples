@@ -1,20 +1,23 @@
-[tool.poetry]
+[project]
 name = "meeting_assistant_flow"
 version = "0.1.0"
 description = "meeting_assistant_flow using crewAI"
-authors = ["Your Name <you@example.com>"]
+authors = [
+    { name = "Your Name", email = "you@example.com" },
+]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.76.2,<1.0.0",
+    "asyncio*",
+    "slack-sdk>=3.33.1",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<=3.13"
-crewai = { extras = ["tools"], version = ">=0.67.1,<1.0.0" }
-asyncio = "*"
-slack-sdk = "^3.33.1"
-
-[tool.poetry.scripts]
-meeting_assistant_flow = "meeting_assistant_flow.main:main"
-run_flow = "meeting_assistant_flow.main:main"
-plot_flow = "meeting_assistant_flow.main:plot"
+[project.scripts]
+kickoff = "meeting_assistant_flow.main:kickoff"
+plot = "meeting_assistant_flow.main:plot"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = [
+    "hatchling",
+]
+build-backend = "hatchling.build"

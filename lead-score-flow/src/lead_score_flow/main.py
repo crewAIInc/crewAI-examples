@@ -186,7 +186,7 @@ class LeadScoreFlow(Flow[LeadScoreState]):
             print(message)
 
 
-async def run_flow():
+def kickoff():
     """
     Run the flow.
     """
@@ -194,7 +194,7 @@ async def run_flow():
     lead_score_flow.kickoff()
 
 
-async def plot_flow():
+def plot():
     """
     Plot the flow.
     """
@@ -202,13 +202,5 @@ async def plot_flow():
     lead_score_flow.plot()
 
 
-def main():
-    asyncio.run(run_flow())
-
-
-def plot():
-    asyncio.run(plot_flow())
-
-
 if __name__ == "__main__":
-    main()
+    kickoff()
