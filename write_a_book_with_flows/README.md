@@ -48,7 +48,7 @@ To customize the behavior of the book writing flow, you can update the agents an
 To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
 
 ```bash
-crewai run
+crewai kickoff flow
 ```
 
 This command initializes the write_a_book_with_flows Crew, assembling the agents and assigning them tasks as defined in your configuration.
