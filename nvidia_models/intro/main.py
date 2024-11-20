@@ -115,7 +115,7 @@ class nvllm(LLM):
         litellm.callbacks = callbacks
 
 
-model = os.environ.get("MODEL")
+model = os.environ.get("MODEL", "meta/llama-3.1-8b-instruct")
 llm = ChatNVIDIA(model=model)
 default_llm = nvllm(model_str="nvidia_nim/" + model, llm=llm)
 
