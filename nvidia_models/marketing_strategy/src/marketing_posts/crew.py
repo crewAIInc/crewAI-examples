@@ -15,7 +15,7 @@ from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
 load_dotenv()
 
-model = os.getenv("MODEL")
+model = os.getenv("MODEL", "meta/llama-3.1-8b-instruct")
 llm = ChatNVIDIA(model=model)
 default_llm = nvllm(model_str="nvidia_nim/" + model, llm=llm)
 
