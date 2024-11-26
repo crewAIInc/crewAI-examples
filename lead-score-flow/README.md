@@ -18,12 +18,10 @@ By following this flow, you can efficiently automate the process of scoring lead
 
 ## Installation
 
-Ensure you have Python >=3.10 <=3.13 installed on your system. This project uses [Poetry](https://python-poetry.org/) for dependency management and package handling, offering a seamless setup and execution experience.
-
-First, if you haven't already, install Poetry:
+Ensure you have Python >=3.10 <=3.13 installed on your system. First, if you haven't already, install CrewAI:
 
 ```bash
-pip install poetry
+pip install crewai
 ```
 
 Next, navigate to your project directory and install the dependencies:

@@ -26,12 +26,10 @@ This flow is a great example of using Flows as a background worker that runs con
 
 ## Installation
 
-Ensure you have Python >=3.10 <=3.13 installed on your system. This project uses [uv](https://github.com/astral-sh/uv) for dependency management and package handling, offering a seamless setup and execution experience.
-
-First, if you haven't already, install uv:
+Ensure you have Python >=3.10 <=3.13 installed on your system. First, if you haven't already, install CrewAI:
 
 ```bash
-pip install uv
+pip install crewai
 ```
 
 Next, navigate to your project directory and install the dependencies:
@@ -39,7 +37,7 @@ Next, navigate to your project directory and install the dependencies:
 1. First lock the dependencies and then install them:
 
 ```bash
-uv sync
+crewai install
 ```
 
 ### Customizing & Dependencies
