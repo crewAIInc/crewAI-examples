@@ -7,7 +7,7 @@ authors = [
 ]
 requires-python = ">=3.10,<=3.13"
 dependencies = [
-    "crewai[tools]>=0.76.2,<1.0.0",
+    "crewai[tools]>=0.83.0,<1.0.0",
     "asyncio",
     "langchain-tools>=0.1.34",
     "crewai-tools>=0.12.0",
