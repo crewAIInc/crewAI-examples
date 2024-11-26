@@ -26,12 +26,12 @@ This flow is a great example of using Flows as a background worker that runs con
 
 ## Installation
 
-Ensure you have Python >=3.10 <=3.13 installed on your system. This project uses [Poetry](https://python-poetry.org/) for dependency management and package handling, offering a seamless setup and execution experience.
+Ensure you have Python >=3.10 <=3.13 installed on your system. This project uses [uv](https://github.com/astral-sh/uv) for dependency management and package handling, offering a seamless setup and execution experience.
 
-First, if you haven't already, install Poetry:
+First, if you haven't already, install uv:
 
 ```bash
-pip install poetry
+pip install uv
 ```
 
 Next, navigate to your project directory and install the dependencies:
@@ -39,7 +39,7 @@ Next, navigate to your project directory and install the dependencies:
 1. First lock the dependencies and then install them:
 
 ```bash
-crewai install
+uv sync
 ```
 
 ### Customizing & Dependencies
@@ -68,7 +68,7 @@ To enable the email auto responder to access your Gmail account, you need to set
 To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
 
 ```bash
-crewai run
+uv run kickoff
 ```
 
 This command initializes the email_auto_responder_flow, assembling the agents and assigning them tasks as defined in your configuration.
