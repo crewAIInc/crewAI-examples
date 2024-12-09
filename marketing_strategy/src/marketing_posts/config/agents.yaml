@@ -7,6 +7,7 @@ lead_market_analyst:
   backstory: >
     As the Lead Market Analyst at a premier digital marketing firm, you specialize
     in dissecting online business landscapes.
+  llm: azure/sfc-cortex-analyst-dev
 
 chief_marketing_strategist:
   role: >
@@ -17,6 +18,7 @@ chief_marketing_strategist:
   backstory: >
     You are the Chief Marketing Strategist at a leading digital marketing agency,
     known for crafting bespoke strategies that drive success.
+  llm: azure/sfc-cortex-analyst-dev
 
 creative_content_creator:
   role: >
@@ -29,6 +31,7 @@ creative_content_creator:
     excel in crafting narratives that resonate with audiences. Your expertise
     lies in turning marketing strategies into engaging stories and visual
     content that capture attention and inspire action.
+  llm: azure/sfc-cortex-analyst-dev
 
 chief_creative_director:
   role: >
@@ -41,3 +44,4 @@ chief_creative_director:
     You are the Chief Content Officer at a leading digital marketing agency
     specializing in product branding. You ensure your team crafts the best
     possible content for the customer.
+  llm: azure/sfc-cortex-analyst-dev
