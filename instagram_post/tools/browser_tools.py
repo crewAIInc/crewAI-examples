@@ -38,5 +38,5 @@ class BrowserTools():
       )
       summary = task.execute()
       summaries.append(summary)
-      content = "\n\n".join(summaries)
+    content = "\n\n".join(summaries)
     return f'\nScrapped Content: {content}\n'
