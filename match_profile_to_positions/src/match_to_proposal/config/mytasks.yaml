@@ -1,0 +1,25 @@
+read_jd_task:
+  description: >
+    Extract relevant information from the given JD. Focus on the role level, role compentency expectations and candidate expectations
+    Ensure to capture the expectations around execution mindset, techincal expertise and strengthening organization.
+
+    JD file: {path_to_jd}
+  expected_output: >
+    A structured summary of the JD, including:
+    - Role level
+    - Execution expectations
+    - Technical expectations
+    - Organizational expectations
+
+match_cf_task:
+  description: >
+    Match the JD to the career framework based on role level, compentencies around execution, technical skills and organizational needs.
+    Evaluate how well the job description matches the career framework,
+    focusing on the alignment of competencies at the role level
+
+    Career framework file: {path_to_cf_csv}
+  expected_output: >
+    A list of competencies that best match the JD, including:
+    - Competency from the career framework and the relevant JD requirement
+    A list of competencies that least match the JD, including:
+    - Competency from the career framework and a suggestion for what can be included in the JD for this expectation
