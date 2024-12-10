@@ -3,6 +3,7 @@ name = "markdown_validator"
 version = "0.1.0"
 description = ""
 authors = ["ITLackey <itlackey@gmail.com>"]
+
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
 crewai = "^0.85.0"
