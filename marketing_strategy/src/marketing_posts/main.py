@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 import sys
+from dotenv import load_dotenv
 from marketing_posts.crew import MarketingPostsCrew
 
+load_dotenv()
 
 def run():
     # Replace with your inputs, it will automatically interpolate any tasks and agents information

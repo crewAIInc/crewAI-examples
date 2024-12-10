@@ -1,6 +1,7 @@
 from typing import List
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from marketing_posts.reflection import ReflectionTask
 
 # Uncomment the following line to use an example of a custom tool
 # from marketing_posts.tools.custom_tool import MyCustomTool
@@ -35,6 +36,16 @@ class MarketingPostsCrew():
 	tasks_config = 'config/tasks.yaml'
 
 	@agent
+	def reflection_agent(self) -> Agent:
+		return Agent(
+			role="Critical Reviewer",
+			goal="Provide critical feedback on the quality of the content. Give a 0 - 3 scale rating and actionable feedback.",
+			backstory="You're a senior consultant and critical reviewer of work. You have a keen eye for detail and a strong understanding of what makes content engaging and effective.",
+			allow_delegation=False,
+			verbose=True,
+		)
+
+	@agent
 	def lead_market_analyst(self) -> Agent:
 		return Agent(
 			config=self.agents_config['lead_market_analyst'],
@@ -62,41 +73,46 @@ class MarketingPostsCrew():
 
 	@task
 	def research_task(self) -> Task:
-		return Task(
+		return ReflectionTask(
 			config=self.tasks_config['research_task'],
-			agent=self.lead_market_analyst()
+			agent=self.lead_market_analyst(),
+			reflection_agent=self.reflection_agent()
 		)
 
 	@task
 	def project_understanding_task(self) -> Task:
-		return Task(
+		return ReflectionTask(
 			config=self.tasks_config['project_understanding_task'],
-			agent=self.chief_marketing_strategist()
+			agent=self.chief_marketing_strategist(),
+			reflection_agent=self.reflection_agent()
 		)
 
 	@task
 	def marketing_strategy_task(self) -> Task:
-		return Task(
+		return ReflectionTask(
 			config=self.tasks_config['marketing_strategy_task'],
 			agent=self.chief_marketing_strategist(),
-			output_json=MarketStrategy
+			output_json=MarketStrategy,
+			reflection_agent=self.reflection_agent()
 		)
 
 	@task
 	def campaign_idea_task(self) -> Task:
-		return Task(
+		return ReflectionTask(
 			config=self.tasks_config['campaign_idea_task'],
 			agent=self.creative_content_creator(),
-   		output_json=CampaignIdea
+   			output_json=CampaignIdea,
+			reflection_agent=self.reflection_agent()
 		)
 
 	@task
 	def copy_creation_task(self) -> Task:
-		return Task(
+		return ReflectionTask(
 			config=self.tasks_config['copy_creation_task'],
 			agent=self.creative_content_creator(),
-   		context=[self.marketing_strategy_task(), self.campaign_idea_task()],
-			output_json=Copy
+   			context=[self.marketing_strategy_task(), self.campaign_idea_task()],
+			output_json=Copy,
+			reflection_agent=self.reflection_agent()
 		)
 
 	@crew
