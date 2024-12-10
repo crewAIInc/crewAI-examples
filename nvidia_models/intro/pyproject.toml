@@ -9,7 +9,7 @@ python = ">=3.10.0,<3.12"
 python-dotenv = "1.0.0"
 litellm = "^1.52.10"
 langchain-nvidia-ai-endpoints = "^0.3.5"
-crewai = "^0.80.0"
+crewai = "^0.85.0"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
