@@ -19,7 +19,14 @@
         {
             "customer_domain": "https://www.snowflake.com/",
             "project_description": "Snowflake - easy-to-use, fully managed data platform."
+        },
+        {
+            "customer_domain": "https://playo.co/about",
+            "project_description": "PLAYO IS THE WORLD'S #1 SPORTS ACTIVITIES ENABLER"
+        },
+        {
+            "customer_domain": "https://www.bcg.com/",
+            "project_description": "BCG - global consulting firm that partners with leaders in business and society to tackle their most important challenges and capture their greatest opportunities."
         }
-
     ]
 }
