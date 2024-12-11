@@ -7,6 +7,11 @@
         {
             "customer_domain": "https://www.layerhealth.com/",
             "project_description": "Layer Health - a health startup."
+        },
+        {
+            "customer_domain": "https://www.sushisams.com/",
+            "project_description": "Sushi sams - leading sushi restaurant in San Mateo and the world."
         }
-    ]
+    ],
+    "domain_filter": "sushi"
 }
