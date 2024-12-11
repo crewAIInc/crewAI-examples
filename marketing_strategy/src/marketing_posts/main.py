@@ -2,6 +2,8 @@
 import sys
 from dotenv import load_dotenv
 from marketing_posts.crew import MarketingPostsCrew
+import json
+import os
 
 load_dotenv()
 
@@ -17,6 +19,26 @@ Project Overview: Creating a comprehensive marketing campaign to boost awareness
 """
     }
     MarketingPostsCrew().crew().kickoff(inputs=inputs)
+
+
+def run_inputs_file():
+    file_dir = os.path.dirname(os.path.abspath(__file__))
+    inputs_file_path = os.path.join(file_dir, "../../run_inputs.json")
+    domain_filter_lambda = lambda domain: True
+    with open(inputs_file_path) as fp:
+        inputs_file_content = json.load(fp)
+        inputs_list = inputs_file_content["inputs_list"]
+    domain_filter = os.environ.get("domain_filter", None)
+    if domain_filter:
+        domain_filter_lambda = lambda domain: domain_filter in domain
+    crew = MarketingPostsCrew().crew()
+    for inputs in inputs_list:
+        domain = inputs["customer_domain"]
+        if not domain_filter_lambda(domain):
+            continue
+        print ("#Triggering", inputs)
+        crew.kickoff(inputs=inputs)
+        print ("#Finished")
 
 
 def train():

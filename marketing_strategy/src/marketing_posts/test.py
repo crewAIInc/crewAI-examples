@@ -2,10 +2,10 @@
 
 from litellm import completion
 import os
-import dotenv
+# import dotenv
 
 # Replace with your own .env file
-dotenv.load_dotenv("/Users/apgupta/git/crewAI-examples/marketing_strategy/.env")
+# dotenv.load_dotenv("/Users/apgupta/git/crewAI-examples/marketing_strategy/.env")
 
 ## set ENV variables
 # os.environ["AZURE_API_KEY"] = ""

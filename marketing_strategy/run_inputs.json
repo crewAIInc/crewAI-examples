@@ -1,0 +1,32 @@
+{
+    "inputs_list": [
+        {
+            "customer_domain": "crewai.com",
+            "project_description": "CrewAI, a leading provider of multi-agent systems, aims to revolutionize marketing automation for its enterprise clients. This project involves developing an innovative marketing strategy to showcase CrewAI's advanced AI-driven solutions, emphasizing ease of use, scalability, and integration capabilities. The campaign will target tech-savvy decision-makers in medium to large enterprises, highlighting success stories and the transformative potential of CrewAI's platform. \nCustomer Domain: AI and Automation Solutions \nProject Overview: Creating a comprehensive marketing campaign to boost awareness and adoption of CrewAI's services among enterprise clients."
+        },
+        {
+            "customer_domain": "https://www.layerhealth.com/",
+            "project_description": "Layer Health - a health startup."
+        },
+        {
+            "customer_domain": "https://www.sushisams.com/",
+            "project_description": "Sushi sams - leading sushi restaurant in San Mateo and the world."
+        },
+        {
+            "customer_domain": "https://www.patanjaliayurved.net/",
+            "project_description": "Patanjali - product range of food, cosmetics, medicines and books at best prices."
+        },
+        {
+            "customer_domain": "https://www.snowflake.com/",
+            "project_description": "Snowflake - easy-to-use, fully managed data platform."
+        },
+        {
+            "customer_domain": "https://playo.co/about",
+            "project_description": "PLAYO IS THE WORLD'S #1 SPORTS ACTIVITIES ENABLER"
+        },
+        {
+            "customer_domain": "https://www.bcg.com/",
+            "project_description": "BCG - global consulting firm that partners with leaders in business and society to tackle their most important challenges and capture their greatest opportunities."
+        }
+    ]
+}
