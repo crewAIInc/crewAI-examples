@@ -25,9 +25,9 @@ def run_inputs_file():
     with open(inputs_file_path) as fp:
         inputs_file_content = json.load(fp)
         inputs_list = inputs_file_content["inputs_list"]
-        domain_filter = inputs_file_content["domain_filter"]
-        if domain_filter and domain_filter != "all":
-            domain_filter_lambda = lambda domain: domain_filter in domain
+    domain_filter = os.environ.get("domain_filter", None)
+    if domain_filter:
+        domain_filter_lambda = lambda domain: domain_filter in domain
     crew = MarketingPostsCrew().crew()
     for inputs in inputs_list:
         domain = inputs["customer_domain"]

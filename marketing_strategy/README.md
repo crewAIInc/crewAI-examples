@@ -1,3 +1,11 @@
+# Snowvation instructions
+
+ - Ensure that you have the correct environment variables setup for azure openai and serper.
+   - Use `python src/marketing_posts/test.py` to check azure openai connection.
+ - Add input to run_inputs.json
+ - Sample `domain_filter=snowflake uv run run_inputs_file  >> data/snowflake.txt`
+
+
 
 # AI Crew for Marketing Strategy
 ## Introduction

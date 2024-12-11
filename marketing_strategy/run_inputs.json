@@ -11,7 +11,15 @@
         {
             "customer_domain": "https://www.sushisams.com/",
             "project_description": "Sushi sams - leading sushi restaurant in San Mateo and the world."
+        },
+        {
+            "customer_domain": "https://www.patanjaliayurved.net/",
+            "project_description": "Patanjali - product range of food, cosmetics, medicines and books at best prices."
+        },
+        {
+            "customer_domain": "https://www.snowflake.com/",
+            "project_description": "Snowflake - easy-to-use, fully managed data platform."
         }
-    ],
-    "domain_filter": "sushi"
+
+    ]
 }
