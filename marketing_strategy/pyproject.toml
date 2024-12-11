@@ -15,6 +15,7 @@ dependencies = [
 marketing_posts = "marketing_posts.main:run"
 train = "marketing_posts.main:train"
 run_crew = "marketing_posts.main:run"
+run_inputs_file = "marketing_posts.main:run_inputs_file"
 
 [build-system]
 requires = [
