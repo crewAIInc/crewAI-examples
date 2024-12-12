@@ -8,7 +8,7 @@ authors = [
 requires-python = ">=3.10,<=3.13"
 dependencies = [
     "asyncio>=3.4.3",
-    "crewai[tools]>=0.83.0,<1.0.0",
+    "crewai[tools]==0.85.0",
 ]
 
 [project.scripts]

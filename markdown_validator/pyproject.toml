@@ -5,7 +5,7 @@ description = ""
 authors = ["ITLackey <itlackey@gmail.com>"]
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
-crewai = "^0.75.0"
+crewai = "^0.85.0"
 python-dotenv = "1.0.0"
 markdown = "3.4.3"
 pymarkdownlnt = "0.9.15"
