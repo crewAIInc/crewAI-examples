@@ -35,7 +35,7 @@ It uses meta/llama-3.1-8b-instruct by default so you should have access to that 
 
 ***Disclaimer:** This will use gpt-4o unless you change it to use a different model, and by doing so it may incur in different costs.*
 
-- **Configure Environment**: Copy `.env.example` and set up the environment variables for [OpenAI](https://platform.openai.com/api-keys) and other tools as needed, like [Serper](serper.dev).
+- **Configure Environment**: Copy `.env.example` and set up the environment variables for [NVIDIA](https://build.nvidia.com) and other tools as needed, like [Serper](serper.dev).
 - **Install Dependencies**: Run `make install`.
 - **Customize**: Modify `src/marketing_posts/main.py` to add custom inputs for your agents and tasks.
 - **Customize Further**: Check `src/marketing_posts/config/agents.yaml` to update your agents and `src/marketing_posts/config/tasks.yaml` to update your tasks.
