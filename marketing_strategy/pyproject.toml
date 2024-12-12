@@ -1,3 +1,21 @@
+[tool.poetry]
+name = "marketing_posts_e2e_eval"
+version = "0.1.0"
+description = "marketing strategy"
+authors = ["cyin <cyin@gmail.com>"]
+
+[tool.poetry.scripts]
+marketing_posts_e2e_eval = "marketing_posts_e2e_eval.main:run"
+train = "marketing_posts_e2e_eval.main:train"
+online_loop = "marketing_posts_e2e_eval.main:kickoff"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = "^0.74.2" }
+crewai-tools = "^0.13.2"
+pip = "^24.1.1"
+setuptools = "^75.6.0"
+
 [project]
 name = "marketing_posts"
 version = "0.1.0"

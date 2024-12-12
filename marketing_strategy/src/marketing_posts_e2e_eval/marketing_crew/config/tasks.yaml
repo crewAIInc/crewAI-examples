@@ -1,0 +1,63 @@
+research_task:
+  description: >
+    Conduct a thorough research about the customer and competitors in the context
+    of {customer_domain}.
+    Make sure you find any interesting and relevant information given the
+    current year is 2024.
+    We are working with them on the following project: {project_description}.
+    You are working with an independent evaluator, which gives you feedback on previous marketing posts.
+    The previously created post was:
+     // begin marketing post
+     {previous_marketing_post}
+     // end marketing post
+    Make sure to include their feedback:
+    // begin feedback
+     {feedback}
+    // end feedback
+
+  expected_output: >
+    A complete report on the customer and their customers and competitors,
+    including their demographics, preferences, market positioning and audience engagement.
+
+project_understanding_task:
+  description: >
+    Understand the project details and the target audience for
+    {project_description}.
+    Review any provided materials and gather additional information as needed.
+  expected_output: >
+    A detailed summary of the project and a profile of the target audience.
+
+marketing_strategy_task:
+  description: >
+    Formulate a comprehensive marketing strategy for the project
+    {project_description} of the customer {customer_domain}.
+    Use the insights from the research task and the project understanding
+    task to create a high-quality strategy.
+  expected_output: >
+    A detailed marketing strategy document that outlines the goals, target
+    audience, key messages, and proposed tactics, make sure to have name, tatics, channels and KPIs
+
+campaign_idea_task:
+  description: >
+    Develop creative marketing campaign ideas for {project_description}.
+    Ensure the ideas are innovative, engaging, and aligned with the overall marketing strategy.
+    Ensure that they are tailored to the specific project goals, and highlight outstanding aspects of the project.
+
+    You are working with an independent evaluator, which gives you feedback on previous marketing posts.
+    The previously created post was:
+     // begin marketing post
+     {previous_marketing_post}
+     // end marketing post
+    Make sure to include their feedback:
+    // begin feedback
+     {feedback}
+    // end feedback
+  expected_output: >
+    A list of 3 campaign ideas, each with a brief description and expected impact.
+
+copy_creation_task:
+  description: >
+    Create marketing copies based on the approved campaign ideas for {project_description}.
+    Ensure the copies are compelling, clear, and tailored to the target audience.
+  expected_output: >
+    Marketing copies for each campaign idea.

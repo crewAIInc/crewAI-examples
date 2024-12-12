@@ -1,0 +1,28 @@
+verify_marketing_post:
+  description: >
+    Ensure that any marketing post meets these quality guidelines:
+      - A score of 4 or higher strictly must talk about its differentiators and how it can help the customer.
+      - It must include absolutely truthful analysis of the products and competitors.
+      - It must provide in-depth insights that guide marketing strategies. Make sure it is strictly based in market research.
+      - It contains only the marketing post itself, without additional commentary.
+
+    Make sure you provide feedback that is clear, concise, and actionable.
+
+    Additionally, if you believe there are any issues with the post 
+    or ways it could be improved, such as the structure of the post,
+    rhythm, word choice, please provide feedback.
+
+    If any of the criteria are not met, the post is considered invalid.
+    Provide actionable changes about what is wrong and what actions
+    need to be taken to fix the post.
+    
+    Your final response must include:
+    - Quality: Score from 1-5 where 5 is the highest quality
+    - Feedback: Provide commentary if the post fails any of the criteria.
+
+    Marketing Post to Verify: 
+    {marketing_post}
+  expected_output: >
+    Quality: Score from 1-5 where 5 is the highest quality
+    Feedback: Commentary here if failed.
+  agent: quality_evalutor_reviewer
