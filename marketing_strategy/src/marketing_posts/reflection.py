@@ -68,7 +68,7 @@ class ReflectionTask(Task):
                     context=context, 
                     tools=tools
                 )
-                _, reflection_json_output = self._export_output(reflection_result)
+                _, reflection_json_output = reflection_task._export_output(reflection_result)
                 print(reflection_json_output)
                 self.description = original_description
                 if reflection_json_output:
@@ -116,5 +116,3 @@ class ReflectionTask(Task):
             self._save_file(content)
 
         return task_output
-
-
