@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+src/marketing_posts/__init__.py
+src/marketing_posts/main.py
+src/marketing_posts.egg-info/PKG-INFO
+src/marketing_posts.egg-info/SOURCES.txt
+src/marketing_posts.egg-info/dependency_links.txt
+src/marketing_posts.egg-info/top_level.txt
+src/marketing_posts/evaluator_crew/eval_crew.py
+src/marketing_posts/marketing_crew/marketing_crew.py
+src/marketing_posts/marketing_crew/reflection.py

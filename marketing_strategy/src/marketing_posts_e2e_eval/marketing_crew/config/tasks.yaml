@@ -35,7 +35,7 @@ marketing_strategy_task:
     task to create a high-quality strategy.
   expected_output: >
     A detailed marketing strategy document that outlines the goals, target
-    audience, key messages, and proposed tactics, make sure to have name, tatics, channels and KPIs
+    audience, key messages, and proposed tactics, make sure to have name, tactics, channels and KPIs
 
 campaign_idea_task:
   description: >
@@ -61,3 +61,147 @@ copy_creation_task:
     Ensure the copies are compelling, clear, and tailored to the target audience.
   expected_output: >
     Marketing copies for each campaign idea.
+
+project_understanding_reflection_task:
+  description: >
+    Reflect on the project summary and target audience profile for
+    {project_description}. Follow the following rubric to give suggestions for improvement and an overall score. 
+
+    Rubric for Evaluating "Project Understanding Task"
+
+    1. Clarity and Accuracy of the Project Summary
+      - 3 (Excellent): The summary is highly accurate, detailed, and provides a comprehensive understanding of the project, including objectives, scope, and constraints. No critical information is missing or misinterpreted.
+      - 2 (Good): The summary captures the main elements of the project but lacks some depth or misses minor details that would enhance understanding.
+      - 1 (Needs Improvement): The summary includes only a basic overview and misses key details, leading to a partial understanding of the project.
+      - 0 (Poor): The summary is unclear, inaccurate, or fails to convey the essence of the project.
+
+    2. Depth and Relevance of the Target Audience Profile
+      - 3 (Excellent): The audience profile is thorough, precise, and well-researched, including demographic, psychographic, and behavioral insights relevant to the project.
+      - 2 (Good): The audience profile is solid but lacks depth in one or two areas, such as specific preferences or behaviors relevant to the project.
+      - 1 (Needs Improvement): The profile is overly general and misses key audience characteristics, making it less actionable.
+      - 0 (Poor): The profile is vague, irrelevant, or not aligned with the project's goals.
+
+    3. Integration and Utilization of Provided Materials
+      - 3 (Excellent): Provided materials are effectively integrated into the understanding, with key insights accurately identified and applied to both the project summary and audience profile.
+      - 2 (Good): Most materials are utilized, but some insights are overlooked or not fully leveraged in the analysis.
+      - 1 (Needs Improvement): Limited use of materials, with key information underutilized or misunderstood.
+      - 0 (Poor): Provided materials are ignored or misinterpreted, significantly impairing the quality of the output.
+    
+    Overall Scoring Rubric
+      - 3 (Excellent): The understanding task meets or exceeds expectations in all key aspects, delivering a highly detailed and actionable summary and audience profile.
+      - 2 (Good): The task is well-executed with minor gaps, providing a mostly thorough understanding and relevant audience insights.
+      - 1 (Needs Improvement): The task shows effort but has notable weaknesses in clarity, depth, or relevance, reducing its overall utility.
+      - 0 (Poor): The task fails to achieve its objectives, with critical shortcomings in understanding and analysis.
+
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide an overall score based on the rubric.
+
+  expected_output: >
+    A json with a 'feedback' field describing how the quality of the task output can be improved and a 'score' field.
+
+
+marketing_strategy_reflection_task:
+  description: >
+    Reflect on the goals, target, audience, key messages, proposed tactics, channels, and KPIs from the marketing strategy for
+    {project_description}. Follow the following rubric to give suggestions for improvement and an overall score.
+
+    Rubric for Evaluating "Marketing Strategy Task"
+
+    1. Clarity and Relevance of Strategy Goals
+      - 3 (Excellent): The strategy goals are clearly defined, measurable, and directly align with the project's objectives and the customer's domain. They reflect a deep understanding of the project and audience insights.
+      - 2 (Good): The goals are defined and mostly align with the project objectives, but they could be more specific or measurable.
+      - 1 (Needs Improvement): The goals are vaguely defined, lack measurability, or only partially align with the project objectives.
+      - 0 (Poor): The goals are unclear, irrelevant, or entirely missing.
+    
+    2. Detail and Creativity in Tactics, Channels, and Key Messages
+      - 3 (Excellent): Tactics, channels, and key messages are highly detailed, innovative, and tailored to the target audience. They effectively leverage insights from research and project understanding.
+      - 2 (Good): Tactics, channels, and messages are appropriate and show some creativity, but lack detail or full customization for the target audience.
+      - 1 (Needs Improvement): The tactics and channels are generic, lack creativity, or do not clearly connect to the audience or goals.
+      - 0 (Poor): The tactics, channels, and messages are poorly defined, irrelevant, or not actionable.
+
+    3. Integration of KPIs and Performance Measurement
+      - 3 (Excellent): KPIs are specific, measurable, and aligned with strategy goals and tactics. They provide clear criteria for evaluating success.
+      - 2 (Good): KPIs are defined and mostly measurable, but some lack precision or strong alignment with goals and tactics.
+      - 1 (Needs Improvement): KPIs are loosely defined, overly broad, or fail to provide a clear framework for success measurement.
+      - 0 (Poor): KPIs are missing, irrelevant, or lack any connection to the goals or tactics.
+    
+    Overall Scoring Rubric
+      - 3 (Excellent): The marketing strategy is highly comprehensive, creative, and actionable, with clear goals, tailored tactics, and well-defined KPIs.
+      - 2 (Good): The strategy is solid and actionable, with minor gaps in detail or alignment, but effectively addresses most aspects of the task.
+      - 1 (Needs Improvement): The strategy meets basic requirements but has significant weaknesses in creativity, detail, or alignment with project goals.
+      - 0 (Poor): The strategy is poorly constructed, lacks coherence, or fails to meet the expected output criteria.
+    
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide an overall score based on the rubric.
+
+  expected_output: >
+    A json with a 'feedback' field describing how the quality of the task output can be improved and a 'score' field.
+
+
+campaign_idea_reflection_task:
+  description: >
+    Reflect on the campaign ideas for {project_description}. Follow the following rubric to give suggestions for improvement and an overall score.
+
+    Rubric for Evaluating "Campaign Idea Task"
+
+    1. Creativity and Innovation of Campaign Ideas
+      - 3 (Excellent): Campaign ideas are highly original, engaging, and demonstrate a deep understanding of the project goals. They stand out as unique and likely to capture the target audience’s attention.
+      - 2 (Good): Ideas show creativity and align with project goals but may not be entirely unique or groundbreaking.
+      - 1 (Needs Improvement): Ideas are somewhat generic or lack creativity, making them less likely to stand out or resonate with the audience.
+      - 0 (Poor): Campaign ideas are unoriginal, uninspired, or fail to align with the project goals.
+
+    2. Alignment with Marketing Strategy and Project Goals
+      - 3 (Excellent): Campaign ideas are perfectly aligned with the overall marketing strategy, project goals, and target audience. They clearly build on previous insights and feedback.
+      - 2 (Good): Ideas align with the marketing strategy and project goals but lack full integration or detailed tailoring to the target audience.
+      - 1 (Needs Improvement): Limited alignment with the marketing strategy, project goals, or audience needs, leading to a less effective campaign.
+      - 0 (Poor): Campaign ideas are misaligned with the strategy, goals, or audience, rendering them ineffective.
+
+    3. Integration of Feedback
+      - 3 (Excellent): Feedback from previous posts is thoroughly incorporated, addressing past shortcomings while improving overall quality and relevance.
+      - 2 (Good): Feedback is mostly addressed, but some aspects are underutilized or inconsistently integrated.
+      - 1 (Needs Improvement): Feedback is only partially applied, leaving significant issues unresolved.
+      - 0 (Poor): Feedback is ignored or misapplied, leading to repeated mistakes or missed opportunities.
+
+    Overall Scoring Rubric
+      - 3 (Exceptional): Campaign ideas excel in creativity, alignment, and feedback integration, providing innovative and impactful solutions tailored to the project goals.
+      - 2 (Good): Ideas are effective and well-aligned, with minor gaps in creativity or feedback integration that do not significantly hinder impact.
+      - 1 (Needs Improvement): Ideas are moderately effective but have notable weaknesses in creativity, alignment, or feedback use, reducing their potential impact.
+      - 0 (Poor): Ideas fail to meet the objectives, lacking creativity, alignment, or proper feedback integration, resulting in an ineffective campaign.
+    
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide an overall score based on the rubric.
+
+  expected_output: >
+    A json with a 'feedback' field describing how the quality of the task output can be improved and a 'score' field.
+
+copy_creation_reflection_task:
+  description: >
+    Reflect on the marketing copies for {project_description}. Follow the following rubric to give suggestions for improvement and an overall score.
+
+    Rubric for Evaluating "Copy Creation Task"
+
+    1. Compelling and Engaging Content
+      - 3 (Excellent): Copies are highly engaging, use persuasive language, and resonate strongly with the target audience. They effectively highlight the campaign's key message and call-to-action (CTA).
+      - 2 (Good): Copies are clear and engaging but may lack a strong emotional appeal or a standout CTA.
+      - 1 (Needs Improvement): Copies are somewhat clear but fail to captivate the audience or deliver an impactful message.
+      - 0 (Poor): Copies are dull, unclear, or fail to engage the audience.
+
+    2. Clarity and Relevance to Campaign Goals
+      - 3 (Excellent): Copies are clear, concise, and directly tied to the campaign goals and target audience. They effectively convey the purpose and benefits of the campaign idea.
+      - 2 (Good): Copies are clear and relevant but may include minor ambiguities or slightly stray from the campaign goals.
+      - 1 (Needs Improvement): Copies are somewhat vague or lack direct relevance to the campaign goals, leading to confusion or weak messaging.
+      - 0 (Poor): Copies are unclear or irrelevant, failing to align with the campaign goals or audience needs.
+
+    3. Tone and Audience Appropriateness
+      - 3 (Excellent): Copies use a tone and style perfectly suited to the target audience, reflecting their preferences, language, and values.
+      - 2 (Good): Tone and style are mostly appropriate but could benefit from further tailoring to the audience.
+      - 1 (Needs Improvement): Tone and style are inconsistent with audience expectations, making the content less relatable or impactful.
+      - 0 (Poor): Tone and style are entirely mismatched with the audience, undermining the effectiveness of the copies.
+
+    Overall Scoring Rubric
+      - 3 (Excellent): Copies excel in engagement, clarity, and audience alignment, delivering highly compelling and effective marketing content.
+      - 2 (Good): Copies are effective and well-crafted, with minor gaps in engagement, clarity, or tone that do not significantly detract from their impact.
+      - 1 (Needs Improvement): Copies are moderately effective but have notable weaknesses in one or more areas, reducing their overall quality and relevance.
+      - 0 (Poor): Copies fail to meet objectives, lacking engagement, clarity, or appropriate tone, resulting in ineffective marketing content.
+    
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide an overall score based on the rubric.
+
+  expected_output: >
+    A json with a 'feedback' field describing how the quality of the task output can be improved and a 'score' field.
