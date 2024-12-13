@@ -17,8 +17,8 @@
             "project_description": "Patanjali - product range of food, cosmetics, medicines and books at best prices."
         },
         {
-            "customer_domain": "https://www.snowflake.com/",
-            "project_description": "Snowflake - easy-to-use, fully managed data platform."
+            "customer_domain": "snowflake.com",
+            "project_description": "Snowflake, a leading provider of cloud data warehouse solutions, aims to elevate its market position by demonstrating its capabilities in both data warehousing and AI-driven analytics. This project involves developing a cutting-edge marketing campaign that highlights Snowflake's ability to seamlessly handle massive data workloads while empowering businesses with AI-driven insights. The campaign will showcase compelling success stories that emphasize Snowflake’s unparalleled ease of use, scalability, and cost efficiency compared to competitors like Databricks. By spotlighting Snowflake’s ability to unify data for advanced analytics, the campaign will target enterprise decision-makers across industries, presenting Snowflake as the go-to platform for data transformation and AI adoption. \nCustomer Domain: Cloud Data Warehousing and AI Solutions \nProject Overview: Creating an impactful marketing campaign that underscores Snowflake’s leadership in cloud data warehousing and AI-driven solutions, emphasizing its unique advantages over competitors like Databricks and driving increased adoption among enterprise clients."
         },
         {
             "customer_domain": "https://playo.co/about",

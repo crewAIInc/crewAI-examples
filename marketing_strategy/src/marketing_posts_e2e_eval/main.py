@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from marketing_posts_e2e_eval.marketing_crew.marketing_crew import MarketingPostsCrew
 from marketing_posts_e2e_eval.evaluator_crew.eval_crew import EvaluatorCrew
 
-from typing import Optional
+from typing import Optional, Dict
 
 from crewai.flow.flow import Flow, listen, router, start
 from pydantic import BaseModel
@@ -56,21 +56,16 @@ class MarketingPostFlowState(BaseModel):
 
 class MarketingPostFlow(Flow[MarketingPostFlowState]):
 
+    def __init__(self, inputs: dict[str, str]):
+        super().__init__()
+        self._flow_inputs = inputs
+
     @start("retry")
     def generate_marketing_post(self):
         print("Generating Marketing post")
         inputs = {
-            'customer_domain': 'crewai.com',
-            'project_description': """
-            CrewAI, a leading provider of multi-agent systems, aims to revolutionize marketing automation for its enterprise clients.
-            This project involves developing an innovative marketing strategy to showcase CrewAI's advanced AI-driven solutions,
-            emphasizing ease of use, scalability, and integration capabilities.
-            The campaign will target tech-savvy decision-makers in medium to large enterprises, highlighting success stories and the transformative potential of CrewAI's platform.
-
-            Customer Domain: AI and Automation Solutions
-            Project Overview: Creating a comprehensive marketing campaign to boost awareness and adoption of CrewAI's services among enterprise clients.
-            Secondary goal: During the execution of the multi-agent system/tasks, evaluate the quality of answers at each step.
-            """,
+            'customer_domain': self._flow_inputs['customer_domain'],
+            'project_description': self._flow_inputs['project_description'],
             'previous_marketing_post': self.state.marketing_post,
             'feedback': self.state.feedback,
         }
@@ -112,5 +107,19 @@ class MarketingPostFlow(Flow[MarketingPostFlowState]):
         print("Feedback:", self.state.feedback)
 
 
-def kickoff():
-    asyncio.run(MarketingPostFlow().kickoff())
+def kickoff(inputs: Optional[Dict[str, str]] = None):
+    if not inputs:
+        inputs = {
+            'customer_domain': 'crewai.com',
+            'project_description': """
+            CrewAI, a leading provider of multi-agent systems, aims to revolutionize marketing automation for its enterprise clients.
+            This project involves developing an innovative marketing strategy to showcase CrewAI's advanced AI-driven solutions,
+            emphasizing ease of use, scalability, and integration capabilities.
+            The campaign will target tech-savvy decision-makers in medium to large enterprises, highlighting success stories and the transformative potential of CrewAI's platform.
+
+            Customer Domain: AI and Automation Solutions
+            Project Overview: Creating a comprehensive marketing campaign to boost awareness and adoption of CrewAI's services among enterprise clients.
+            Secondary goal: During the execution of the multi-agent system/tasks, evaluate the quality of answers at each step.
+            """,
+        }
+    asyncio.run(MarketingPostFlow(inputs=inputs).kickoff())
