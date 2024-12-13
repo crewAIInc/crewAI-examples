@@ -46,7 +46,7 @@ class EvaluatorCrew():
     tasks_config = 'config/tasks.yaml'
 
     @agent
-    def quality_evalutor_reviewer(self) -> Agent:
+    def quality_evaluator_reviewer(self) -> Agent:
         return Agent(
             config=self.agents_config['quality_evalutor_reviewer'],
             tools=[SerperDevTool(), ScrapeWebsiteTool()],
@@ -60,15 +60,14 @@ class EvaluatorCrew():
         return Task(
             config=self.tasks_config['verify_marketing_post'],
             output_pydantic=MarketingPostVerification,
-            agent=self.quality_evalutor_reviewer(),
+            agent=self.quality_evaluator_reviewer(),
         )
 
     @crew
     def crew(self) -> Crew:
         """Creates the marketing post eval crew"""
         return Crew(
-            agents=self.
-            agents,  # Automatically created by the @agent decorator
+            agents=self.agents,  # Automatically created by the @agent decorator
             tasks=self.tasks,  # Automatically created by the @task decorator
             process=Process.sequential,
             verbose=True,

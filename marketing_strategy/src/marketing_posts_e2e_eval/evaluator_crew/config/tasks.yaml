@@ -23,6 +23,7 @@ verify_marketing_post:
     Marketing Post to Verify: 
     {marketing_post}
   expected_output: >
-    Quality: Score from 1-5 where 5 is the highest quality
-    Feedback: Commentary here if failed.
-  agent: quality_evalutor_reviewer
+    A json string with the following keys:
+    'quality': Score from 1-5 where 5 is the highest quality
+    'feedback': Commentary here if failed.
+  agent: quality_evaluator_reviewer
