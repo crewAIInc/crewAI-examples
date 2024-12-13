@@ -15,6 +15,10 @@ crewai = { extras = ["tools"], version = "^0.74.2" }
 crewai-tools = "^0.13.2"
 pip = "^24.1.1"
 setuptools = "^75.6.0"
+trulens-core = "1.2.10"
+trulens-dashboard = "1.2.10"
+trulens-connectors-snowflake = {version = "1.2.10", python = ">=3.10,<3.12" }
+snowflake-connector-python = "3.12.4"
 
 [project]
 name = "marketing_posts"
