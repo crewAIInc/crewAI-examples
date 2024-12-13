@@ -101,8 +101,6 @@ project_understanding_reflection_task:
      - feedback: constructive feedback on how the output can be improved based on the rubric.
      - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
 
-    Sample Output: '{"feedback": "...","score": <score>}'
-
 
 marketing_strategy_reflection_task:
   description: >
@@ -142,8 +140,6 @@ marketing_strategy_reflection_task:
      - feedback: constructive feedback on how the output can be improved based on the rubric.
      - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
 
-    Sample Output: '{"feedback": "...","score": <score>}'
-
 
 campaign_idea_reflection_task:
   description: >
@@ -182,8 +178,6 @@ campaign_idea_reflection_task:
      - feedback: constructive feedback on how the output can be improved based on the rubric.
      - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
 
-    Sample Output: '{"feedback": "...","score": <score>}'
-
 copy_creation_reflection_task:
   description: >
     Reflect on the marketing copies for {project_description}. Follow the following rubric to give suggestions for improvement and an overall score.
@@ -221,5 +215,4 @@ copy_creation_reflection_task:
      - feedback: constructive feedback on how the output can be improved based on the rubric.
      - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
 
-    Sample Output: '{"feedback": "...","score": <score>}'
 

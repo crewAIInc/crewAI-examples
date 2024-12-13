@@ -39,7 +39,7 @@ class ReflectionTask(Task):
         if not hasattr(reflection_task, "agent") or reflection_task.agent is None:
             reflection_task.agent = reflection_agent
 
-        reflection_task.interpolate_inputs(reflection_agent.crew)
+        reflection_task.interpolate_inputs(reflection_agent.crew._inputs)
     
     def _save_feedback(self, previous_output: str, feedback: str, score: int, revised_output: str):
         results = f"""Original Output:
