@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import asyncio
 import sys
+from dotenv import load_dotenv
 from marketing_posts_e2e_eval.marketing_crew.marketing_crew import MarketingPostsCrew
 from marketing_posts_e2e_eval.evaluator_crew.eval_crew import EvaluatorCrew
 
@@ -9,16 +10,20 @@ from typing import Optional
 from crewai.flow.flow import Flow, listen, router, start
 from pydantic import BaseModel
 
+load_dotenv()
+
 def run():
     # Replace with your inputs, it will automatically interpolate any tasks and agents information
     inputs = {
         'customer_domain': 'crewai.com',
+        'previous_marketing_post': None,
+        'feedback': None,
         'project_description': """
 CrewAI, a leading provider of multi-agent systems, aims to revolutionize marketing automation for its enterprise clients. This project involves developing an innovative marketing strategy to showcase CrewAI's advanced AI-driven solutions, emphasizing ease of use, scalability, and integration capabilities. The campaign will target tech-savvy decision-makers in medium to large enterprises, highlighting success stories and the transformative potential of CrewAI's platform.
 
 Customer Domain: AI and Automation Solutions
 Project Overview: Creating a comprehensive marketing campaign to boost awareness and adoption of CrewAI's services among enterprise clients.
-"""
+""",
     }
     MarketingPostsCrew().crew().kickoff(inputs=inputs)
 
@@ -94,17 +99,16 @@ class MarketingPostFlow(Flow[MarketingPostFlowState]):
 
     @listen("complete")
     def save_result(self):
-        print("X post is valid")
-        print("X post:", self.state.marketing_post)
+        print("Marketing strategy results are valid")
+        print("Results:", self.state.marketing_post)
 
-        # Save the valid X post to a file
-        with open("x_post.txt", "w") as file:
+        with open("results.txt", "w") as file:
             file.write(self.state.marketing_post)
 
     @listen("max_retry_exceeded")
     def max_retry_exceeded_exit(self):
         print("Max retry count exceeded")
-        print("X post:", self.state.marketing_post)
+        print("Results:", self.state.marketing_post)
         print("Feedback:", self.state.feedback)
 
 

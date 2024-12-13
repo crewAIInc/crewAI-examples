@@ -47,7 +47,7 @@ class MarketingPostsCrew():
 		return Agent(
 			config=self.agents_config['lead_market_analyst'],
 			tools=[SerperDevTool(), ScrapeWebsiteTool()],
-			verbose=True,
+			verbose=False,
 			memory=False,
             llm='azure/sfc-cortex-analyst-dev',
 		)
@@ -79,6 +79,7 @@ class MarketingPostsCrew():
 			backstory="You're a team enabler and have a keen eye for detail and a strong understanding of what makes marketing engaging and effective.",
 			allow_delegation=False,
 			verbose=True,
+			tools=None,
 		)
 	
 	@task
@@ -96,7 +97,8 @@ class MarketingPostsCrew():
 			reflection_task=Task(
 				config=self.tasks_config['project_understanding_reflection_task'],
 				output_json=ReflectionFeedback
-			)
+			),
+			reflection_agent=self.reflection_agent()
 		)
 
 	@task
@@ -108,7 +110,8 @@ class MarketingPostsCrew():
 			reflection_task=Task(
 				config=self.tasks_config['marketing_strategy_reflection_task'],
 				output_json=ReflectionFeedback
-			)
+			),
+			reflection_agent=self.reflection_agent()
 		)
 
 	@task
@@ -120,7 +123,8 @@ class MarketingPostsCrew():
 			reflection_task=Task(
 				config=self.tasks_config['campaign_idea_reflection_task'],
 				output_json=ReflectionFeedback
-			)
+			),
+			reflection_agent=self.reflection_agent()
 		)
 
 	@task
@@ -133,7 +137,8 @@ class MarketingPostsCrew():
 			reflection_task=Task(
 				config=self.tasks_config['copy_creation_reflection_task'],
 				output_json=ReflectionFeedback
-			)
+			),
+			reflection_agent=self.reflection_agent()
 		)
 
 	@crew

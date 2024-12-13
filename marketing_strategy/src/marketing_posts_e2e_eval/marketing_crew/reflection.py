@@ -19,6 +19,7 @@ class ReflectionTask(Task):
     )
 
     reflection_task: Task = Field(description="Task to be executed by the reflection agent.", default=None)
+    use_tools_for_reflection: bool = Field(description="Use tools for reflection", default=False)
 
     @cache
     def _create_reflection_task(self) -> Task:
@@ -58,6 +59,8 @@ class ReflectionTask(Task):
 
         self.prompt_context = context
         tools = tools or self.tools or []
+        reflection_tools = tools if self.use_tools_for_reflection else None
+        result = None
 
         self.processed_by_agents.add(agent.role)
 
@@ -66,16 +69,17 @@ class ReflectionTask(Task):
             if i > 0:
                 reflection_result = reflection_agent.execute_task(
                     reflection_task, 
-                    context=context, 
-                    tools=tools
+                    context=context,
+                    tools=reflection_tools
                 )
+                print(reflection_result)
                 _, reflection_json_output = reflection_task._export_output(reflection_result)
                 self.description = original_description
                 if reflection_json_output:
                     if "score" in reflection_json_output and reflection_json_output['score'] == 3:
                         break
                     if "feedback" in reflection_json_output:
-                        self.description += f"\nPlease incorporate the following feedback if present: {reflection_json_output['feedback']}"
+                        self.description += f"\nThese are the previous outputs:\n{result}\n\nIncorporate the following feedback when revising the previous outputs: {reflection_json_output['feedback']}"
                     
             result = agent.execute_task(
                 task=self,

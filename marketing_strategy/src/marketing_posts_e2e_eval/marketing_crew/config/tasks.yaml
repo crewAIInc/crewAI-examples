@@ -10,7 +10,7 @@ research_task:
      // begin marketing post
      {previous_marketing_post}
      // end marketing post
-    Make sure to include their feedback:
+    Make sure to include their feedback if provided:
     // begin feedback
      {feedback}
     // end feedback
@@ -93,10 +93,14 @@ project_understanding_reflection_task:
       - 1 (Needs Improvement): The task shows effort but has notable weaknesses in clarity, depth, or relevance, reducing its overall utility.
       - 0 (Poor): The task fails to achieve its objectives, with critical shortcomings in understanding and analysis.
 
-    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide an overall score based on the rubric.
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
 
   expected_output: >
-    A json with a 'feedback' field describing how the quality of the task output can be improved and a 'score' field.
+    A json string with the following fields:
+     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
+
+    Sample Output: '{"feedback": "...","score": <score>}'
 
 
 marketing_strategy_reflection_task:
@@ -130,10 +134,14 @@ marketing_strategy_reflection_task:
       - 1 (Needs Improvement): The strategy meets basic requirements but has significant weaknesses in creativity, detail, or alignment with project goals.
       - 0 (Poor): The strategy is poorly constructed, lacks coherence, or fails to meet the expected output criteria.
     
-    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide an overall score based on the rubric.
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
 
   expected_output: >
-    A json with a 'feedback' field describing how the quality of the task output can be improved and a 'score' field.
+    A json string with the following fields:
+     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
+
+    Sample Output: '{"feedback": "...","score": <score>}'
 
 
 campaign_idea_reflection_task:
@@ -166,10 +174,14 @@ campaign_idea_reflection_task:
       - 1 (Needs Improvement): Ideas are moderately effective but have notable weaknesses in creativity, alignment, or feedback use, reducing their potential impact.
       - 0 (Poor): Ideas fail to meet the objectives, lacking creativity, alignment, or proper feedback integration, resulting in an ineffective campaign.
     
-    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide an overall score based on the rubric.
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
 
   expected_output: >
-    A json with a 'feedback' field describing how the quality of the task output can be improved and a 'score' field.
+    A json string with the following fields:
+     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
+
+    Sample Output: '{"feedback": "...","score": <score>}'
 
 copy_creation_reflection_task:
   description: >
@@ -201,7 +213,12 @@ copy_creation_reflection_task:
       - 1 (Needs Improvement): Copies are moderately effective but have notable weaknesses in one or more areas, reducing their overall quality and relevance.
       - 0 (Poor): Copies fail to meet objectives, lacking engagement, clarity, or appropriate tone, resulting in ineffective marketing content.
     
-    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide an overall score based on the rubric.
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
 
   expected_output: >
-    A json with a 'feedback' field describing how the quality of the task output can be improved and a 'score' field.
+    A json string with the following fields:
+     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
+
+    Sample Output: '{"feedback": "...","score": <score>}'
+
