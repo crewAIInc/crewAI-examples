@@ -26,6 +26,7 @@ trulens-core = "1.2.10"
 trulens-dashboard = "1.2.10"
 trulens-connectors-snowflake = {version = "1.2.10", python = ">=3.10,<3.12" }
 snowflake-connector-python = "3.12.4"
+snowflake-snowpark-python = "^1.26.0"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
