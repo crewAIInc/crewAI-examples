@@ -27,6 +27,11 @@
         {
             "customer_domain": "https://www.bcg.com/",
             "project_description": "BCG - global consulting firm that partners with leaders in business and society to tackle their most important challenges and capture their greatest opportunities."
+        },
+        {
+            "customer_domain": "streamlit.io",
+            "project_description": "Streamlit, an open-source Python framework under Snowflake, empowers data scientists and AI/ML engineers to build interactive data applications with unprecedented speed and simplicity. This project involves designing a dynamic marketing campaign that showcases Streamlit's unique ability to transform complex datasets into intuitive, shareable apps with minimal code. The campaign will emphasize Streamlit's advantages in rapid prototyping, seamless deployment, and superior performance compared to traditional web app frameworks like React and interactive environments like Jupyter. Targeting AI/ML engineers and data scientists, the campaign will highlight its competitive edge and demonstrate how Streamlit accelerates innovation in data-driven teams. \nCustomer Domain: AI/ML Engineers and Data Scientists \nProject Overview: Crafting a strategic marketing campaign to boost adoption of Streamlit by emphasizing its simplicity, rapid development capabilities, and competitive edge against traditional frameworks, ultimately positioning Streamlit as the preferred tool for data application development."
         }
+        
     ]
 }
