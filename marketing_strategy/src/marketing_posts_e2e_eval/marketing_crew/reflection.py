@@ -86,7 +86,12 @@ class ReflectionTask(Task):
                     if "score" in reflection_json_output and reflection_json_output['score'] == 3:
                         break
                     if "feedback" in reflection_json_output:
-                        self.description += f"\nThese are the previous outputs:\n{result}\n\nIncorporate the following feedback when revising the previous outputs: {reflection_json_output['feedback']}"
+                        self.description += cleandoc(f"""
+                        PREVIOUS OUTPUTS:
+                        {result}
+                        
+                        REVISE THE PREVIOUS OUTPUTS WITH THE FOLLOWING FEEDBACK:
+                        {reflection_json_output['feedback']}""")
                     
             result = agent.execute_task(
                 task=self,
