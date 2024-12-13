@@ -5,9 +5,11 @@ description = "marketing strategy"
 authors = ["cyin <cyin@gmail.com>"]
 
 [tool.poetry.scripts]
+marketing_posts_baseline = "marketing_posts.main:run"
 marketing_posts_e2e_eval = "marketing_posts_e2e_eval.main:run"
 train = "marketing_posts_e2e_eval.main:train"
 online_loop = "marketing_posts_e2e_eval.main:kickoff"
+run_inputs_file = "marketing_posts.main:run_inputs_file"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
@@ -19,25 +21,6 @@ trulens-core = "1.2.10"
 trulens-dashboard = "1.2.10"
 trulens-connectors-snowflake = {version = "1.2.10", python = ">=3.10,<3.12" }
 snowflake-connector-python = "3.12.4"
-
-[project]
-name = "marketing_posts"
-version = "0.1.0"
-description = "marketing-posts using crewAI"
-authors = [
-    { name = "Your Name", email = "you@example.com" },
-]
-requires-python = ">=3.10,<=3.13"
-dependencies = [
-    "crewai[tools]>=0.35.8",
-    "crewai-tools>=0.4.6",
-]
-
-[project.scripts]
-marketing_posts = "marketing_posts.main:run"
-train = "marketing_posts.main:train"
-run_crew = "marketing_posts.main:run"
-run_inputs_file = "marketing_posts.main:run_inputs_file"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
