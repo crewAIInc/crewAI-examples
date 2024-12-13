@@ -3,7 +3,4 @@
 marketing_posts/.env
 marketing_strategy/marketing_posts/*.whl
 marketing_strategy/marketing_posts/*.tar.gz
-marketing_strategy/**/*.pyc
-marketing_strategy/data/*.txt
-marketing_strategy/src/**/*.txt
 marketing_strategy/uv.lock
