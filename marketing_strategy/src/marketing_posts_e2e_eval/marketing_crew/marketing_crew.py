@@ -5,6 +5,7 @@ from crewai.project import CrewBase, agent, crew, task
 from marketing_posts_e2e_eval.marketing_crew.reflection import ReflectionTask
 from marketing_posts_e2e_eval.marketing_crew.reflection import Feedback as ReflectionFeedback
 
+import os
 # Uncomment the following line to use an example of a custom tool
 # from marketing_posts.tools.custom_tool import MyCustomTool
 
@@ -12,62 +13,86 @@ from marketing_posts_e2e_eval.marketing_crew.reflection import Feedback as Refle
 from crewai_tools import SerperDevTool, ScrapeWebsiteTool
 from pydantic import BaseModel, Field
 
+from trulens.apps.custom import instrument
+from crewai.crew import Crew
+from crewai.agent import Agent
+from crewai.task import Task
+from crewai.agents.crew_agent_executor import CrewAgentExecutor
+
+
 class MarketStrategy(BaseModel):
-	"""Market strategy model"""
-	name: str = Field(..., description="Name of the market strategy")
-	tatics: List[str] = Field(..., description="List of tactics to be used in the market strategy")
-	channels: List[str] = Field(..., description="List of channels to be used in the market strategy")
-	KPIs: List[str] = Field(..., description="List of KPIs to be used in the market strategy")
+    """Market strategy model"""
+    name: str = Field(..., description="Name of the market strategy")
+    tatics: List[str] = Field(
+        ..., description="List of tactics to be used in the market strategy")
+    channels: List[str] = Field(
+        ..., description="List of channels to be used in the market strategy")
+    KPIs: List[str] = Field(
+        ..., description="List of KPIs to be used in the market strategy")
+
 
 class CampaignIdea(BaseModel):
-	"""Campaign idea model"""
-	name: str = Field(..., description="Name of the campaign idea")
-	description: str = Field(..., description="Description of the campaign idea")
-	audience: str = Field(..., description="Audience of the campaign idea")
-	channel: str = Field(..., description="Channel of the campaign idea")
+    """Campaign idea model"""
+    name: str = Field(..., description="Name of the campaign idea")
+    description: str = Field(...,
+                             description="Description of the campaign idea")
+    audience: str = Field(..., description="Audience of the campaign idea")
+    channel: str = Field(..., description="Channel of the campaign idea")
+
 
 class Copy(BaseModel):
-	"""Copy model"""
-	title: str = Field(..., description="Title of the copy")
-	body: str = Field(..., description="Body of the copy")
+    """Copy model"""
+    title: str = Field(..., description="Title of the copy")
+    body: str = Field(..., description="Body of the copy")
 
-llm = LLM(
-    model="azure/sfc-cortex-analyst-dev",
-    api_version="AZURE_API_VERSION=2023-07-01-preview",
-)
+
+llm = LLM(model="azure/sfc-cortex-analyst-dev",
+          api_version="AZURE_API_VERSION=2023-07-01-preview",
+          api_key=os.getenv("AZURE_OPENAI_API_KEY"))
+
+# Instrument some Crew class methods:
+instrument.method(Crew, "kickoff")
+instrument.method(Crew, "kickoff_async")
+instrument.method(Crew, "train")
+instrument.method(Agent, "execute_task")
+instrument.method(Task, "execute_sync")
+instrument.method(Task, "execute_async")
+instrument.method(Task, "_execute_core")
+instrument.method(CrewAgentExecutor, "invoke")
+
 
 @CrewBase
 class MarketingPostsCrew():
-	"""MarketingPosts crew"""
-	agents_config = 'config/agents.yaml'
-	tasks_config = 'config/tasks.yaml'
+    """MarketingPosts crew"""
+    agents_config = 'config/agents.yaml'
+    tasks_config = 'config/tasks.yaml'
 
 	@agent
 	def lead_market_analyst(self) -> Agent:
 		return Agent(
 			config=self.agents_config['lead_market_analyst'],
 			tools=[SerperDevTool(), ScrapeWebsiteTool()],
-			verbose=False,
-			memory=False,
-            llm='azure/sfc-cortex-analyst-dev',
-		)
-
-	@agent
-	def chief_marketing_strategist(self) -> Agent:
-		return Agent(
-			config=self.agents_config['chief_marketing_strategist'],
-			tools=[SerperDevTool(), ScrapeWebsiteTool()],
 			verbose=True,
 			memory=False,
             llm='azure/sfc-cortex-analyst-dev',
-		)
+        )
 
-	@agent
-	def creative_content_creator(self) -> Agent:
-		return Agent(
-			config=self.agents_config['creative_content_creator'],
-			verbose=True,
-			memory=False,
+    @agent
+    def chief_marketing_strategist(self) -> Agent:
+        return Agent(
+            config=self.agents_config['chief_marketing_strategist'],
+            tools=[SerperDevTool(), ScrapeWebsiteTool()],
+            verbose=True,
+            memory=False,
+            llm='azure/sfc-cortex-analyst-dev',
+        )
+
+    @agent
+    def creative_content_creator(self) -> Agent:
+        return Agent(
+            config=self.agents_config['creative_content_creator'],
+            verbose=True,
+            memory=False,
             llm='azure/sfc-cortex-analyst-dev',
 		)
 	
@@ -141,13 +166,14 @@ class MarketingPostsCrew():
 			reflection_agent=self.reflection_agent()
 		)
 
-	@crew
-	def crew(self) -> Crew:
-		"""Creates the MarketingPosts crew"""
-		return Crew(
-			agents=self.agents, # Automatically created by the @agent decorator
-			tasks=self.tasks, # Automatically created by the @task decorator
-			process=Process.sequential,
-			verbose=True,
-			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
-		)
+    @crew
+    def crew(self) -> Crew:
+        """Creates the MarketingPosts crew"""
+        return Crew(
+            agents=self.
+            agents,  # Automatically created by the @agent decorator
+            tasks=self.tasks,  # Automatically created by the @task decorator
+            process=Process.sequential,
+            verbose=True,
+            # process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
+        )
