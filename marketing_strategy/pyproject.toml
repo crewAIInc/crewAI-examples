@@ -36,7 +36,7 @@ run_crew = "marketing_posts.main:run"
 run_inputs_file = "marketing_posts.main:run_inputs_file"
 
 [build-system]
+build-backend = "poetry.core.masonry.api"
 requires = [
-    "hatchling",
+  "poetry-core",
 ]
-build-backend = "hatchling.build"
