@@ -4,6 +4,7 @@ from typing import Optional, List, Any
 from pydantic import Field
 from pydantic import BaseModel
 from crewai import Task
+from crewai import Agent
 from crewai.tasks.task_output import TaskOutput
 from crewai.agent import BaseAgent
 
@@ -31,6 +32,11 @@ class ReflectionTask(Task):
             expected_output="A json with a 'feedback' field describing how the quality of the task output can be improved and a 'score' field.",
             output_json=Feedback,
         )
+    
+    def _prepare_reflection_task(self, reflection_task: Task, reflection_agent: Agent):
+        if not hasattr(reflection_task, "agent") or reflection_task.agent is None:
+            reflection_task.agent = reflection_agent
+        
 
     def _execute_core(
         self,
@@ -53,6 +59,7 @@ class ReflectionTask(Task):
                 f"The task '{self.description}' has no reflection agent assigned."
             )
         reflection_task = self.reflection_task or self._create_reflection_task()
+        self._prepare_reflection_task(reflection_task, reflection_agent)
 
         start_time = self._set_start_execution_time()
         self._execution_span = self._telemetry.task_started(crew=agent.crew, task=self)
