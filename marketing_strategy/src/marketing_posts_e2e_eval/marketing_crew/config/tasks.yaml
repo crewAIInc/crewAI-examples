@@ -94,11 +94,11 @@ project_understanding_reflection_task:
     1 (Fair): Provides some useful information but remains incomplete, unclear, or superficial in important areas. May require significant revision before it can inform marketing decisions.
     0 (Poor): Underdeveloped, unclear, or off-target in multiple respects. Not suitable for informing any strategic marketing decisions without substantial rework.
 
-    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
+    For each of these rubrics, report actionable and constructive steps for getting the result of the previous task to the 3 (Excellent) section of the rubric. Identify elements that are missing or elements that are present and should be removed or streamlined. Then, provide a single overall score based on the rubric.
 
   expected_output: >
     A json string with the following fields:
-     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - feedback: constructive feedback on how the output can be improved based on the rubric.
      - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
 
     Sample Output: '{"feedback": "...","score": <score>}'
@@ -135,11 +135,11 @@ marketing_strategy_reflection_task:
     1 (Fair): Offers a partially formed strategy lacking depth in key areas, requiring significant enhancements before implementation.
     0 (Poor): Strategy is disjointed, incomplete, or irrelevant, providing no actionable guidance for marketing initiatives.
 
-    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
+    For each of these rubrics, report actionable and constructive steps for getting the result of the previous task to the 3 (Excellent) section of the rubric. Identify elements that are missing or elements that are present and should be removed or streamlined. Then, provide a single overall score based on the rubric.
 
   expected_output: >
     A json string with the following fields:
-     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - feedback: constructive feedback on how the output can be improved based on the rubric.
      - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
 
     Sample Output: '{"feedback": "...","score": <score>}'
@@ -175,11 +175,11 @@ campaign_idea_reflection_task:
     1 (Fair): The concepts provide a starting point but lack key elements of creativity, audience resonance, or feasibility. Significant revisions are needed before execution.
     0 (Poor): The output is weak, off-target, and unimplementable, offering no substantial value for future campaigns.
 
-    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
+    For each of these rubrics, report actionable and constructive steps for getting the result of the previous task to the 3 (Excellent) section of the rubric. Identify elements that are missing or elements that are present and should be removed or streamlined. Then, provide a single overall score based on the rubric.
 
   expected_output: >
     A json string with the following fields:
-     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - feedback: constructive feedback on how the output can be improved based on the rubric.
      - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
 
     Sample Output: '{"feedback": "...","score": <score>}'
@@ -214,11 +214,11 @@ copy_creation_reflection_task:
     1 (Fair): The copy meets minimal standards but lacks the qualities needed for strong marketing impact. Requires significant revision before it can effectively represent the brand or engage the audience.
     0 (Poor): The copy is off-target, unclear, and unengaging, offering no value to the marketing effort. Needs a complete overhaul.
 
-    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
+    For each of these rubrics, report actionable and constructive steps for getting the result of the previous task to the 3 (Excellent) section of the rubric. Identify elements that are missing or elements that are present and should be removed or streamlined. Then, provide a single overall score based on the rubric.
 
   expected_output: >
     A json string with the following fields:
-     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - feedback: constructive feedback on how the output can be improved based on the rubric.
      - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
 
     Sample Output: '{"feedback": "...","score": <score>}'
