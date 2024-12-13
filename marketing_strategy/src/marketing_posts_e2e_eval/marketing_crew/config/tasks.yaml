@@ -10,7 +10,7 @@ research_task:
      // begin marketing post
      {previous_marketing_post}
      // end marketing post
-    Make sure to include their feedback:
+    Make sure to include their feedback if provided:
     // begin feedback
      {feedback}
     // end feedback
@@ -35,7 +35,7 @@ marketing_strategy_task:
     task to create a high-quality strategy.
   expected_output: >
     A detailed marketing strategy document that outlines the goals, target
-    audience, key messages, and proposed tactics, make sure to have name, tatics, channels and KPIs
+    audience, key messages, and proposed tactics, make sure to have name, tactics, channels and KPIs
 
 campaign_idea_task:
   description: >
@@ -61,3 +61,165 @@ copy_creation_task:
     Ensure the copies are compelling, clear, and tailored to the target audience.
   expected_output: >
     Marketing copies for each campaign idea.
+
+
+project_understanding_reflection_task:
+  description: >
+    Reflect on the project summary and target audience profile for
+    {project_description}. Follow the following rubric to give suggestions for improvement and an overall score. 
+
+    Rubric for Evaluating "Project Understanding Task"
+
+    Depth and Accuracy of the Project Summary
+    3 (Excellent): Provides a comprehensive, nuanced, and accurate summary of the project’s purpose, scope, and key objectives. Includes context that clearly situates the project within its industry or domain. Demonstrates a strong grasp of all essential details without factual errors or omissions.
+    2 (Good): Summarizes the project’s main elements with reasonable accuracy, though some nuances or minor details may be missing. Shows an understanding of the project but could provide more context or precision.
+    1 (Fair): Provides a basic outline of the project that is incomplete or somewhat unclear. Some factual inaccuracies may appear or important details may be overlooked.
+    0 (Poor): Fails to convey the core purpose or scope of the project. Contains major misunderstandings or entirely lacks substantive detail.
+
+    Clarity and Depth of the Target Audience Profile
+    3 (Excellent): Clearly defines a highly specific, realistic audience profile, including demographics (e.g., age, occupation), psychographics (values, interests, challenges), and contextual factors (cultural, economic, or industry-specific traits). Demonstrates a strong understanding of audience needs, pain points, and motivations. Uses tangible and relevant examples to illustrate audience characteristics.
+    2 (Good): Provides a generally clear audience profile with some detail on demographics and interests. Offers moderate insight into audience needs and motivations, but could include more specificity and richness of detail.
+    1 (Fair): Gives a superficial audience description with basic demographics only. Lacks depth in understanding audience motivations or the environment in which they operate.
+    0 (Poor): Does not attempt to define the audience or provides an entirely generic profile with no meaningful detail.
+
+    Effective Use of Provided Materials and Additional Research
+    3 (Excellent): Skillfully integrates provided materials into the summary and audience profile, showing clear evidence of having reviewed and understood all relevant sources. Supplements with well-chosen additional information or research that enhances quality and completeness. References materials and insights smoothly and accurately.
+    2 (Good): Incorporates most provided materials into the overview, though some details may be underutilized or superficially mentioned. May include additional research, but connections or integrations could be stronger.
+    1 (Fair): Uses provided materials minimally or overlooks key details that could improve understanding. Little to no evidence of additional research beyond what was given.
+    0 (Poor): Ignores available information or misuses provided materials. No attempt to gather or incorporate external insights.
+
+    General Quality Score
+    3 (Excellent): Presents a standout, comprehensive, and nuanced understanding of both the project and its target audience. Demonstrates thorough preparation, high attention to detail, and superior clarity. The final output is highly actionable for marketing or strategic decision-making.
+    2 (Good): Shows a strong grasp overall, though one or two areas could be more detailed or polished. Generally informative and usable for strategic decision-making.
+    1 (Fair): Provides some useful information but remains incomplete, unclear, or superficial in important areas. May require significant revision before it can inform marketing decisions.
+    0 (Poor): Underdeveloped, unclear, or off-target in multiple respects. Not suitable for informing any strategic marketing decisions without substantial rework.
+
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
+
+  expected_output: >
+    A json string with the following fields:
+     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
+
+    Sample Output: '{"feedback": "...","score": <score>}'
+
+
+marketing_strategy_reflection_task:
+  description: >
+    Reflect on the goals, target, audience, key messages, proposed tactics, channels, and KPIs from the marketing strategy for
+    {project_description}. Follow the following rubric to give suggestions for improvement and an overall score.
+
+    Rubric for Evaluating "Marketing Strategy Task"
+
+    Goals and KPIs
+    3 (Excellent): Clearly outlines specific, measurable, and time-bound goals directly linked to the project objectives. Defines KPIs that are both challenging and achievable, offering clear benchmarks for tracking progress. Goals and KPIs show strong logical alignment with the project’s overarching business and marketing objectives.
+    2 (Good): Provides generally clear goals and KPIs that mostly fit the project objectives, but may lack some detail or precision. KPIs are measurable but could be more ambitious or better aligned with strategic outcomes.
+    1 (Fair): Goals and KPIs are vaguely defined, with limited specificity or actionable measures. Alignment with the project’s strategic aims is weak or only partially evident.
+    0 (Poor): Goals and KPIs are missing, irrelevant, or entirely disconnected from the project’s objectives. Lacks any clear metrics for evaluating success.
+    
+    Target Audience and Key Messages
+    3 (Excellent): Identifies a highly specific, realistic target audience that closely aligns with the given customer domain and project context. Key messages strongly resonate with audience values, motivations, and pain points, using language and tone that fit the audience’s culture and industry. Messaging clearly advances the project’s stated goals and aligns seamlessly with the brand’s voice and objectives.
+    2 (Good): Defines a suitable target audience with some level of detail, though further specificity could enhance targeting. Key messages are relevant and somewhat resonant, but could be more finely tuned to audience needs or project goals.
+    1 (Fair): Target audience definition is broad or generic, offering limited insight into demographics or psychographics. Key messages are either too generic or lack a clear connection to audience motivations and the project’s strategic aims.
+    0 (Poor): Fails to meaningfully define the target audience. Key messages are off-target, vague, or inconsistent with the project’s goals and audience expectations.
+    
+    Tactics and Channels Selection
+    3 (Excellent): Proposes a well-rounded, creative set of tactics that are feasible, well-reasoned, and aligned with project goals. Selects marketing channels that are both cost-effective and well-suited to reaching the defined target audience, accounting for audience media preferences and potential acquisition costs. Details how chosen tactics and channels will integrate and reinforce each other, maximizing reach and impact.
+    2 (Good): Outlines a reasonable set of tactics that show promise but could be more innovative or better integrated. Channels are generally appropriate for the target audience, though cost-effectiveness or reach may not be fully addressed.
+    1 (Fair): Presents a limited set of tactics with insufficient detail on feasibility or alignment with project goals. Channels may be poorly matched to the target audience or lack justification in terms of reach and cost.
+    0 (Poor): Tactics are impractical, irrelevant, or missing entirely. Channels do not align with the target audience’s media habits or are not cost-effective.
+    
+    General Quality Score
+    3 (Excellent): Provides a comprehensive, coherent marketing strategy that integrates goals, KPIs, audience insights, messaging, tactics, and channels into a unified, compelling plan. Demonstrates thorough research, strategic thinking, and a clear understanding of the project’s business context.
+    2 (Good): Delivers a generally solid strategy that could be improved with more detail, refinement, or deeper alignment in a few areas.
+    1 (Fair): Offers a partially formed strategy lacking depth in key areas, requiring significant enhancements before implementation.
+    0 (Poor): Strategy is disjointed, incomplete, or irrelevant, providing no actionable guidance for marketing initiatives.
+
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
+
+  expected_output: >
+    A json string with the following fields:
+     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
+
+    Sample Output: '{"feedback": "...","score": <score>}'
+
+
+campaign_idea_reflection_task:
+  description: >
+    Reflect on the campaign ideas for {project_description}. Follow the following rubric to give suggestions for improvement and an overall score.
+
+    Rubric for Evaluating "Campaign Idea Task"
+
+    Creativity and Alignment with Strategy
+    3 (Excellent): Campaign ideas demonstrate original, innovative thinking that stands out from standard marketing approaches. Concepts align tightly with the overall marketing strategy and project description, clearly supporting key messages and goals. Shows thoughtful integration of previous feedback and improvements upon past posts.
+    2 (Good): Ideas show some creative elements and generally fit within the marketing strategy. Concepts could be more distinctive or better refined, but still indicate effort to differentiate from past attempts. Some feedback from previous posts is integrated, though not fully capitalized upon.
+    1 (Fair): Campaign ideas are mostly conventional or lack true innovation. Alignment with the overarching strategy and goals is weak, with little evidence that previous feedback significantly shaped the concepts. Effort to use feedback from the evaluator is minimal.
+    0 (Poor): Ideas are bland, uninspired, or disconnected from the marketing strategy and project goals. No meaningful incorporation of previous feedback is evident. Shows no strategic thought or creativity.
+    
+    Relevance and Resonance with Target Audience and Brand Messaging
+    3 (Excellent): Campaign ideas are tailored precisely to the target audience, reflecting their values, interests, and preferred channels. Messaging resonates strongly and authentically with the audience, clearly advancing brand goals and establishing an emotional or intellectual connection. Calls to action are compelling, audience-appropriate, and strongly encourage engagement.
+    2 (Good): Concepts address the target audience’s general interests and values, though further refinement could make them more resonant. Messaging is on-brand and reasonably engaging, but could be more impactful. Calls to action are clear but might be more persuasive or better tailored to the audience.
+    1 (Fair): The audience receives only superficial consideration, with generic messaging that fails to speak directly to their values or needs. Branding is not strongly reinforced, and the campaigns feel misaligned with what the audience cares about. Calls to action are weak or too vague to motivate meaningful engagement.
+    0 (Poor): Campaigns do not consider the target audience at all, featuring irrelevant or off-putting messaging. Brand identity is lost or misrepresented. Calls to action are absent, unclear, or meaningless.
+    
+    Feasibility, Measurement, and Expected Impact
+    3 (Excellent): Each idea includes clear, feasible plans with actionable next steps. Success is measured using quantifiable KPIs or performance metrics (e.g., conversion rates, lead generation numbers, engagement increases). The expected impact is realistic but ambitious, supporting the company’s broader objectives.
+    2 (Good): Concepts are generally workable, though details on execution could be more robust. Provides some metrics for gauging success, though targets may lack rigor or specificity. Impact is believable and directionally supportive of company goals.
+    1 (Fair): Ideas may be conceptually sound but lack concrete implementation details or actionable steps. Measurement plans are vague or minimal, making it difficult to evaluate success. Impact claims are unclear or unsupported by measurable objectives.
+    0 (Poor): No indication of how the campaigns would be executed or measured. Offers no meaningful way to assess impact or improvement. Concepts cannot realistically be implemented.
+    
+    General Quality Score
+    3 (Excellent): The three campaign ideas collectively form a powerful, imaginative, strategically aligned set of initiatives. They display a strong grasp of audience needs, brand voice, and measurable outcomes. Overall, the ideas inspire confidence and readiness for implementation.
+    2 (Good): The ideas are solid and usable, though not fully polished or optimized. Some refinement could further enhance creativity, audience alignment, or measurement strategies.
+    1 (Fair): The concepts provide a starting point but lack key elements of creativity, audience resonance, or feasibility. Significant revisions are needed before execution.
+    0 (Poor): The output is weak, off-target, and unimplementable, offering no substantial value for future campaigns.
+
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
+
+  expected_output: >
+    A json string with the following fields:
+     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
+
+    Sample Output: '{"feedback": "...","score": <score>}'
+
+copy_creation_reflection_task:
+  description: >
+    Reflect on the marketing copies for {project_description}. Follow the following rubric to give suggestions for improvement and an overall score.
+
+    Rubric for Evaluating "Copy Creation Task"
+
+    Creativity and Engagement
+    3 (Excellent): The copy is highly creative, original, and memorable, standing out from typical marketing messages. It captivates the reader’s attention from the start, using humor, wit, or storytelling to maintain engagement. The writing style is fresh, lively, and aligned with the campaign’s distinctive value proposition.
+    2 (Good): The copy is engaging and somewhat creative, though it may rely on familiar approaches. Maintains audience interest but could add more flair or originality. Generally appealing but could push the boundaries further to stand out.
+    1 (Fair): The copy shows minimal creative effort, feeling bland or generic. Engagement is sporadic or weak; the content fails to sustain attention. Attempts at humor or wit may feel forced or uninspired.
+    0 (Poor): The copy is dull, uninspired, and unengaging. No creativity is evident, and it reads like boilerplate text. Fails to catch or retain the reader’s interest.
+    
+    Audience Resonance, Tone, and Brand Alignment
+    3 (Excellent): The copy speaks directly to the target audience’s interests, pain points, and values, reflecting their language, humor, and cultural references authentically. The tone matches the brand voice and project description seamlessly, while also emphasizing aspects crucial to the audience (e.g., highlighting cost savings for budget-conscious customers). The message feels tailor-made for the intended readers, reinforcing trust and credibility.
+    2 (Good): The copy generally addresses the target audience’s priorities, but may lack some refinement in language or tone. The brand voice is reasonably consistent, though minor adjustments could improve authenticity or resonance. The message resonates somewhat but could strengthen its connection with the audience’s worldview.
+    1 (Fair): The copy shows limited understanding of the audience’s interests or concerns. The tone is inconsistent with the brand voice or does not fully reflect the audience’s communication style. The overall resonance is weak, reducing the message’s effectiveness.
+    0 (Poor): The copy is disconnected from the target audience’s preferences, language, and values. The tone clashes with the brand image, creating confusion or diminishing credibility. The message feels irrelevant or off-putting to the intended readers.
+    
+    Clarity, Call to Action, and Strategic Alignment
+    3 (Excellent): The copy clearly communicates its primary message, benefits, and unique selling points, leaving no confusion. Features a compelling, straightforward call to action that encourages immediate, measurable response. Aligns seamlessly with the marketing strategy and project objectives, emphasizing desired outcomes (e.g., cost savings, trial sign-ups, increased engagement).
+    2 (Good): The main message is understandable, though some parts could be more direct. The call to action is present and somewhat motivating but could be sharpened to drive stronger results. Generally supports the marketing strategy, though opportunities for tighter alignment remain.
+    1 (Fair): The copy’s message is unclear or convoluted, reducing impact. The call to action is weak, vague, or hard to notice. Strategic alignment is loose or incomplete, not clearly advancing marketing goals.
+    0 (Poor): The core message is lost or buried, causing confusion. The call to action is absent or nonsensical. The copy works against or ignores the marketing strategy and objectives.
+    
+    General Quality Score
+    3 (Excellent): The copy is a standout piece of marketing communication—creative, audience-focused, strategically sound, and actionable. Inspires confidence and sets a high standard for future campaigns.
+    2 (Good): The copy is solid and usable, with room for polish in creativity, audience resonance, or clarity. Provides a good foundation that can be improved with minor refinements.
+    1 (Fair): The copy meets minimal standards but lacks the qualities needed for strong marketing impact. Requires significant revision before it can effectively represent the brand or engage the audience.
+    0 (Poor): The copy is off-target, unclear, and unengaging, offering no value to the marketing effort. Needs a complete overhaul.
+
+    For each of these rubrics, create actionable and constructive feedback for the result of the previous task. Then, provide a single overall score based on the rubric.
+
+  expected_output: >
+    A json string with the following fields:
+     - feedback: constructive feedback on how the quality of the output can be improved based on the rubric.
+     - score: a single integer 0 - 3 (inclusive) representing the overall rating of the task output based on the rubric.
+
+    Sample Output: '{"feedback": "...","score": <score>}'
+
