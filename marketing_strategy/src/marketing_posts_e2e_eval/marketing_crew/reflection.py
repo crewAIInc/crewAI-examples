@@ -1,3 +1,5 @@
+import os
+import time
 from inspect import cleandoc
 from functools import cache
 from typing import Optional, List, Any
@@ -36,14 +38,32 @@ class ReflectionTask(Task):
     def _prepare_reflection_task(self, reflection_task: Task, reflection_agent: Agent):
         if not hasattr(reflection_task, "agent") or reflection_task.agent is None:
             reflection_task.agent = reflection_agent
-        
+
+        reflection_task.interpolate_inputs(reflection_agent.crew)
+    
+    def _save_feedback(self, previous_output: str, feedback: str, score: int, revised_output: str):
+        results = f"""Original Output:
+        {previous_output}
+
+        Score: {score}
+        Feedback:
+        {feedback}
+
+        Revised Output:
+        {revised_output}"""
+
+        os.makedirs("reflection_outputs", exist_ok=True)
+        with open(f"reflection_outputs/feedback_sample_{time.time()}.txt", "w") as f:
+            f.write(results)
+
+
 
     def _execute_core(
         self,
         agent: Optional[BaseAgent],
         context: Optional[str],
         tools: Optional[List[Any]],
-        max_iter: int = 5
+        max_iter: int = 3
     ) -> TaskOutput:
         """Run the core execution logic of the task."""
         self.description: str
@@ -92,12 +112,15 @@ class ReflectionTask(Task):
                             
                             REVISE THE PREVIOUS OUTPUTS WITH THE FOLLOWING FEEDBACK:
                             {reflection_json_output['feedback']}""")
-                    
+            previous_result = result
             result = agent.execute_task(
                 task=self,
                 context=context,
                 tools=tools,
             )
+
+            if i > 0 and previous_result and reflection_json_output:
+                self._save_feedback(previous_result, reflection_json_output["feedback"], reflection_json_output["score"], result)
 
         self.description = original_description
         pydantic_output, json_output = self._export_output(result)
