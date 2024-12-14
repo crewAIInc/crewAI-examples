@@ -58,15 +58,19 @@ class CustomCrew:
 
 
 # This is the main function that you will use to run your custom crew.
-if __name__ == "__main__":
+def main():
     print("## Welcome to Crew AI Template")
     print("-------------------------------")
-    var1 = input(dedent("""Enter variable 1: """))
-    var2 = input(dedent("""Enter variable 2: """))
+    var1 = input("Enter variable 1: ")
+    var2 = input("Enter variable 2: ")
 
     custom_crew = CustomCrew(var1, var2)
     result = custom_crew.run()
     print("\n\n########################")
-    print("## Here is you custom crew run result:")
+    print("## Here is your custom crew run result:")
     print("########################\n")
     print(result)
+
+
+if __name__ == "__main__":
+    main()
