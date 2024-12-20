@@ -22,7 +22,8 @@ class LinkedInTool(BaseTool):
             "-------------",
             p['name'],
             p['position'],
-            p['location']
+            p['location'],
+            p["profile_link"],
         ]) for p in people]
         result = "\n\n".join(result)
 

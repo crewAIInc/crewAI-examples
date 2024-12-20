@@ -6,7 +6,7 @@ authors = ["ITLackey <itlackey@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
-crewai = "^0.11.0"
+crewai = "^0.85.0"
 python-dotenv = "1.0.0"
 langchain_openai = "0.0.2"
 

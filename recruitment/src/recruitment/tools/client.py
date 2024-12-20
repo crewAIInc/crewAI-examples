@@ -31,6 +31,7 @@ class Client:
         result["name"] = person.find_element(By.CSS_SELECTOR, "span.entity-result__title-line").text
         result["position"] = person.find_element(By.CSS_SELECTOR, "div.entity-result__primary-subtitle").text
         result["location"] = person.find_element(By.CSS_SELECTOR, "div.entity-result__secondary-subtitle").text
+        result["profile_link"] = person.find_element(By.CSS_SELECTOR, "a.app-aware-link").get_attribute("href")
       except Exception as e:
         print(e)
         continue

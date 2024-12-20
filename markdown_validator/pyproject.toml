@@ -1,12 +1,11 @@
 [tool.poetry]
-name = "markdown-validation-crew"
+name = "markdown_validator"
 version = "0.1.0"
 description = ""
 authors = ["ITLackey <itlackey@gmail.com>"]
-
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
-crewai = "^0.11.0"
+crewai = "^0.85.0"
 python-dotenv = "1.0.0"
 markdown = "3.4.3"
 pymarkdownlnt = "0.9.15"
@@ -16,6 +15,9 @@ pymarkdownlnt = "0.9.15"
 useLibraryCodeForTypes = true
 exclude = [".cache"]
 
+[tool.poetry.scripts]
+markdown_validator = "markdown_validator.main:run"
+train = "markdown_validator.main:train"
 [tool.ruff]
 # https://beta.ruff.rs/docs/configuration/
 select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']

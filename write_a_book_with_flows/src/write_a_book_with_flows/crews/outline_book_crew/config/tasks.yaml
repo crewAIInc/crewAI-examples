@@ -1,0 +1,22 @@
+research_topic:
+  description: >
+    Research the provided topic of {topic} to gather the most important information that will 
+    be useful in creating a book outline. Ensure you focus on high-quality, reliable sources.
+
+    Here is some additional information about the author's desired goal for the book:\n\n {goal}
+  expected_output: >
+    A set of key points and important information about {topic} that will be used to create the outline.
+  agent: researcher
+
+generate_outline:
+  description: >
+    Create a book outline with chapters in sequential order based on the research findings. 
+    Ensure that each chapter has a title and a brief description that highlights the topics and subtopics to be covered.
+    It's important to note that each chapter is only going to be 3,000 words or less.
+    Also, make sure that you do not duplicate any chapters or topics in the outline.
+
+    Here is some additional information about the author's desired goal for the book:\n\n {goal}
+
+  expected_output: >
+    An outline of chapters, with titles and descriptions of what each chapter will contain.
+  agent: outliner

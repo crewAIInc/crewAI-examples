@@ -1,10 +1,8 @@
+# To know more about the Task class, visit: https://docs.crewai.com/concepts/tasks
 from crewai import Task
 from textwrap import dedent
 
 
-# This is an example of how to define custom tasks.
-# You can define as many tasks as you want.
-# You can also define custom agents in agents.py
 class CustomTasks:
     def __tip_section(self):
         return "If you do your BEST WORK, I'll give you a $10,000 commission!"
@@ -23,6 +21,7 @@ class CustomTasks:
             And also this variable: {var2}
         """
             ),
+            expected_output="The expected output of the task",
             agent=agent,
         )
 
@@ -37,5 +36,6 @@ class CustomTasks:
             Make sure to do something else.
         """
             ),
+            expected_output="The expected output of the task",
             agent=agent,
         )

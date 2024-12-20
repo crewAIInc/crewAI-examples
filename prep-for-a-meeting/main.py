@@ -46,11 +46,11 @@ crew = Crew(
 	]
 )
 
-game = crew.kickoff()
+result = crew.kickoff()
 
 
 # Print results
 print("\n\n################################################")
 print("## Here is the result")
 print("################################################\n")
-print(game)
+print(result)
