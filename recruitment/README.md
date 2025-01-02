@@ -31,7 +31,7 @@ It uses GPT-4o by default so you should have access to that to run it.
 - **Custom Tools**: You can find custom tools at `recruitment/src/recruitment/tools/`.
 - **Execute the Script**: Run `poetry run recruitment` and input your project details.
 
-### Stepts to get Linkedin Cookie (LI_AT)
+### Steps to get Linkedin Cookie (LI_AT)
 - Navigate to www.linkedin.com and log in
 - Open browser developer tools (Ctrl-Shift-I or right click -> inspect element)
 - Select the appropriate tab for your browser (Application on Chrome, Storage on Firefox)
