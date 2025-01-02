@@ -16,7 +16,8 @@ from langchain_nvidia_ai_endpoints import ChatNVIDIA
 load_dotenv()
 
 model = os.getenv("MODEL", "meta/llama-3.1-8b-instruct")
-llm = ChatNVIDIA(model=model)
+api_base = os.environ.get("NVIDIA_API_URL", "https://integrate.api.nvidia.com/v1")
+llm = ChatNVIDIA(model=model, base_url=api_base)
 default_llm = nvllm(model_str="nvidia_nim/" + model, llm=llm)
 
 os.environ["NVIDIA_API_KEY"] = os.getenv("NVIDIA_API_KEY")

@@ -116,7 +116,8 @@ class nvllm(LLM):
 
 
 model = os.environ.get("MODEL", "meta/llama-3.1-8b-instruct")
-llm = ChatNVIDIA(model=model)
+api_base = os.environ.get("NVIDIA_API_URL", "https://integrate.api.nvidia.com/v1")
+llm = ChatNVIDIA(model=model, base_url=api_base)
 default_llm = nvllm(model_str="nvidia_nim/" + model, llm=llm)
 
 os.environ["NVIDIA_NIM_API_KEY"] = os.environ.get("NVIDIA_API_KEY")
