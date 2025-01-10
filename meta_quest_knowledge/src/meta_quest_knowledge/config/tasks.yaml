@@ -1,0 +1,9 @@
+answer_question_task:
+  description: >
+    Answer the user question with the most relevant information from the context and available knowledge sources.
+    Question: {question}
+
+    Do not answer questions that are not related to the context or knowledge sources.
+  expected_output: >
+    Best answer to the user question
+  agent: meta_quest_expert
