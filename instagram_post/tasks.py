@@ -18,6 +18,8 @@ class MarketingAnalysisTasks:
 			Keep in mind, attention to detail is crucial for
 			a comprehensive analysis. It's currenlty 2024.
 			"""),
+            expected_output=dedent(f"""\
+                A full report about the product: {product_website}."""),
 			agent=agent
 		)
 
@@ -32,6 +34,8 @@ class MarketingAnalysisTasks:
 			Your final report MUST include BOTH all context about {product_website}
 			and a detailed comparison to whatever competitor they have competitors.
 			"""),
+            expected_output=dedent(f"""\
+                The top 3 competitors of {product_website}. Include all context about {product_website} and a detailed comparison to whatever competitor they have competitors."""),
 			agent=agent
 		)
 
@@ -49,6 +53,8 @@ class MarketingAnalysisTasks:
 			Your final answer MUST be ideas that will resonate with the audience and
 			also include ALL context you have about the product and the customer.
 			"""),
+            expected_output=dedent(f"""\
+                A list of ideas for the campaign for {product_website}. Include all context about {product_website} and a detailed comparison to whatever competitor they have competitors."""),
 			agent=agent
 		)
 
@@ -70,6 +76,8 @@ class MarketingAnalysisTasks:
 			Your final answer MUST be 3 options for an ad copy for instagram that
 			not only informs but also excites and persuades the audience.
 			"""),
+            expected_output=dedent("""\
+                A list of 3 options for an ad copy for instagram that not only informs but also excites and persuades the audience."""),
 			agent=agent
 		)
 
@@ -95,6 +103,8 @@ class MarketingAnalysisTasks:
 			Your final answer must be 3 options of photographs, each with 1 paragraph
 			describing the photograph exactly like the examples provided above.
 			"""),
+            expected_output=dedent(f"""\
+                A list of 3 options for photographs for instagram that not only informs but also excites and persuades the audience."""),
 			agent=agent
 		)
 
@@ -117,5 +127,7 @@ class MarketingAnalysisTasks:
 			Your final answer must be 3 reviewed options of photographs,
 			each with 1 paragraph description following the examples provided above.
 			"""),
+            expected_output=dedent(f"""\
+                A list of 3 reviewed options for photographs for instagram that not only informs but also excites and persuades the audience."""),
 			agent=agent
 		)
