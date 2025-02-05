@@ -18,6 +18,7 @@ class MarketingAnalysisTasks:
 			Keep in mind, attention to detail is crucial for
 			a comprehensive analysis. It's currenlty 2024.
 			"""),
+			expected_output='A paragraph containing the features and the benefifts of the product.',
 			agent=agent
 		)
 
@@ -32,6 +33,7 @@ class MarketingAnalysisTasks:
 			Your final report MUST include BOTH all context about {product_website}
 			and a detailed comparison to whatever competitor they have competitors.
 			"""),
+			expected_output='A paragraph containing the description of the competitiors.',
 			agent=agent
 		)
 
@@ -49,6 +51,7 @@ class MarketingAnalysisTasks:
 			Your final answer MUST be ideas that will resonate with the audience and
 			also include ALL context you have about the product and the customer.
 			"""),
+			expected_output='A paragraph containing the strategy to sell the product.',
 			agent=agent
 		)
 
@@ -70,6 +73,7 @@ class MarketingAnalysisTasks:
 			Your final answer MUST be 3 options for an ad copy for instagram that
 			not only informs but also excites and persuades the audience.
 			"""),
+			expected_output='A paragraph containing the text of an engaging story in instagram.',
 			agent=agent
 		)
 
@@ -95,6 +99,7 @@ class MarketingAnalysisTasks:
 			Your final answer must be 3 options of photographs, each with 1 paragraph
 			describing the photograph exactly like the examples provided above.
 			"""),
+			expected_output='A prompt for midjourney that will generate an impactful image to sell the product.',
 			agent=agent
 		)
 
@@ -117,5 +122,6 @@ class MarketingAnalysisTasks:
 			Your final answer must be 3 reviewed options of photographs,
 			each with 1 paragraph description following the examples provided above.
 			"""),
+			expected_output='A paragraph containing a review of the photo used to sell the product.',
 			agent=agent
 		)
