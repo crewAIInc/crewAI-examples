@@ -5,7 +5,7 @@ This is a fork of [crewAIInc/crewAI-examples](https://github.com/crewAIInc/crewA
 
 Template
   - [Starter Template](https://github.com/joaomdmoura/crewAI-examples/tree/main//starter_template)
-  - [crewai.com/templates](https://www.crewai.com/templates).
+  - [crewai.com/templates](https://www.crewai.com/templates)
     
 ## Workflows
 - [Marketing Strategy](https://github.com/joaomdmoura/crewAI-examples/tree/main/marketing_strategy)
