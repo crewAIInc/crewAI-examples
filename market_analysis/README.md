@@ -9,8 +9,8 @@ Both agents might pull data from similar sources (financial news, market feeds, 
 By [@laverdes](https://github.com/laverdes)
 
 - [CrewAI Framework](#crewai-framework)
-- [Running the script](#running-the-script)
-- [Details & Explanation](#details--explanation)
+- [Running the script](#running-the-script) 🚧
+- [Details & Explanation](#details--explanation) 🚧
 - [License](#license)
 
 ## CrewAI Framework
@@ -18,11 +18,7 @@ CrewAI is designed to facilitate the collaboration of role-playing AI agents. In
 
 ## Running the Script
 
-🚧.
-
 ## Details & Explanation
-
-🚧.
 
 ## License
 This project is released under the MIT License.
