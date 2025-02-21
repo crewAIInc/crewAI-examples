@@ -1,6 +1,6 @@
-# Research Paper Analyzer with Amazon Bedrock
+# Research Paper Analyzer
 
-A sophisticated research paper analysis system powered by [CrewAI](https://crewai.com) and [Amazon Bedrock](https://aws.amazon.com/bedrock/). This project leverages multiple specialized AI agents to perform comprehensive analysis of academic papers, providing detailed technical analysis, literature review, and actionable insights.
+A sophisticated research paper analysis system powered by [CrewAI](https://crewai.com) and [Amazon Bedrock](https://aws.amazon.com/bedrock/) that analyzes academic papers and generates comprehensive reports with executive summaries, key insights, and actionable recommendations.
 
 ## Overview
 
