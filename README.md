@@ -20,6 +20,7 @@ By [@joaomdmoura](https://x.com/joaomdmoura).
 - [Create Instagram Post](https://github.com/joaomdmoura/crewAI-examples/tree/main/instagram_post)
 - [Markdown Validator](https://github.com/joaomdmoura/crewAI-examples/tree/main/markdown_validator)
 - [Using Azure OpenAI API](https://github.com/joaomdmoura/crewAI-examples/tree/main/azure_model)
+- [Research Paper Analyzer with Bedrock](https://github.com/joaomdmoura/crewAI-examples/tree/main/research_analyzer_with_bedrock)
 
 Starting your own example
   - [Starter Template](https://github.com/joaomdmoura/crewAI-examples/tree/main//starter_template)
