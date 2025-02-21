@@ -1,0 +1,19 @@
+[project]
+name = "research-analyzer-ai"
+version = "0.1.0"
+description = "An AI-powered research paper analysis system"
+readme = "README.md"
+requires-python = ">=3.10.0,<3.13"
+dependencies = [
+    "boto3 (>=1.36.24,<2.0.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)",
+    "crewai (>=0.102.0,<0.103.0)",
+    "dotenv (>=0.9.9,<0.10.0)",
+    "langchain-community (>=0.3.18,<0.4.0)",
+    "pypdf (>=5.3.0,<6.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
