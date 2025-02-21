@@ -24,10 +24,10 @@ The system operates through four specialized agents:
 
 ### Prerequisites
 
-- Python 3.9+
-- AWS Account with Bedrock access
-- AWS credentials configured
-- Access to Claude-3 Sonnet model in Bedrock
+- Python 3.10+
+- AWS Account with Amazon Bedrock access
+- An AWS IAM role with permissions to access Amazon Bedrock, configured following [AWS IAM security best practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-workloads-use-roles)
+- [Access to Claude-3.5 Sonnet model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access-modify.html) in Amazon Bedrock
 
 ### Setup
 
@@ -43,11 +43,9 @@ poetry install --no-root
 3. Create a .env file in the project root:
 ```bash
 AWS_REGION_NAME=us-west-2
-BEDROCK_MODEL_ID=anthropic.claude-3-sonnet-20240229-v1:0
+BEDROCK_MODEL_ID=bedrock/anthropic.claude-3-5-sonnet-20240620-v1:0
 MAX_OUTPUT_TOKENS=4096
 TEMPERATURE=0.7
-AWS_ACCESS_KEY_ID=your_access_key
-AWS_SECRET_ACCESS_KEY=your_secret_key
 ```
 ### Usage
 
