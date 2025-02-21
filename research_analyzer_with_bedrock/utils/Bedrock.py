@@ -12,10 +12,6 @@ def load_bedrock_llm() -> LLM:
     2. Configures the Bedrock LLM with Claude-3 Sonnet model
     3. Returns a CrewAI-compatible LLM instance
 
-    Required environment variables:
-    - AWS credentials should be configured in the environment or ~/.aws/credentials
-    - Region settings should be configured in AWS CLI or environment
-
     Returns:
         LLM: Configured CrewAI LLM instance using Claude-3 Sonnet model
 
