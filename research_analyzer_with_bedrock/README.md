@@ -60,21 +60,6 @@ Using CrewAI CLI:
     
     poetry run crew run --pdf_path path/to/your/paper.pdf
 
-### Project Structure
-
-research-paper-analyzer/
-├── main.py                 # Main execution script
-├── analyze_paper.py        # CrewAI process file
-├── crew.yaml              # CrewAI configuration
-├── pyproject.toml        # Poetry configuration
-├── README.md
-├── agents.py             # Agent definitions
-├── tasks.py             # Task definitions
-└── utils/
-    ├── __init__.py
-    ├── Bedrock.py       # AWS Bedrock integration
-    └── PdfReader.py     # PDF processing utilities
-
 Features
 
     Comprehensive Analysis: Multi-faceted examination of research papers
@@ -83,14 +68,6 @@ Features
     PDF Processing: Automatic extraction and processing of PDF papers
     Structured Output: Clear, organized analysis reports
 
-### Running Tests
-
-    poetry run pytest
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-    CrewAI 
