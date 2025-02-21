@@ -26,7 +26,7 @@ The system operates through four specialized agents:
 
 - Python 3.10+
 - AWS Account with Amazon Bedrock access
-- An AWS IAM role with permissions to access Amazon Bedrock, configured following [AWS IAM security best practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-workloads-use-roles)
+- An AWS IAM role with permissions to access Amazon Bedrock, configured following [AWS IAM security best practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)
 - [Access to Claude-3.5 Sonnet model](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access-modify.html) in Amazon Bedrock
 
 ### Setup
