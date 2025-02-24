@@ -1,0 +1,151 @@
+---
+destination_research_task:
+  agent: destination_researcher
+  description: >
+    Conduct thorough research on {destination_location}, considering {travel_timeline}. 
+    Analyze climate, local events, and tourist traffic. If not provided in {travel_timeline}, 
+    suggest the optimal trip length and provide insights about the destination, including 
+    key attractions, cultural nuances, and potential challenges.
+  expected_output: >
+    A comprehensive report detailing the trip length for {destination_location}  considering 
+    {travel_timeline}. The report should include insights about the destination's climate, local 
+    events, and tourist traffic patterns. It should also highlight key attractions, cultural 
+    nuances, and potential challenges.  Provide a justification for the recommended trip length.
+    
+    For example: 
+    For your desired {travel_timeline}, we recommend the following travel dates: [Departure date] 
+    - [Return date]. This allows ample time to explore the historical sites, experience local cuisine, and attend 
+    the [local event] festival.
+
+    If length is not provided in {travel_timeline}, example:
+    Based on your {travel_timeline}, the optimal trip length for {destination_location} is 5 days.  
+    This allows ample time to explore the historical sites, experience local cuisine, and attend 
+    the [local event] festival.
+  
+
+travel_options_task:
+  agent: travel_options_researcher
+  description: >
+    Research and identify the best travel options (car, flights) from {origin_location} to 
+    {destination_location}. Evaluate cost, duration, convenience, and environmental impact. Provide 
+    specific recommendations with details on providers, schedules, and estimated costs. Only recommend 
+    flights or car travel, never recommend both. Recommend the most cost-effective option.
+  expected_output: >
+    A detailed list of recommended travel options from {origin_location} to {destination_location}
+    considering {travel_timeline} and recommendations made in previous task.  For each option, provide 
+    details on the transportation provider, schedule (if applicable), estimated travel time, and 
+    estimated cost.
+    
+    Examples:
+    Only recommend flights or car travel, never recommend both. Recommend the most cost-effective option.
+
+    For flights use the following template:
+    **Flight: $[Price]**
+    Inbound: 
+    - Airlines: [Airlines list]
+    - Flight numbers: [Flight numbers]
+    - Origin departure date and time: [Departure date], [Departure time]
+    - Destination Arrival date and time: [Arrival date], [Arrival time]
+    
+    Outbound: 
+    - Airlines: [Airlines list]
+    - Flight numbers: [Flight numbers]
+    - Origin departure date and time: [Departure date], [Departure time]
+    - Destination Arrival date and time: [Arrival date], [Arrival time]
+    
+    For car travel use the following template:
+    **Car:**
+    - Estimated cost: $[Price] (fuel and tolls)
+    - Travel time: [Time]
+    - Distance: [Distance] miles
+  
+accommodation_search_task:
+  agent: accommodation_researcher
+  description: >
+    Find suitable accommodation options in {destination_location} for the recommended travel dates. Evaluate 
+    price, location, amenities, guest reviews, and accessibility. Provide a list of recommendations with 
+    details on each option.
+  expected_output: >
+    A list of recommended accommodations in {destination_location} for the travel dates. For each accommodation, 
+    provide the name, address, website (if available), price per night, a brief description of amenities, and a 
+    summary of guest reviews. 
+    
+    Example:
+    Accomodation dates: [Check-in date] - [Check-out date]
+
+    1. [Hotel Name]: [Address] 
+    - Total price: $[Price]
+    - [Description of amenities] 
+    - Guest reviews: "Excellent location, clean rooms, friendly staff." 
+    
+    2. [Airbnb Listing]: [Link] 
+    - Total price: $[Price]/night 
+    - [Description of amenities] 
+    - Guest reviews: "Cozy apartment, great host, convenient location."
+  
+itinerary_planning_task:
+  agent: itinerary_planner
+  description: >
+    Create a detailed daily itinerary for the suggested travel dates in {destination_location}. Consider travel time, 
+    opening hours, cost, and popularity. Provide alternative options and backup plans. Ensure a balance of structured 
+    activities and free time.
+  expected_output: >
+    A comprehensive daily itinerary for the trip to {destination_location}. Each day should include a detailed plan with 
+    specific activities, suggested dining options, and estimated time allocation. Include addresses and contact information 
+    for attractions and restaurants. Provide alternative options for activities and dining in case of unforeseen circumstances. 
+    
+    Example: 
+    Day 1: 
+    Morning: Arrive at [Airport], check into [Hotel]. 
+    Afternoon: Visit [Museum] ([Address], [Website], [Opening hours]). 
+    Evening: Dinner at [Restaurant] ([Address], [Cuisine type]). 
+    
+    Day 2: 
+    Morning: Explore [Historical site]. 
+    Afternoon: Relax at [Beach/Park]. 
+    Evening: Enjoy a local food tour.  
+    Alternative activity: [Other attraction]. 
+    Alternative dining: [Other restaurant].
+  context:
+  - destination_research_task
+  - travel_options_task
+  - accommodation_search_task
+
+report_generation_task:
+  agent: report_generator
+  description: >
+    Compile all gathered information into a comprehensive, easy-to-read travel report
+    for {destination_location}.
+  expected_output: >
+    A comprehensive travel report for {destination_location}, covering the recommended
+    travel dates and its key attractions. The report should use Markdown formatting without 
+    '```' and organized into the following sections:
+
+    1. Executive Summary
+       - Brief overview of the trip
+       - Key highlights and recommendations
+
+    2. Destination Overview
+       - General information about {destination_location}
+       - Climate and best time to visit
+       - Cultural nuances and local customs
+
+    3. Dining and Culinary Experiences
+       - Must-try local dishes
+       - Recommended restaurants and food tours
+
+    4. Additional Information
+       - Safety tips
+       - Packing suggestions
+       - Useful phrases in the local language
+
+    5. Conclusion
+       - Final thoughts and recommendations
+
+    The report should be easy to read, visually appealing, and include relevant
+    links, contact information, and images where appropriate.
+  context:
+  - destination_research_task
+  - travel_options_task
+  - accommodation_search_task
+  - itinerary_planning_task
