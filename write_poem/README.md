@@ -1,7 +1,7 @@
 # WritePoem Crew
 
 Welcome to the WritePoem Crew project, powered by [crewAI](https://crewai.com). 
-- This simple example demonstrates how to use CrewAI to (re)running tasks with feedback from another tasks.
+- This simple example demonstrates how to use CrewAI to (re)run tasks with feedback from another tasks in a loop.
 - It demonstrates a poet writing a poem, and critic giving feedback and the poet the iterates on the feedback.
 
 ## Installation
