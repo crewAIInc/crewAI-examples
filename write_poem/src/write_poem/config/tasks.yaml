@@ -1,0 +1,16 @@
+write_poem:
+  description: >
+    Compose a poem on the specified {topic} with a maximum of 50 words.
+  expected_output: A new poem on given topic.
+  agent: writer
+
+rewrite_poem:
+  description: >
+    Enhance the given poem based on the given feedback.
+  expected_output:  Poem updated with the given feedback.
+  agent: writer
+
+critique_poem:
+  description: Analyze the poem and provide constructive feedback.
+  expected_output: A detailed critique with top 3 suggestions for improvement.
+  agent: critic
