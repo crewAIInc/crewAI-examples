@@ -1,5 +1,5 @@
 [project]
-name = "Meta Quest Knowledge"
+name = "meta_quest_knowledge"
 version = "0.1.0"
 description = "Knowledge Example using crewAI"
 authors = [{ name = "Mike Plachta", email = "mike@crewai.com" }]
