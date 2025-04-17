@@ -92,5 +92,5 @@ class JobPostingCrew:
             agents=self.agents,  # Automatically created by the @agent decorator
             tasks=self.tasks,  # Automatically created by the @task decorator
             process=Process.sequential,
-            verbose=2,
+            verbose=True,
         )
