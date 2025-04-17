@@ -10,7 +10,7 @@ from write_a_book_with_flows.crews.write_book_chapter_crew.write_book_chapter_cr
 )
 from write_a_book_with_flows.types import Chapter, ChapterOutline
 
-from .crews.outline_book_crew.outline_crew import OutlineCrew
+from write_a_book_with_flows.crews.outline_book_crew.outline_crew import OutlineCrew
 
 
 class BookState(BaseModel):
