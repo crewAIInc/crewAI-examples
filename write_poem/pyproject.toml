@@ -1,0 +1,24 @@
+[project]
+name = "write_poem"
+version = "0.1.0"
+description = "write-poem using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.102.0,<1.0.0",
+    'crewai[agentops]'
+]
+
+[project.scripts]
+write_poem = "write_poem.main:run"
+run_crew = "write_poem.main:run"
+train = "write_poem.main:train"
+replay = "write_poem.main:replay"
+test = "write_poem.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
