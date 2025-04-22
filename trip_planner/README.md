@@ -1,95 +1,88 @@
-# AI Crew for Trip Planning
-## Introduction
-This project is an example using the CrewAI framework to automate the process of planning a trip if you are in doubt between different options. CrewAI orchestrates autonomous AI agents, enabling them to collaborate and execute complex tasks efficiently.
+# TripPlanner with CrewAI
 
-By [@joaomdmoura](https://x.com/joaomdmoura)
+Welcome to TripPlanner with CrewAI, a sophisticated travel planning system powered by [crewAI](https://crewai.com). This project leverages a multi-agent AI system to create comprehensive travel plans tailored to your preferences.
 
-- [CrewAI Framework](#crewai-framework)
-- [Running the script](#running-the-script)
-- [Details & Explanation](#details--explanation)
-- [Using GPT 3.5](#using-gpt-35)
-- [Using Local Models with Ollama](#using-local-models-with-ollama)
-- [Contributing](#contributing)
-- [Support and Contact](#support-and-contact)
-- [License](#license)
+## Overview
 
-## CrewAI Framework
-CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to choose between different of cities and put together a full itinerary for the trip based on your preferences.
+TripPlanner with CrewAI utilizes a team of specialized AI agents to research destinations, find optimal travel options, search for accommodations, plan detailed itineraries, and compile comprehensive travel reports. The system is designed to provide a seamless and personalized travel planning experience.
 
-## Running the Script
-It uses GPT-4 by default so you should have access to that to run it.
+## Key Features
 
-***Disclaimer:** This will use gpt-4 unless you changed it 
-not to, and by doing so it will cost you money.*
+- Destination research and analysis
+- Travel options optimization (flights or car travel)
+- Accommodation recommendations
+- Detailed daily itinerary planning
+- Comprehensive travel report generation
 
-- **Configure Environment**: Copy ``.env.example` and set up the environment variables for [Browseless](https://www.browserless.io/), [Serper](https://serper.dev/) and [OpenAI](https://platform.openai.com/api-keys)
-- **Install Dependencies**: Run `poetry install --no-root`.
-- **Execute the Script**: Run `poetry run python main.py` and input your idea.
+## Installation
 
-## Details & Explanation
-- **Running the Script**: Execute `python main.py`` and input your idea when prompted. The script will leverage the CrewAI framework to process the idea and generate a landing page.
-- **Key Components**:
-  - `./main.py`: Main script file.
-  - `./trip_tasks.py`: Main file with the tasks prompts.
-  - `./trip_agents.py`: Main file with the agents creation.
-  - `./tools`: Contains tool classes used by the agents.
+Ensure you have Python >=3.10 <3.13 installed. This project uses [UV](https://docs.astral.sh/uv/) for dependency management.
 
-## Using GPT 3.5
-CrewAI allow you to pass an llm argument to the agent constructor, that will be it's brain, so changing the agent to use GPT-3.5 instead of GPT-4 is as simple as passing that argument on the agent you want to use that LLM (in `main.py`).
-```python
-from langchain.chat_models import ChatOpenAI
+1. Install UV:
 
-llm = ChatOpenAI(model='gpt-3.5') # Loading GPT-3.5
+   ```bash
+   pip install uv
+   ```
 
-def local_expert(self):
-	return Agent(
-		role='Local Expert at this city',
-		goal='Provide the BEST insights about the selected city',
-		backstory="""A knowledgeable local guide with extensive information
-		about the city, it's attractions and customs""",
-		tools=[
-			SearchTools.search_internet,
-			BrowserTools.scrape_and_summarize_website,
-		],
-		llm=llm, # <----- passing our llm reference here
-		verbose=True
-	)
+2. Install dependencies:
+
+   ```bash
+   crewai install
+   ```
+
+3. Add your env variables to the `.env` file.
+
+* `OPENAI_API_KEY` - API key for the [OpenAI API](https://platform.openai.com/docs/guides)
+* `SERPAPI_API_KEY` - API key for the [Serp API](https://serpapi.com/dashboard)
+* `SERPER_API_KEY` - API key for the [Serper](https://serper.dev/)
+
+## Configuration
+
+- `src/trip_planner/config/agents.yaml`: Define AI agents (e.g., destination researcher, travel options specialist)
+- `src/trip_planner/config/tasks.yaml`: Specify tasks for each agent
+- `src/trip_planner/crew.py`: Customize logic, tools, and arguments
+- `src/trip_planner/main.py`: Add custom inputs for agents and tasks
+
+## Usage
+
+Run the TripPlanner with CrewAI from the project root:
+
+```bash
+crewai run
 ```
 
-## Using Local Models with Ollama
-The CrewAI framework supports integration with local models, such as Ollama, for enhanced flexibility and customization. This allows you to utilize your own models, which can be particularly useful for specialized tasks or data privacy concerns.
+This command initializes the AI agents and executes the travel planning process based on your configurations.
 
-### Setting Up Ollama
-- **Install Ollama**: Ensure that Ollama is properly installed in your environment. Follow the installation guide provided by Ollama for detailed instructions.
-- **Configure Ollama**: Set up Ollama to work with your local model. You will probably need to [tweak the model using a Modelfile](https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md), I'd recommend adding `Observation` as a stop word and playing with `top_p` and `temperature`.
+## AI Agents
 
-### Integrating Ollama with CrewAI
-- Instantiate Ollama Model: Create an instance of the Ollama model. You can specify the model and the base URL during instantiation. For example:
+- Destination Research Specialist
+- Travel Options Specialist
+- Accommodation Specialist
+- Itinerary Planner
+- Travel Report Compiler
 
-```python
-from langchain.llms import Ollama
-ollama_openhermes = Ollama(model="agent")
-# Pass Ollama Model to Agents: When creating your agents within the CrewAI framework, you can pass the Ollama model as an argument to the Agent constructor. For instance:
+Each agent has specific roles and goals, collaborating to create a comprehensive travel plan.
 
-def local_expert(self):
-	return Agent(
-		role='Local Expert at this city',
-		goal='Provide the BEST insights about the selected city',
-		backstory="""A knowledgeable local guide with extensive information
-		about the city, it's attractions and customs""",
-		tools=[
-			SearchTools.search_internet,
-			BrowserTools.scrape_and_summarize_website,
-		],
-		llm=ollama_openhermes, # Ollama model passed here
-		verbose=True
-	)
-```
+## Output
 
-### Advantages of Using Local Models
-- **Privacy**: Local models allow processing of data within your own infrastructure, ensuring data privacy.
-- **Customization**: You can customize the model to better suit the specific needs of your tasks.
-- **Performance**: Depending on your setup, local models can offer performance benefits, especially in terms of latency.
+The system generates a detailed travel report (`report.md`) in the root folder, including:
 
-## License
-This project is released under the MIT License.
+1. Executive Summary
+2. Destination Overview
+3. Travel Options
+4. Accommodation Recommendations
+5. Detailed Daily Itinerary
+6. Dining and Culinary Experiences
+7. Additional Information
+8. Conclusion
+
+## Support
+
+For assistance or inquiries:
+
+- [Documentation](https://docs.crewai.com)
+- [GitHub Repository](https://github.com/joaomdmoura/crewai)
+- [Discord Community](https://discord.com/invite/X4JWnZnxPb)
+- [Chat with our docs](https://chatg.pt/DWjSBZn)
+
+Experience the future of travel planning with TripPlanner AI!
