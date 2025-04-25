@@ -5,12 +5,9 @@ This is a collection of examples of different ways to use the crewAI framework t
 By [@joaomdmoura](https://x.com/joaomdmoura).
 
 ## Examples
-- [Marketing Strategy](https://github.com/joaomdmoura/crewAI-examples/tree/main/marketing_strategy)
-- [Surprise Trip](https://github.com/joaomdmoura/crewAI-examples/tree/main/surprise_trip)
-- [Match to Proposal](https://github.com/joaomdmoura/crewAI-examples/tree/main/match_profile_to_positions)
-- [Find Job Candidades Demo](https://github.com/joaomdmoura/crewAI-examples/tree/main/recruitment)
-- [Create Job Posting](https://github.com/joaomdmoura/crewAI-examples/tree/main/job-posting)
-- [Game Generator](https://github.com/joaomdmoura/crewAI-examples/tree/main/game-builder-crew)
+- [Find Job Candidates Demo](https://github.com/joaodmoura/crewAI-examples/tree/main/recruitment)
+- [Create Job Posting](https://github.com/joaodmoura/crewAI-examples/tree/main/job-posting)
+- [Game Generator](https://github.com/joaodmoura/crewAI-examples/tree/main/game-builder-crew)
 
 ## Old Examples, need to be updated
 
