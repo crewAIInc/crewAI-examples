@@ -35,12 +35,6 @@ def check_email(checked_emails_ids: set[str]) -> tuple[list[Email], set[str]]:
     return new_emails, checked_emails_ids
 
 
-def wait_next_run(state):
-    print("## Waiting for 180 seconds")
-    time.sleep(180)
-    return state
-
-
 def new_emails(state):
     if len(state["emails"]) == 0:
         print("## No new emails")
