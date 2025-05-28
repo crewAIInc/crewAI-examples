@@ -1,0 +1,51 @@
+extract_exam_info:
+  description: >
+    Extract subject, exam date, topics, and other relevant information from the input
+  expected_output: >
+    A list of the exam information
+  agent: input_interpreter
+
+build_schedule:
+  description: >
+    create a day-wise study plan that distributes the topics evenly across the days till the exam date
+  expected_output: >
+    A list of the study plan
+  agent: schedule_builder
+
+build_strategy:
+  description: >
+    provide practical and effective study strategies for the exam
+  expected_output: >
+    A list of the study strategies
+  agent: strategy_planner 
+
+fetch_youtube_videos:
+  description: >
+    For each exam topic, use the YouTubeTool to find and provide 2-3 direct YouTube video links that are:
+    1. Highly relevant to the specific topic
+    2. From reputable educational channels
+    3. Appropriate for the academic level
+    4. Include the video title, channel name, and direct URL
+    Format the output as a markdown list with clear topic headers and video details.
+  expected_output: >
+    A structured list of YouTube video resources for each topic, including:
+    - Topic header
+    - For each video:
+      * Title
+      * Channel name
+      * Direct URL
+      * Brief description of why it's relevant
+  agent: youtube_fetcher 
+
+format_output:
+  description: >
+    Format the output into a well-structured markdown document with the following sections:
+    1. Exam Overview (subject, date, topics)
+    2. Study Schedule (day-by-day breakdown)
+    3. Study Strategies (for each topic)
+    4. Learning Resources (YouTube videos links and other resources)
+  expected_output: >
+    A well-formatted markdown document with clear sections, headers, and proper markdown formatting
+  agent: output_formatter 
+
+
