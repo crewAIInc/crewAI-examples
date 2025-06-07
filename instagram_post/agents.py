@@ -94,7 +94,7 @@ class MarketingAnalysisAgents:
 				verbose=True
 		)
 
-	def chief_creative_diretor_agent(self):
+	def chief_creative_director_agent(self):
 		return Agent(
 				role="Chief Creative Director",
 				goal=dedent("""\
