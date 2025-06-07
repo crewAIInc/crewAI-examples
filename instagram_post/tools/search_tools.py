@@ -37,7 +37,7 @@ class SearchTools():
             f"Snippet: {result['snippet']}", "\n-----------------"
         ]))
       except KeyError:
-        next
+        continue
 
     content = '\n'.join(stirng)
     return f"\nSearch result: {content}\n"
