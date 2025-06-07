@@ -6,8 +6,8 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
-crewai = "^0.11.0"
-unstructured = '==0.10.25'
+crewai = "^0.126.0"
+unstructured = '>=0.16.20,<0.18.0'
 pyowm = '3.3.0'
 tools = "^0.1.9"
 python-dotenv = "1.0.0"
