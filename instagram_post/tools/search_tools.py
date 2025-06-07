@@ -29,16 +29,16 @@ class SearchTools():
     }
     response = requests.request("POST", url, headers=headers, data=payload)
     results = response.json()['organic']
-    stirng = []
+    string = []
     for result in results[:n_results]:
       try:
-        stirng.append('\n'.join([
+        string.append('\n'.join([
             f"Title: {result['title']}", f"Link: {result['link']}",
             f"Snippet: {result['snippet']}", "\n-----------------"
         ]))
       except KeyError:
         next
 
-    content = '\n'.join(stirng)
+    content = '\n'.join(string)
     return f"\nSearch result: {content}\n"
 
