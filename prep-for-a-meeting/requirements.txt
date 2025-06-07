@@ -1,4 +1,4 @@
 langchain-exa==0.0.1
 exa_py==1.0.7
 python-dotenv==1.0.1
-crewai==0.11.0
+crewai>=0.126.0,<0.130.0
