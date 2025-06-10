@@ -1,5 +1,6 @@
 # 💼 LinkedinPostAutomater Crew
 
+![LinkedIn_Post_Automater.png](LinkedIn_Post_Automater.png)
 Welcome to **LinkedIn Post Automater** — an intelligent, multi-agent system powered by [crewAI](https://crewai.com) that transforms how professionals create and publish content on LinkedIn.
 
 Whether you're building your personal brand or managing corporate communication, this system automates the heavy lifting: from sourcing trending news to crafting and posting impactful updates — all done intelligently and consistently.
