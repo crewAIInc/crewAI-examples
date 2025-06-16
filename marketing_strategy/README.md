@@ -26,6 +26,10 @@ It uses GPT-4o by default so you should have access to that to run it.
 - **Customize Further**: Check `src/marketing_posts/config/agents.yaml` to update your agents and `src/marketing_posts/config/tasks.yaml` to update your tasks.
 - **Execute the Script**: Run `poetry run marketing_posts` and input your project details.
 
+## Running the Script in Docker
+Run `docker compose up`. There's no need to configure any keys, by default the containerized script uses
+[Docker Model Runner](https://docs.docker.com/ai/model-runner/) and [Docker MCP Catalog](https://hub.docker.com/catalogs/mcp).
+
 ## Details & Explanation
 - **Running the Script**: Execute `poetry run marketing_posts`. The script will leverage the CrewAI framework to generate a detailed marketing strategy.
 - **Key Components**:
