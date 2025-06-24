@@ -21,7 +21,7 @@ It uses GPT-4o by default so you should have access to that to run it.
 ***Disclaimer:** This will use gpt-4o unless you change it to use a different model, and by doing so it may incur in different costs.*
 
 - **Configure Environment**: Copy `.env.example` and set up the environment variables for [OpenAI](https://platform.openai.com/api-keys) and other tools as needed, like [Serper](serper.dev).
-- **Install Dependencies**: Run `poetry lock && poetry install`.
+- **Install Dependencies**: Run `poetry lock && poetry install` (uses crewAI==0.130.0).
 - **Customize**: Modify `src/game_builder_crew/main.py` to add custom inputs for your agents and tasks.
 - **Customize Further**: Check `src/game_builder_crew/config/agents.yaml` to update your agents and `src/game_builder_crew/config/tasks.yaml` to update your tasks.
 - **Execute the Script**: Run `poetry run game_builder_crew` and input your project details.

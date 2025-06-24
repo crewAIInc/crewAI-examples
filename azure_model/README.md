@@ -7,7 +7,7 @@ This is a simple example using the CrewAI framework with an Azure Open AI endpoi
 This example uses the Azure OpenAI API to call a model. 
 
 - **Configure Environment**: Copy ``.env.example` and set up the environment variables the model, endpoint url, and api key.
-- **Install Dependencies**: Run `poetry install --no-root`.
+- **Install Dependencies**: Run `poetry install --no-root` (uses crewAI==0.130.0).
 - **Execute the Script**: Run `python main.py` to see a list of recommended changes to this document.
 
 ## Details & Explanation

@@ -22,7 +22,7 @@ This example uses GPT-4.
 
 - **Configure Environment**: Copy ``.env.example` and set up the environment variable
 - **Setup a credentials.json**: Follow the [google instructions](https://developers.google.com/gmail/api/quickstart/python#authorize_credentials_for_a_desktop_application), once you’ve downloaded the file, name it `credentials.json` and add to the root of the project,
-- **Install Dependencies**: Run `pip install -r requirements.txt`
+- **Install Dependencies**: Run `pip install -r requirements.txt` (includes crewAI==0.130.0)
 - **Execute the Script**: Run `python main.py`
 
 ## Details & Explanation

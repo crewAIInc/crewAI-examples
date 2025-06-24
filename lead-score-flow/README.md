@@ -21,7 +21,7 @@ By following this flow, you can efficiently automate the process of scoring lead
 Ensure you have Python >=3.10 <=3.13 installed on your system. First, if you haven't already, install CrewAI:
 
 ```bash
-pip install crewai
+pip install crewai==0.130.0
 ```
 
 Next, navigate to your project directory and install the dependencies:

@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.12,<=3.13"
-crewai = {extras = ["tools"], version = "^0.85.0"}
+crewai = {extras = ["tools"], version = "^0.130.0"}
 python-dotenv = "^1.0.1"
 html2text = "^2024.2.26"
 sec-api = "^1.0.20"

@@ -22,7 +22,7 @@ This example uses OpenHermes 2.5 through Ollama by default so you should to down
 You can change the model by changing the `MODEL` env var in the `.env` file.
 
 - **Configure Environment**: Copy ``.env.example` and set up the environment variables for [Browseless](https://www.browserless.io/), [Serper](https://serper.dev/).
-- **Install Dependencies**: Run `poetry install --no-root`.
+- **Install Dependencies**: Run `poetry install --no-root` (uses crewAI==0.130.0).
 - **Execute the Script**: Run `python main.py` and input your idea.
 
 ## Details & Explanation

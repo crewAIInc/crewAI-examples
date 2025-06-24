@@ -6,7 +6,7 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
-crewai = "^0.85.0"
+crewai = "^0.130.0"
 python-dotenv = "1.0.0"
 
 [tool.pyright]
