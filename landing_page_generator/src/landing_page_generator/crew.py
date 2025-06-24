@@ -221,19 +221,61 @@ class LandingPageCrew():
         return json.loads(result)
 
     def runCreateContentCrew(self,components, expanded_idea):
+        from pathlib import Path
+        import re
+        
+        # Establish safe working directory
+        workdir = Path("./workdir").resolve()
 
         for component_path in components:
-            file_content = open(
-            f"./workdir/{component_path.split('./')[-1]}",
-            "r"
-        ).read()
-            inputs3={
-            "component": component_path,
-            "expanded_idea": expanded_idea,
-            "file_content": file_content
-            }
+            try:
+                # Validate component_path
+                if not isinstance(component_path, str):
+                    print(f"Warning: Skipping invalid component path: {component_path}")
+                    continue
+                
+                # Extract filename safely
+                filename = component_path.split('./')[-1]
+                
+                # Validate filename contains only safe characters
+                if not re.match(r'^[a-zA-Z0-9._\-]+$', filename):
+                    print(f"Warning: Skipping component with invalid filename: {filename}")
+                    continue
+                
+                # Validate the filename doesn't contain path traversal
+                if ".." in filename or "/" in filename:
+                    print(f"Warning: Skipping component with unsafe filename: {filename}")
+                    continue
+                
+                # Create safe file path
+                file_path = workdir / filename
+                
+                # Resolve and validate the path is within workdir
+                resolved_path = file_path.resolve()
+                if not str(resolved_path).startswith(str(workdir)):
+                    print(f"Warning: Skipping component outside workdir: {filename}")
+                    continue
+                
+                # Check if file exists before reading
+                if not resolved_path.exists():
+                    print(f"Warning: Component file does not exist: {resolved_path}")
+                    continue
+                
+                # Read file content safely
+                with open(resolved_path, "r", encoding="utf-8") as f:
+                    file_content = f.read()
+                
+                inputs3={
+                    "component": component_path,
+                    "expanded_idea": expanded_idea,
+                    "file_content": file_content
+                }
 
-            CreateContentCrew().crew().kickoff(inputs=inputs3)
+                CreateContentCrew().crew().kickoff(inputs=inputs3)
+                
+            except Exception as e:
+                print(f"Error processing component {component_path}: {str(e)}")
+                continue
 
     
 
