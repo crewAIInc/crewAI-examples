@@ -1,0 +1,32 @@
+services:
+  agents:
+    build:
+        context: .
+    environment:
+      - OPENAI_API_KEY=$OPENAI_API_KEY
+      - SERPER_API_KEY=$SERPER_API_KEY
+      - MCP_SERVER_URL=http://mcp_gateway:8811/sse
+    restart: no
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    depends_on:
+      - model_runner
+      - mcp_gateway
+
+  mcp_gateway:
+    image: docker/agents_gateway:v2
+    ports:
+      - 8811:8811
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command:
+      - --transport=sse
+      - --servers=duckduckgo
+      - --tools=search
+      - --tools=fetch_content
+
+  model_runner:
+    provider:
+      type: model
+      options:
+        model: ai/qwen3
