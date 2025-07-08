@@ -7,7 +7,7 @@ from crewai import Agent, Task, Crew, Process, LLM
 load_dotenv()
 
 default_llm = LLM(
-    model=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o"),
+    model=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "azure/gpt-4o"),
     api_version=os.environ.get("AZURE_OPENAI_VERSION", "2024-10-21"),
     api_key=os.environ.get("AZURE_OPENAI_KEY"),
     base_url=os.environ.get("AZURE_OPENAI_ENDPOINT", "https://<your-endpoint>.openai.azure.com/")
