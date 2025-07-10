@@ -6,39 +6,53 @@ from crewai_tools import CSVSearchTool, FileReadTool
 @CrewBase
 class MatchToProposalCrew():
 		"""MatchToProposal crew"""
-		agents_config = 'config/agents.yaml'
-		tasks_config = 'config/tasks.yaml'
+		agents_config = 'config/HPagents.yaml'
+		tasks_config = 'config/HPTasks.yaml'
 
 		@agent
-		def cv_reader(self) -> Agent:
+		def jd_reader(self) -> Agent:
 				return Agent(
-						config=self.agents_config['cv_reader'],
+						config=self.agents_config['jd_reader'],
+						tools=[FileReadTool()],
+						verbose=True,
+						allow_delegation=False
+				)
+		@agent
+		def hp_reader(self) -> Agent:
+				return Agent(
+						config=self.agents_config['hp_reader'],
+						tools=[FileReadTool()],
+						verbose=True,
+						allow_delegation=False
+				)
+		
+		@agent
+		def hp_generator(self) -> Agent:
+				return Agent(
+						config=self.agents_config['hp_generator'],
 						tools=[FileReadTool()],
 						verbose=True,
 						allow_delegation=False
 				)
 
-		@agent
-		def matcher(self) -> Agent:
-				return Agent(
-						config=self.agents_config['matcher'],
-						tools=[FileReadTool(), CSVSearchTool()],
-						verbose=True,
-						allow_delegation=False
+		@task
+		def read_jd_task(self) -> Task:
+				return Task(
+						config=self.tasks_config['read_jd_task'],
+						agent=self.jd_reader()
 				)
 
 		@task
-		def read_cv_task(self) -> Task:
+		def read_hp_task(self) -> Task:
 				return Task(
-						config=self.tasks_config['read_cv_task'],
-						agent=self.cv_reader()
+						config=self.tasks_config['read_hp_task'],
+						agent=self.hp_reader()
 				)
-
 		@task
-		def match_cv_task(self) -> Task:
+		def hp_generator_task(self) -> Task:
 				return Task(
-						config=self.tasks_config['match_cv_task'],
-						agent=self.matcher()
+						config=self.tasks_config['hp_generator_task'],
+						agent=self.hp_generator()
 				)
 
 		@crew
