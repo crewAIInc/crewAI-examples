@@ -7,13 +7,6 @@ from textwrap import dedent
 from agents import CustomAgents
 from tasks import CustomTasks
 
-# Install duckduckgo-search for this example:
-# !pip install -U duckduckgo-search
-
-from langchain.tools import DuckDuckGoSearchRun
-
-search_tool = DuckDuckGoSearchRun()
-
 os.environ["OPENAI_API_KEY"] = config("OPENAI_API_KEY")
 os.environ["OPENAI_ORGANIZATION"] = config("OPENAI_ORGANIZATION_ID")
 
