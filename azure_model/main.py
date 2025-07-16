@@ -2,16 +2,15 @@ import sys
 from crewai import Agent, Task
 import os
 from dotenv import load_dotenv
-from crewai import Crew, Process
-from langchain_openai import AzureChatOpenAI
+from crewai import Agent, Task, Crew, Process, LLM
 
 load_dotenv()
 
-default_llm = AzureChatOpenAI(
-    openai_api_version=os.environ.get("AZURE_OPENAI_VERSION", "2023-07-01-preview"),
-    azure_deployment=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt35"),
-    azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT", "https://<your-endpoint>.openai.azure.com/"),
-    api_key=os.environ.get("AZURE_OPENAI_KEY")
+default_llm = LLM(
+    model=os.environ.get("AZURE_OPENAI_DEPLOYMENT", "azure/gpt-4o"),
+    api_version=os.environ.get("AZURE_OPENAI_VERSION", "2024-10-21"),
+    api_key=os.environ.get("AZURE_OPENAI_KEY"),
+    base_url=os.environ.get("AZURE_OPENAI_ENDPOINT", "https://<your-endpoint>.openai.azure.com/")
 )
 
 
