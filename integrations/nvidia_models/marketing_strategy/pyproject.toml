@@ -1,0 +1,17 @@
+[project]
+name = "marketing_posts"
+version = "0.1.0"
+description = "marketing-posts using crewAI"
+authors = [{name = "raspawar", email = "raspawar@nvidia.com"}]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "langchain-nvidia-ai-endpoints>=0.3.5",
+    "python-dotenv>=1.0.1",
+    "crewai>=0.152.0",
+    "crewai-tools>=0.58.0",
+]
+
+[project.scripts]
+marketing_posts = "marketing_posts.main:run"
+train = "marketing_posts.main:train"
+
