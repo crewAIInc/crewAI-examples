@@ -19,7 +19,7 @@ class AutoResponderState(BaseModel):
 class EmailAutoResponderFlow(Flow[AutoResponderState]):
     initial_state = AutoResponderState
 
-    @start("wait_next_run")
+    @start("generate_draft_responses")
     def fetch_new_emails(self):
         print("Kickoff the Email Filter Crew")
         new_emails, updated_checked_email_ids = check_email(
@@ -49,7 +49,7 @@ def kickoff():
     Run the flow.
     """
     email_auto_response_flow = EmailAutoResponderFlow()
-    email_auto_response_flow.kickoff()
+    await email_auto_response_flow.kickoff()
 
 
 def plot_flow():
