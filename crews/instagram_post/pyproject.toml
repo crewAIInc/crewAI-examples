@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 requires-python = ">=3.10,<3.12"
 dependencies = [
-    "crewai>=0.130.0",
+    "crewai>=0.152.0",
     "python-dotenv==1.0.0",
     "opencv-python==4.8.1.78",
     "google-search-results==2.4.2",
