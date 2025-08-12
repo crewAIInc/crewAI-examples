@@ -1,0 +1,17 @@
+[project]
+name = "self_evaluation_loop_flow"
+version = "0.1.0"
+description = "self-evalulation-loop-flow using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.152.0",
+]
+
+[project.scripts]
+kickoff = "self_evaluation_loop_flow.main:kickoff"
+plot = "self_evaluation_loop_flow.main:plot"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

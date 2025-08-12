@@ -1,0 +1,23 @@
+[project]
+name = "game-builder-crew"
+version = "0.1.0"
+description = ""
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "crewai>=0.152.0",
+    "python-dotenv==1.0.0",
+]
+
+[tool.pyright]
+# https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+useLibraryCodeForTypes = true
+exclude = [".cache"]
+
+[tool.ruff]
+# https://beta.ruff.rs/docs/configuration/
+select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']
+ignore = ['W291', 'W292', 'W293']
+
+[project.scripts]
+game_builder_crew = "game_builder_crew.main:run"
+train = "game_builder_crew.main:train"

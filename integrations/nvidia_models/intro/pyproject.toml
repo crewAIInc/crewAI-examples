@@ -1,0 +1,35 @@
+[project]
+name = "nvidia-intro-crewai-example"
+version = "0.1.0"
+description = ""
+authors = [{name = "raspawar", email = "raspawar@nvidia.com"}]
+requires-python = ">=3.10.0,<3.12"
+dependencies = [
+    "python-dotenv==1.0.0",
+    "litellm>=1.52.10",
+    "langchain-nvidia-ai-endpoints>=0.3.5",
+    "crewai>=0.152.0",
+]
+
+[tool.pyright]
+# https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+useLibraryCodeForTypes = true
+exclude = [".cache"]
+
+[tool.ruff.lint]
+select = [
+    "E",     # pycodestyle
+    "F",     # pyflakes
+    "I",     # isort
+    "B",     # flake8-bugbear
+    "C4",    # flake8-comprehensions
+    "ARG",   # flake8-unused-arguments
+    "SIM",   # flake8-simplify
+    "T201",  # print
+]
+ignore = [
+    "W291",  # trailing whitespace
+    "W292",  # no newline at end of file
+    "W293",  # blank line contains whitespace
+]
+

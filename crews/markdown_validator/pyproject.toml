@@ -1,0 +1,26 @@
+[project]
+name = "markdown_validator"
+version = "0.1.0"
+description = ""
+authors = [{name = "ITLackey", email = "itlackey@gmail.com"}]
+requires-python = ">=3.10.0,<3.12"
+dependencies = [
+    "crewai>=0.152.0",
+    "python-dotenv==1.0.0",
+    "markdown==3.4.3",
+    "pymarkdownlnt==0.9.15",
+]
+
+[tool.pyright]
+# https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+useLibraryCodeForTypes = true
+exclude = [".cache"]
+
+[project.scripts]
+markdown_validator = "markdown_validator.main:run"
+train = "markdown_validator.main:train"
+[tool.ruff]
+# https://beta.ruff.rs/docs/configuration/
+select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']
+ignore = ['W291', 'W292', 'W293']
+
