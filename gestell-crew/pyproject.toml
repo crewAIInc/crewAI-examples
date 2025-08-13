@@ -1,0 +1,12 @@
+[project]
+name = "gestell-crew"
+version = "1.0.0"
+description = "Gestell CrewAI Example Workflow"
+readme = "README.md"
+authors = [{ name = "Chris Cates", email = "hello@chriscates.ca" }]
+requires-python = ">=3.11"
+dependencies = [
+    "crewai-tools[mcp]>=0.45.0",
+    "mcp>=1.9.0",
+    "python-dotenv>=1.1.0",
+]

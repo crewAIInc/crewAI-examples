@@ -1,0 +1,74 @@
+analyze_document_task:
+  description: >
+    Analyze all provided documents in the directory and extract key information, including:
+    - Main topics and themes
+    - Key entities (people, places, organizations)
+    - Important dates and events
+    - Relationships between entities
+    - Any specific requirements or actions needed
+
+    Provide concise and clear markdown that segments summaries of each document.
+    Make sure to provide the **exact** file path when summarizing each document.
+  expected_output: >
+    A concise GFM markdown analysis of each document including all key information.
+    This is to be used as input for the collection creation task.
+  output_file: "agent/analysis.md"
+
+create_collection_task:
+  description: >
+    Create a collection based on the provided analysis from the analyzed document task.
+
+    Ensure that the instructions are comprehensive and based off of the analysis provided.
+    You are only allowed to create **table** categories, any other category is not allowed.
+
+    - Tables must have bullet point list of what each column should contain
+    - All instructions should be clear concise bullet points
+  expected_output: >
+    Provide a concise GFM markdown summary of what the collection is about.
+    After running the createCollection tool, make sure to explicitly state the collection id.
+  output_file: "agent/collection.md"
+
+upload_document_task:
+  description: >
+    After a collection has been created. Upload all documents to the collection just created.
+
+    To upload a document you are required to do the following:
+    - You are required to provide the **exact** path to the tool for the "file" field.
+    - You are required to provide the "name" field with an extension.
+    - Additional instructions are NOT needed for each file uploaded and should be an empty string.
+  expected_output: >
+    A concise GFM markdown list confirmation of successful upload including:
+    - List of uploaded documents
+    - Any warnings or issues encountered
+    - Summary of the upload process
+  output_file: "agent/upload_summary.md"
+
+research_task:
+  description: >
+    Analyze the collection and then conduct research and generate a comprehensive GFM markdown report.
+
+    Identify the types of questions to ask using the file provided. As well as to retrieve the collection id.
+
+    Use the searchCollectionSimple and promptCollectionSimple tool calls to research the collection.
+    The prompt field should be used to ask questions about the collection.
+
+    The report should be well-structured and include:
+    - Executive summary of key findings
+    - Main topics and themes from the documents
+    - Important data points and statistics
+    - Key insights and recommendations
+    - Any relevant quotes or references
+
+    Format the report using GitHub Flavored Markdown with proper:
+    - Headers and subheaders
+    - Bullet points and numbered lists
+    - Tables for data comparison
+    - Code blocks for any technical details
+    - Links to sources where applicable
+
+    Keep the language clear, concise, and professional.
+  expected_output: >
+    A well-formatted GFM markdown report that provides a comprehensive overview
+    of the research findings, ready for sharing and collaboration.
+  output_file: "agent/research_report.md"
+
