@@ -23,7 +23,7 @@ This is the main file that you will use to run your custom crew.
 To create a Crew , you need to define Agent ,Task and following Parameters:
 1. Agent: List of agents that you want to include in the crew.
 2. Task: List of tasks that you want to include in the crew.
-3. verbose: If True, print the output of each task.(default is False).
+3. verbose: If True, print the output of each task.(default is True).
 4. debug: If True, print the debug logs.(default is False).
 
     [More Details about Crew](https://docs.crewai.com/concepts/crew).
