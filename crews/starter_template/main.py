@@ -10,7 +10,7 @@ from tasks import CustomTasks
 # Install duckduckgo-search for this example:
 # !pip install -U duckduckgo-search
 
-from langchain.tools import DuckDuckGoSearchRun
+from langchain_community.tools import DuckDuckGoSearchRun
 
 search_tool = DuckDuckGoSearchRun()
 
