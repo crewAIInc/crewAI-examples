@@ -2,15 +2,21 @@ import json
 import os
 
 import requests
-from langchain.tools import tool
+from crewai.tools import tool
 
 
 class SearchTools():
 
   @tool("Search the internet")
-  def search_internet(query):
-    """Useful to search the internet
-    about a a given topic and return relevant results"""
+  def search_internet(query: str) -> str:
+    """Useful to search the internet about a given topic and return relevant results.
+    
+    Args:
+        query: The search query string to look up on the internet
+    
+    Returns:
+        Search results with titles, links, and snippets
+    """
     top_result_to_return = 4
     url = "https://google.serper.dev/search"
     payload = json.dumps({"q": query})

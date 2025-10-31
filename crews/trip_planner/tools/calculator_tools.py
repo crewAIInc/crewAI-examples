@@ -1,4 +1,4 @@
-from langchain.tools import tool
+from crewai.tools import tool
 import ast
 import operator
 import re
@@ -6,11 +6,15 @@ import re
 class CalculatorTools():
 
     @tool("Make a calculation")
-    def calculate(operation):
+    def calculate(operation: str) -> str:
         """Useful to perform any mathematical calculations, 
         like sum, minus, multiplication, division, etc.
-        The input to this tool should be a mathematical 
-        expression, a couple examples are `200*7` or `5000/2*10`
+        
+        Args:
+            operation: A mathematical expression to evaluate (e.g., "200*7" or "5000/2*10")
+        
+        Returns:
+            The result of the calculation or an error message
         """
         try:
             # Define allowed operators for safe evaluation

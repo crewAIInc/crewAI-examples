@@ -3,15 +3,22 @@ import os
 
 import requests
 from crewai import Agent, Task
-from langchain.tools import tool
+from crewai.tools import tool
 from unstructured.partition.html import partition_html
 
 
 class BrowserTools():
 
   @tool("Scrape website content")
-  def scrape_and_summarize_website(website):
-    """Useful to scrape and summarize a website content"""
+  def scrape_and_summarize_website(website: str) -> str:
+    """Useful to scrape and summarize a website content.
+    
+    Args:
+        website: The URL of the website to scrape and summarize
+    
+    Returns:
+        Summarized content from the website
+    """
     url = f"https://chrome.browserless.io/content?token={os.environ['BROWSERLESS_API_KEY']}"
     payload = json.dumps({"url": website})
     headers = {'cache-control': 'no-cache', 'content-type': 'application/json'}
