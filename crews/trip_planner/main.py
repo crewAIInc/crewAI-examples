@@ -56,23 +56,28 @@ class TripCrew:
 if __name__ == "__main__":
   print("## Welcome to Trip Planner Crew")
   print('-------------------------------')
-  location = input(
-    dedent("""
-      From where will you be traveling from?
-    """))
-  cities = input(
-    dedent("""
-      What are the cities options you are interested in visiting?
-    """))
-  date_range = input(
-    dedent("""
-      What is the date range you are interested in traveling?
-    """))
-  interests = input(
-    dedent("""
-      What are some of your high level interests and hobbies?
-    """))
-  
+  # location = input(
+  #   dedent("""
+  #     From where will you be traveling from?
+  #   """))
+  # cities = input(
+  #   dedent("""
+  #     What are the cities options you are interested in visiting?
+  #   """))
+  # date_range = input(
+  #   dedent("""
+  #     What is the date range you are interested in traveling?
+  #   """))
+  # interests = input(
+  #   dedent("""
+  #     What are some of your high level interests and hobbies?
+  #   """))
+
+  location = "Vienna, Austria"
+  cities = "Paris, France; Rome, Italy; Berlin, Germany"
+  date_range = "2026-01-01 to 2026-01-10"
+  interests = "art, history, food, culture"
+
   trip_crew = TripCrew(location, cities, date_range, interests)
   result = trip_crew.run()
   print("\n\n########################")
