@@ -1891,21 +1891,6 @@ files = [
 dev = ["build (==1.2.2.post1)", "coverage (==7.5.4) ; python_version < \"3.9\"", "coverage (==7.8.0) ; python_version >= \"3.9\"", "mypy (==1.14.1) ; python_version < \"3.9\"", "mypy (==1.15.0) ; python_version >= \"3.9\"", "pip (==25.0.1)", "pylint (==3.2.7) ; python_version < \"3.9\"", "pylint (==3.3.6) ; python_version >= \"3.9\"", "ruff (==0.11.2)", "twine (==6.1.0)", "uv (==0.6.11)"]
 
 [[package]]
-name = "jsonpatch"
-version = "1.33"
-description = "Apply JSON-Patches (RFC 6902)"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*"
-groups = ["main"]
-files = [
-    {file = "jsonpatch-1.33-py2.py3-none-any.whl", hash = "sha256:0ae28c0cd062bbd8b8ecc26d7d164fbbea9652a1a3693f3b956c1eae5145dade"},
-    {file = "jsonpatch-1.33.tar.gz", hash = "sha256:9fcd4009c41e6d12348b4a0ff2563ba56a2923a7dfee731d004e212e1ee5030c"},
-]
-
-[package.dependencies]
-jsonpointer = ">=1.9"
-
-[[package]]
 name = "jsonpickle"
 version = "4.1.1"
 description = "jsonpickle encodes/decodes any Python object to/from JSON"
@@ -1923,18 +1908,6 @@ dev = ["black", "pyupgrade"]
 docs = ["furo", "rst.linker (>=1.9)", "sphinx (>=3.5)"]
 packaging = ["build", "setuptools (>=61.2)", "setuptools_scm[toml] (>=6.0)", "twine"]
 testing = ["PyYAML", "atheris (>=2.3.0,<2.4.0) ; python_version < \"3.12\"", "bson", "ecdsa", "feedparser", "gmpy2", "numpy", "pandas", "pymongo", "pytest (>=6.0,!=8.1.*)", "pytest-benchmark", "pytest-benchmark[histogram]", "pytest-checkdocs (>=1.2.3)", "pytest-enabler (>=1.0.1)", "pytest-ruff (>=0.2.1)", "scikit-learn", "scipy (>=1.9.3) ; python_version > \"3.10\"", "scipy ; python_version <= \"3.10\"", "simplejson", "sqlalchemy", "ujson"]
-
-[[package]]
-name = "jsonpointer"
-version = "3.0.0"
-description = "Identify specific nodes in a JSON document (RFC 6901)"
-optional = false
-python-versions = ">=3.7"
-groups = ["main"]
-files = [
-    {file = "jsonpointer-3.0.0-py2.py3-none-any.whl", hash = "sha256:13e088adc14fca8b6aa8177c044e12701e6ad4b28ff10e65f2267a90109c9942"},
-    {file = "jsonpointer-3.0.0.tar.gz", hash = "sha256:2b2d729f2091522d61c3b31f82e11870f60b68f43fbc705cb76bf4b832af59ef"},
-]
 
 [[package]]
 name = "jsonref"
@@ -2014,43 +1987,6 @@ websocket-client = ">=0.32.0,<0.40.0 || >0.40.0,<0.41.dev0 || >=0.43.dev0"
 adal = ["adal (>=1.0.2)"]
 
 [[package]]
-name = "langchain-core"
-version = "0.2.43"
-description = "Building applications with LLMs through composability"
-optional = false
-python-versions = "<4.0,>=3.8.1"
-groups = ["main"]
-files = [
-    {file = "langchain_core-0.2.43-py3-none-any.whl", hash = "sha256:619601235113298ebf8252a349754b7c28d3cf7166c7c922da24944b78a9363a"},
-    {file = "langchain_core-0.2.43.tar.gz", hash = "sha256:42c2ef6adedb911f4254068b6adc9eb4c4075f6c8cb3d83590d3539a815695f5"},
-]
-
-[package.dependencies]
-jsonpatch = ">=1.33,<2.0"
-langsmith = ">=0.1.112,<0.2.0"
-packaging = ">=23.2,<25"
-pydantic = {version = ">=1,<3", markers = "python_full_version < \"3.12.4\""}
-PyYAML = ">=5.3"
-tenacity = ">=8.1.0,<8.4.0 || >8.4.0,<9.0.0"
-typing-extensions = ">=4.7"
-
-[[package]]
-name = "langchain-ollama"
-version = "0.1.3"
-description = "An integration package connecting Ollama and LangChain"
-optional = false
-python-versions = "<4.0,>=3.8.1"
-groups = ["main"]
-files = [
-    {file = "langchain_ollama-0.1.3-py3-none-any.whl", hash = "sha256:e4017178b2fbf822c74b29eaca3732c925265a63d9dd9fe6970c34fd32568c4a"},
-    {file = "langchain_ollama-0.1.3.tar.gz", hash = "sha256:cc5f3d510e591cb66b382f4fe32801877593c0d0a1dc48e9e8fcd16b8e01c454"},
-]
-
-[package.dependencies]
-langchain-core = ">=0.2.36,<0.3.0"
-ollama = ">=0.3.0,<1"
-
-[[package]]
 name = "langdetect"
 version = "1.0.9"
 description = "Language detection library ported from Google's language-detection."
@@ -2064,28 +2000,6 @@ files = [
 
 [package.dependencies]
 six = "*"
-
-[[package]]
-name = "langsmith"
-version = "0.1.147"
-description = "Client library to connect to the LangSmith LLM Tracing and Evaluation Platform."
-optional = false
-python-versions = "<4.0,>=3.8.1"
-groups = ["main"]
-files = [
-    {file = "langsmith-0.1.147-py3-none-any.whl", hash = "sha256:7166fc23b965ccf839d64945a78e9f1157757add228b086141eb03a60d699a15"},
-    {file = "langsmith-0.1.147.tar.gz", hash = "sha256:2e933220318a4e73034657103b3b1a3a6109cc5db3566a7e8e03be8d6d7def7a"},
-]
-
-[package.dependencies]
-httpx = ">=0.23.0,<1"
-orjson = {version = ">=3.9.14,<4.0.0", markers = "platform_python_implementation != \"PyPy\""}
-pydantic = {version = ">=1,<3", markers = "python_full_version < \"3.12.4\""}
-requests = ">=2,<3"
-requests-toolbelt = ">=1.0.0,<2.0.0"
-
-[package.extras]
-langsmith-pyo3 = ["langsmith-pyo3 (>=0.1.0rc2,<0.2.0)"]
 
 [[package]]
 name = "litellm"
@@ -2903,22 +2817,6 @@ files = [
 rsa = ["cryptography (>=3.0.0)"]
 signals = ["blinker (>=1.4.0)"]
 signedtoken = ["cryptography (>=3.0.0)", "pyjwt (>=2.0.0,<3)"]
-
-[[package]]
-name = "ollama"
-version = "0.6.0"
-description = "The official Python client for Ollama."
-optional = false
-python-versions = ">=3.8"
-groups = ["main"]
-files = [
-    {file = "ollama-0.6.0-py3-none-any.whl", hash = "sha256:534511b3ccea2dff419ae06c3b58d7f217c55be7897c8ce5868dfb6b219cf7a0"},
-    {file = "ollama-0.6.0.tar.gz", hash = "sha256:da2b2d846b5944cfbcee1ca1e6ee0585f6c9d45a2fe9467cbcd096a37383da2f"},
-]
-
-[package.dependencies]
-httpx = ">=0.27"
-pydantic = ">=2.9"
 
 [[package]]
 name = "onnxruntime"
@@ -4675,21 +4573,6 @@ requests = ">=2.0.0"
 rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
 
 [[package]]
-name = "requests-toolbelt"
-version = "1.0.0"
-description = "A utility belt for advanced users of python-requests"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-groups = ["main"]
-files = [
-    {file = "requests-toolbelt-1.0.0.tar.gz", hash = "sha256:7681a0a3d047012b5bdc0ee37d7f8f07ebe76ab08caeccfc3921ce23c88d5bc6"},
-    {file = "requests_toolbelt-1.0.0-py2.py3-none-any.whl", hash = "sha256:cccfdd665f0a24fcf4726e690f65639d272bb0637b9b92dfd91a5568ccf6bd06"},
-]
-
-[package.dependencies]
-requests = ">=2.0.1,<3.0.0"
-
-[[package]]
 name = "rich"
 version = "14.2.0"
 description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
@@ -5850,4 +5733,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10.0,<3.12"
-content-hash = "604d8a9746390d39410f1a719c4ab50aafde132b2a96f5c440a7db089c45007b"
+content-hash = "0a05c3e8a512e349ac1d19ef042832741052ba90d88e37fd2018a4918cfafdbb"
