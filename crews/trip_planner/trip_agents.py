@@ -9,7 +9,7 @@ from tools.search_tools import SearchTools
 class TripAgents:
 
     def __init__(self):
-        ollama_model = os.getenv("OLLAMA_MODEL", "llama3.2")
+        ollama_model = os.getenv("OLLAMA_MODEL", "qwen3:8b")
         ollama_base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
         
         # CrewAI's LLM class with Ollama provider
