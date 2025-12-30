@@ -31,18 +31,18 @@ for ((i = 1; i <= RUNS; i++)); do
     echo "Run $i of $RUNS..."
     echo "Saving final output to: $LOG_FILE"
 
+    # Start script in tmux session and capture final screen output
     tmux new-session -d -s "$SESSION_NAME" "poetry run python3 main.py; \
     tmux capture-pane -pS -2000 > \"$LOG_FILE\"; \
     tmux kill-session -t \"$SESSION_NAME\""
 
-    # Attach only if user is NOT inside tmux
-    if [ -z "$TMUX" ] && [ "$i" -eq 1 ]; then
+    # Attach on first run only (optional)
+    if [ "$i" -eq 1 ]; then
         tmux attach -t "$SESSION_NAME"
     else
-        # If already inside tmux or subsequent runs
-        tmux wait -S "$SESSION_NAME" 2>/dev/null || true
+        # Let session finish silently in background
+        wait
     fi
 done
-
 
 echo "All runs completed. Logs saved in $LOG_DIR"
