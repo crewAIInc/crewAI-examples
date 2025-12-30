@@ -1,27 +1,31 @@
+#!/usr/bin/env bash
+# Force bash (if executed with sh)
+if [ -z "$BASH_VERSION" ]; then exec bash "$0" "$@"; fi
+
 # ==============================================
-# Google Colab compatible runner
+# Google Colab-compatible execution logger
 # Captures only final visible output of program
 #
 # Usage:
-#   sh run_with_final_logs_colab.sh <log_folder> [runs]
-#
-# Example:
-#   sh run_with_final_logs_colab.sh /content/logs
-#   sh run_with_final_logs_colab.sh /content/logs 3
+#   bash run_with_final_logs_colab.sh <log_folder> <runs>
 # ==============================================
 
-#!/usr/bin/env bash
-# Force bash (if user runs via sh)
-if [ -z "$BASH_VERSION" ]; then exec bash "$0" "$@"; fi
-
-if [ -z "$1" ]; then
-    echo "Error: Log folder path required."
-    echo "Usage: $0 <log_folder> [runs]"
+# Validate args
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Error: Two parameters required."
+    echo "Usage: $0 <log_folder> <runs>"
     exit 1
 fi
 
 LOG_DIR="$1"
-RUNS="${2:-1}"      # defaults to 1
+RUNS="$2"
+
+# Validate RUNS numeric
+if ! [[ "$RUNS" =~ ^[0-9]+$ ]] || [ "$RUNS" -lt 1 ]; then
+    echo "Error: <runs> must be a positive integer"
+    exit 1
+fi
+
 mkdir -p "$LOG_DIR"
 
 for ((i=1; i<=RUNS; i++)); do
@@ -32,12 +36,12 @@ for ((i=1; i<=RUNS; i++)); do
     echo "Run $i of $RUNS..."
     echo "Saving final output to: $LOG_FILE"
 
-    # Capture output, process CR-based rewriting
+    # Capture execution (CR -> newline to simulate final visible state)
     poetry run python3 main.py | sed -u 's/\r/\n/g' > "$TMP_RAW"
 
-    # Save last 200 lines as final visible content window
+    # Keep last lines of terminal, adjustable (200 default)
     tail -n 200 "$TMP_RAW" > "$LOG_FILE"
     rm "$TMP_RAW"
 done
 
-echo "All runs completed. Logs saved in $LOG_DIR"
+echo "All runs completed. Logs saved in: $LOG_DIR"
