@@ -4,6 +4,7 @@ from trip_agents import TripAgents
 from trip_tasks import TripTasks
 
 from dotenv import load_dotenv
+from datetime import datetime, timedelta
 load_dotenv()
 
 class TripCrew:
@@ -75,7 +76,10 @@ if __name__ == "__main__":
 
   location = "Vienna, Austria"
   cities = "Paris, France; Rome, Italy; Berlin, Germany"
-  date_range = "2026-01-01 to 2026-01-10"
+  start_date = (datetime.now() + timedelta(days=10)).strftime("%Y-%m-%d")
+  end_date = (datetime.now() + timedelta(days=20)).strftime("%Y-%m-%d")
+  date_range = f"{start_date} to {end_date}"
+
   interests = "art, history, food, culture"
 
   trip_crew = TripCrew(location, cities, date_range, interests)
