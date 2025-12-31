@@ -4,7 +4,7 @@ if [ -z "$BASH_VERSION" ]; then exec bash "$0" "$@"; fi
 
 # ==============================================
 # Google Colab-compatible execution logger
-# Captures only final visible output of program
+# Saves full output and downloads log automatically
 #
 # Usage:
 #   bash run_with_final_logs_colab.sh <log_folder> <runs>
@@ -36,11 +36,19 @@ for ((i=1; i<=RUNS; i++)); do
     echo "Run $i of $RUNS..."
     echo "Saving final output to: $LOG_FILE"
 
-    # Capture execution (CR -> newline to simulate final visible state)
+    # Capture output (CR -> newline)
     poetry run python3 main.py | sed -u 's/\r/\n/g' > "$TMP_RAW"
 
+    # Save complete output
     cat "$TMP_RAW" > "$LOG_FILE"
     rm "$TMP_RAW"
+
+    # Download to local machine automatically
+    python3 - <<EOF
+from google.colab import files
+files.download("$LOG_FILE")
+EOF
 done
 
 echo "All runs completed. Logs saved in: $LOG_DIR"
+echo "Files have also been downloaded to your PC."
