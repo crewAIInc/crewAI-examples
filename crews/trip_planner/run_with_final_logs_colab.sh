@@ -39,8 +39,7 @@ for ((i=1; i<=RUNS; i++)); do
     # Capture execution (CR -> newline to simulate final visible state)
     poetry run python3 main.py | sed -u 's/\r/\n/g' > "$TMP_RAW"
 
-    # Keep last lines of terminal, adjustable (200 default)
-    tail -n 200 "$TMP_RAW" > "$LOG_FILE"
+    cat "$TMP_RAW" > "$LOG_FILE"
     rm "$TMP_RAW"
 done
 
