@@ -1,6 +1,6 @@
 crewai==0.130.0
 langgraph==0.0.15
-langchain-community==0.3.26
+langchain-community==0.3.31
 python-dotenv==1.0.0
 google-search-results==2.1.0
 google-api-python-client==2.114.0
