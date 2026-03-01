@@ -1,0 +1,33 @@
+[project]
+name = "agentbay-sdk-integration"
+version = "0.1.0"
+description = "CrewAI tool integrating wuying-agentbay-sdk for code execution"
+authors = [{name = "AgentBay Integrator", email = "agent@example.com"}]
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai>=0.152.0",
+    "python-dotenv>=1.0.0",
+    "wuying-agentbay-sdk>=0.3.0",
+    "pytest>=7.0.0",
+    "requests>=2.31.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agentbay_sdk"]
+
+[project.scripts]
+agentbay_sdk = "agentbay_sdk.main:run"
+
+[tool.pyright]
+useLibraryCodeForTypes = true
+exclude = [".cache"]
+
+[tool.ruff]
+select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']
+ignore = ['W291', 'W292', 'W293']
+
