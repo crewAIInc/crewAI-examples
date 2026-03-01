@@ -1,0 +1,36 @@
+News_Article_Researcher_Task:
+  description: >
+    Research the latest news on the given topic and create a simple, informative article. Ensure that the article is up-to-date, accurate, and engaging.
+  expected_output: >
+    a list of 5 main news and its main content
+  agent: News_Article_Researcher
+
+Planner_and_Researcher_Task:
+  description: >
+    CConduct thorough research on the given topic {topic}  and develop a comprehensive content plan. Ensure that the plan includes key points, relevant statistics, and a structured outline for the article. and also create a appropriate image for the article
+  expected_output: >
+    A detailed content brief in format with the following sections:
+
+    Title: Suggested title for the article.
+    Introduction: Brief overview of the topic.
+    Key Points: List of main points to be covered.
+    Relevant Statistics: Important data and statistics.
+    Outline: Structured outline for the article.
+    References: List of sources and references. all characters including must be less that 3000 characters  
+    
+
+  agent: Planner_and_Researcher
+
+Article_Maker_and_LinkedIn_Poster_Task:
+  description: >
+    Write a detailed and engaging article based on the provided content brief. Ensure that the article is well-structured, informative, and tailored to the LinkedIn audience. Once the article is complete, publish it on LinkedIn.
+  expected_output: >
+    A formatted article with the following sections:
+
+    Title: Engaging title for the article.
+    Introduction: Captivating introduction to draw the reader in.
+    Main Body: Detailed sections covering the key points and relevant statistics.
+    Conclusion: Summary and call to action.
+    References: List of sources and references.
+    Additionally, publish the article on LinkedIn and provide the post URL. all charecters including must be less that 3000 charecters
+  agent: Article_Maker_and_LinkedIn_Poster
