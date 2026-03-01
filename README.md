@@ -42,7 +42,7 @@ Traditional CrewAI implementations showcasing multi-agent collaboration.
 
 #### Business & Productivity
 - [Job Posting](crews/job-posting) - Automated job description creation
-- [Prep for a Meeting](crews/prep-for-a-meeting) - Meeting preparation research and strategy
+- [Prep for a Meeting](crews/prep-for-a-meeting) - Meeting preparation, research and strategy
 - [Recruitment](crews/recruitment) - Automated candidate sourcing and evaluation
 - [Stock Analysis](crews/stock_analysis) - Financial analysis with SEC data integration
 
@@ -89,7 +89,7 @@ Jupyter notebook examples for interactive exploration and learning.
 
 4. **Install dependencies with UV**
    ```bash
-   uv sync  # Installs all dependencies and creates virtual environment
+   uv sync  # Installs all dependencies and creates a virtual environment
    ```
 
 5. **Follow the example's README**
