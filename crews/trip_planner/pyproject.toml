@@ -6,7 +6,7 @@ authors = [{name = "Your Name", email = "you@example.com"}]
 requires-python = ">=3.10.0,<3.12"
 dependencies = [
     "crewai>=0.152.0",
-    "unstructured==0.10.25",
+    "unstructured>=0.14.3",
     "pyowm==3.3.0",
     "tools>=0.1.9",
     "python-dotenv==1.0.0",
