@@ -1,0 +1,139 @@
+run_code_task:
+  description: >
+    """
+    Run a {language} code snippet in cloud AgentBay session and return the output.
+    You should only return the execution result text without additional explanations.
+
+    Code:
+    ----------
+    {code}
+    """
+  expected_output: >
+    """
+    Plain text execution result (stdout), or error message if an exception occurred.
+    """
+
+design_project:
+  description: >
+    """
+    Analyze user requirement and design complete project structure with file specifications.
+    Input: {user_requirement}
+    Output: File manifest with exact paths, code structure, dependencies, entry point, and run commands.
+    Prefer FastAPI + uvicorn for API services. Include requirements.txt.
+    Specify exact file paths and key code patterns for each file.
+    """
+  expected_output: >
+    """
+    File manifest with paths and code structure for each file, dependencies, entry point, run command.
+    """
+
+generate_project:
+  description: >
+    """
+    Based on the project blueprint from the previous task, generate actual code files.
+
+    IMPORTANT: You MUST save files to local filesystem using save_files_locally tool.
+    Use a temporary directory like /tmp/generated_project_XXX or ./generated_project/ as base path.
+    Then return a JSON list with absolute local paths and remote workspace paths.
+
+    Steps:
+    1. Generate file contents based on the blueprint from previous task
+    2. Use save_files_locally tool to save files to local filesystem
+    3. Return JSON array with both local_path (absolute) and remote_path (workspace path starting with /workspace/)
+
+    Example output format:
+    [{"local_path": "/tmp/generated_project/main.py", "remote_path": "/workspace/main.py", "content": "..."}, ...]
+
+    Ensure the project can start. Use the blueprint from the previous task's output.
+    """
+  expected_output: >
+    """
+    JSON array with saved file paths: [{"local_path": "/abs/path/file.py", "remote_path": "/workspace/file.py", "content": "..."}, ...]
+    Also confirm files were saved using save_files_locally tool.
+    """
+
+upload_project:
+  description: >
+    """
+    Based on the file list from the previous task (which includes local_path from saved files),
+    upload files to remote session. Use the JSON file list from previous task output.
+
+    IMPORTANT:
+    1. Create a persistent session FIRST using agentbay_create_session
+    2. Try to upload files using agentbay_upload_files with the local_path values
+    3. If upload fails (file not found), fallback to agentbay_write_in_session using the content from JSON
+    4. Save the session_id for use in next task
+
+    Steps:
+    1. Create session: agentbay_create_session
+    2. Upload files: agentbay_upload_files OR write directly: agentbay_write_in_session
+    3. Return session_id and upload confirmation
+
+    Use the JSON file list from previous task output which includes local_path, remote_path, and content.
+    """
+  expected_output: >
+    """
+    Session ID (from create_session), upload confirmation message, and list of uploaded files.
+    Format: {"session_id": "session-xxx", "uploaded_files": [...], "message": "..."}
+    """
+
+install_and_run:
+  description: >
+    """
+    Based on the uploaded project from previous task, install dependencies and run the service.
+
+    IMPORTANT:
+    1. REUSE the session_id from previous task (upload_project). Do NOT create a new session.
+    2. Extract session_id from previous task output
+    3. Use agentbay_run_in_session to execute commands in the existing session
+    4. Execute: cd /workspace && pip install -r requirements.txt (if exists) && run the service
+    5. Save execution output to /workspace/execution_result.log
+    6. CRITICAL: If running an HTTP/HTTPS service, it MUST run on a port in range [30100, 30199] (e.g., port 30123).
+       This is required for get_link to work in the next task. Configure the service to use port 30123.
+
+    Steps:
+    1. Get session_id from previous task output (should be in JSON format)
+    2. Install dependencies: agentbay_run_in_session(session_id, "cd /workspace && pip install -r requirements.txt")
+    3. Run the service on port 30123: agentbay_run_in_session(session_id, "cd /workspace && python3 main.py --port 30123 > execution_result.log 2>&1 &" or similar)
+       For FastAPI/uvicorn: uvicorn main:app --host 0.0.0.0 --port 30123
+       Ensure the service binds to 0.0.0.0:30123 (not 127.0.0.1)
+    4. Read result: agentbay_read_in_session(session_id, "/workspace/execution_result.log")
+
+    Use AgentBay tools to execute commands. Ensure non-interactive execution and log output to a file.
+    For HTTP services, the port MUST be in range [30100, 30199] for get_link to work.
+    """
+  expected_output: >
+    """
+    Execution result log with stdout/stderr from running the project.
+    Include session_id used for reference in next task.
+    If service is running, indicate the port number (must be in [30100, 30199]).
+    """
+
+analyze_result:
+  description: >
+    """
+    Analyze the execution result from the previous task. The previous task should have execution log.
+    Read the execution log content and decide success/failure, provide brief reasoning based on the output.
+
+    If the previous task output contains execution_result.log path or session_id, you can use that to read the result.
+    Otherwise, analyze the text output from previous task directly.
+
+    IMPORTANT - Service Verification:
+    If the previous task (install_and_run) started an HTTP/HTTPS service:
+    1. Extract session_id from previous task output (should be in JSON format)
+    2. If the service runs on port 30123 (or any port in range [30100, 30199]), use agentbay_get_link(session_id, protocol_type="https", port=30123) to get the local-accessible URL.
+       Note: Only HTTPS protocol is supported, not HTTP. Port must be in range [30100, 30199].
+    3. Use verify_http_service(url, method="GET", path="/", expected_status=200, expected_text=None) to send a request and verify the response.
+    4. Include the service verification result in your analysis.
+
+    Steps:
+    1. Read execution log from previous task output (use agentbay_read_in_session if needed)
+    2. If service was started, verify it using get_link and verify_http_service
+    3. Analyze both execution log and service verification results
+    4. Provide success/failure judgment with detailed reasoning
+    """
+  expected_output: >
+    """
+    JSON: {"success": true/false, "reason": "detailed explanation", "service_verified": true/false/null}
+    """
+
