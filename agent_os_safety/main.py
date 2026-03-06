@@ -19,7 +19,7 @@ For production use:
     pip install agent-os
     # Then wrap your crew with AgentOSKernel
 
-Learn more: https://github.com/imran-siddique/agent-os
+Learn more: https://github.com/microsoft/agent-governance-toolkit
 """
 
 import time
@@ -338,7 +338,7 @@ def run_demo():
   ╚═══════════════════════════════════════════════════════════╝
 {Colors.RESET}""")
     
-    print(f"\n{Colors.CYAN}  🔗 Learn more: https://github.com/imran-siddique/agent-os{Colors.RESET}\n")
+    print(f"\n{Colors.CYAN}  🔗 Learn more: https://github.com/microsoft/agent-governance-toolkit{Colors.RESET}\n")
 
 
 if __name__ == "__main__":
