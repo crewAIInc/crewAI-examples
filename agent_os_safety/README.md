@@ -1,6 +1,6 @@
 # 🛡️ Agent OS Safety Governance for CrewAI
 
-This example demonstrates how to add **kernel-level safety governance** to your CrewAI agents using [Agent OS](https://github.com/imran-siddique/agent-os).
+This example demonstrates how to add **kernel-level safety governance** to your CrewAI agents using [Agent OS](https://github.com/microsoft/agent-governance-toolkit).
 
 ## The Problem
 
@@ -121,7 +121,7 @@ Agent OS operates at the system call level, making it much harder to bypass than
 
 ## Learn More
 
-- **GitHub**: https://github.com/imran-siddique/agent-os
+- **GitHub**: https://github.com/microsoft/agent-governance-toolkit
 - **Documentation**: Coming soon
 - **Discord**: Coming soon
 
