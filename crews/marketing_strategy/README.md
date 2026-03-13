@@ -21,13 +21,13 @@ It uses GPT-4o by default so you should have access to that to run it.
 ***Disclaimer:** This will use gpt-4o unless you change it to use a different model, and by doing so it may incur in different costs.*
 
 - **Configure Environment**: Copy `.env.example` and set up the environment variables for [OpenAI](https://platform.openai.com/api-keys) and other tools as needed, like [Serper](serper.dev).
-- **Install Dependencies**: Run `poetry lock && poetry install`.
+- **Install Dependencies**: Run uv sync.
 - **Customize**: Modify `src/marketing_posts/main.py` to add custom inputs for your agents and tasks.
 - **Customize Further**: Check `src/marketing_posts/config/agents.yaml` to update your agents and `src/marketing_posts/config/tasks.yaml` to update your tasks.
-- **Execute the Script**: Run `poetry run marketing_posts` and input your project details.
+- **Execute the Script**: Run uv run marketing_posts and input your project details.
 
 ## Details & Explanation
-- **Running the Script**: Execute `poetry run marketing_posts`. The script will leverage the CrewAI framework to generate a detailed marketing strategy.
+- **Running the Script**: Execute uv run marketing_posts. The script will leverage the CrewAI framework to generate a detailed marketing strategy.
 - **Key Components**:
   - `src/marketing_posts/main.py`: Main script file.
   - `src/marketing_posts/crew.py`: Main crew file where agents and tasks come together, and the main logic is executed.
