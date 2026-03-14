@@ -62,11 +62,12 @@ def fetch_todo_tasks() -> list[dict]:
     content = result.get("content", [])
     for block in content:
         if block.get("type") == "text":
-            return json.loads(block["text"])
+            data = json.loads(block["text"])
+            return data.get("tasks", data) if isinstance(data, dict) else data
     return []
 
 
-def update_task(task_id: str, status: str, notes: str) -> dict:
+def update_task(task_id: str, version: int, status: str, notes: str) -> dict:
     """Update a task's status and notes in WritBase."""
     return mcp_call(
         method="tools/call",
@@ -74,6 +75,7 @@ def update_task(task_id: str, status: str, notes: str) -> dict:
             "name": "update_task",
             "arguments": {
                 "task_id": task_id,
+                "version": version,
                 "status": status,
                 "notes": notes,
             },
@@ -151,25 +153,26 @@ def main():
 
     for wb_task in tasks:
         task_id = wb_task["id"]
-        title = wb_task.get("title", "(untitled)")
-        description = wb_task.get("description", title)
+        version = wb_task["version"]
+        description = wb_task.get("description", "(no description)")
 
-        print(f"--- Processing task: {title} (id: {task_id}) ---")
+        print(f"--- Processing task: {description[:60]} (id: {task_id}) ---")
 
-        # Mark as in_progress
-        update_task(task_id, status="in_progress", notes="CrewAI processing started")
+        # Mark as in_progress (version increments after each update)
+        update_task(task_id, version=version, status="in_progress", notes="CrewAI processing started")
+        version += 1
 
         try:
             crew = build_crew(description)
             result = crew.kickoff()
 
             # Write result back to WritBase
-            update_task(task_id, status="done", notes=str(result))
+            update_task(task_id, version=version, status="done", notes=str(result))
             print(f"Task {task_id} completed.\n")
 
         except Exception as exc:
             error_msg = f"CrewAI processing failed: {exc}"
-            update_task(task_id, status="failed", notes=error_msg)
+            update_task(task_id, version=version, status="failed", notes=error_msg)
             print(f"Task {task_id} failed: {exc}\n", file=sys.stderr)
 
 
