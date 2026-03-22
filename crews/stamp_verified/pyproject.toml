@@ -1,0 +1,24 @@
+[project]
+name = "stamp_verified"
+version = "0.1.0"
+description = "Trust-verified AI agent crew using AgentStamp for cryptographic identity and reputation scoring"
+authors = [
+    { name = "Vinay Bhosle", email = "vinay@agentstamp.org" },
+]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.152.0",
+    "crewai-tools>=0.58.0",
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+stamp_verified = "stamp_verified.main:run"
+run_crew = "stamp_verified.main:run"
+
+[build-system]
+requires = [
+    "hatchling",
+]
+build-backend = "hatchling.build"
