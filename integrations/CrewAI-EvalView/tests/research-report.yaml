@@ -1,0 +1,20 @@
+# EvalView test case for the research + writing crew
+name: research-report
+
+input:
+  query: "Write a report about renewable energy trends"
+  topic: "renewable energy trends 2026"
+
+expected:
+  tools:
+    - search_web
+  output:
+    contains:
+      - "renewable"
+      - "energy"
+    not_contains:
+      - "error"
+
+thresholds:
+  min_score: 70
+  max_latency: 120000
