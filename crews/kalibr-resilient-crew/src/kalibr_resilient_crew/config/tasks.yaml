@@ -1,0 +1,36 @@
+research_company_culture_task:
+  description: >
+    Analyze the provided company website {company_domain} and the following
+    company description: {company_description}.
+    Focus on identifying the company's culture, values, and mission.
+  expected_output: >
+    A comprehensive summary of the company's culture and values.
+
+research_role_requirements_task:
+  description: >
+    Based on the hiring needs: {hiring_needs}, identify the skills,
+    experience, and qualities required for the role.
+  expected_output: >
+    A structured JSON with skills, experience, and qualities lists.
+
+draft_job_posting_task:
+  description: >
+    Draft a job posting for {hiring_needs} at a company with the following
+    description: {company_description}.
+    Highlight the specific benefits: {specific_benefits}.
+  expected_output: >
+    A detailed, engaging job posting ready for publication.
+
+review_and_edit_job_posting_task:
+  description: >
+    Review the job posting for clarity, engagement, grammatical accuracy,
+    and alignment with company values.
+  expected_output: >
+    A polished, final job posting ready for immediate publication.
+
+industry_analysis_task:
+  description: >
+    Conduct an industry analysis for the role: {hiring_needs}.
+    Identify salary ranges, required certifications, and market trends.
+  expected_output: >
+    A comprehensive industry analysis with salary benchmarks and market insights.
