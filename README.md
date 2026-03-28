@@ -3,7 +3,7 @@
 ## Introduction
 Welcome to the official collection of **complete CrewAI applications**. This repository contains end-to-end implementations that showcase how to build real-world applications using CrewAI's framework for orchestrating AI agents.
 
-> **🍳 Looking for feature-specific tutorials?** Check out [CrewAI Cookbook](https://github.com/crewAIInc/crewAI-cookbook) for focused guides on specific CrewAI features and patterns.
+> **🍳 Looking for feature-specific tutorials?** Check out [CrewAI Quickstarts](https://github.com/crewAIInc/crewAI-quickstarts) for focused guides on specific CrewAI features and patterns.
 
 ## What You'll Find Here
 
@@ -136,6 +136,6 @@ This repository is maintained by the CrewAI team. Check individual examples for 
 ## 🔗 Related Resources
 
 - **[CrewAI Framework](https://github.com/crewAIInc/crewAI)** - Main CrewAI repository
-- **[CrewAI Cookbooks](https://github.com/crewAIInc/crewAI-cookbook)** - Feature-focused tutorials and guides
+- **[CrewAI Quickstarts](https://github.com/crewAIInc/crewAI-quickstarts)** - Feature-focused tutorials and guides
 - **[CrewAI Documentation](https://docs.crewai.com)** - Comprehensive documentation
 - **[CrewAI Community](https://community.crewai.com)** - Join our community discussions
