@@ -1,0 +1,46 @@
+company_lookup:
+  description: >
+    Look up company {company_id} in {country} using the appropriate Strale
+    company data capability. Also validate the company's VAT number if one
+    is available. Report: company name, registration status, address,
+    and VAT validity.
+  expected_output: >
+    A structured summary with: company name, registration number, status
+    (active/inactive), registered address, and VAT validation result
+    (valid/invalid/not checked).
+  agent: company_researcher
+
+compliance_screening:
+  description: >
+    Screen the company identified in the previous step against:
+    1. International sanctions lists (OFAC, EU, UN, UK)
+    2. PEP (Politically Exposed Persons) databases
+    3. Adverse media sources (news coverage of fraud, regulatory action, etc.)
+    Use Strale's sanctions-check, pep-check, and adverse-media-check tools.
+    Report each screening result with risk level and match details.
+  expected_output: >
+    Three screening results: sanctions (clear/flagged with sources),
+    PEP (clear/flagged with positions), and adverse media (risk level
+    with category breakdown). Include match counts and source details.
+  agent: compliance_screener
+  context:
+    - company_lookup
+
+kyb_report:
+  description: >
+    Write a KYB verification report combining the company data and
+    compliance screening results. Structure the report with:
+    1. Company overview (name, status, jurisdiction)
+    2. VAT validation result
+    3. Sanctions screening result
+    4. PEP screening result
+    5. Adverse media result
+    6. Overall risk assessment (Low / Medium / High)
+    7. Recommendation (Approve / Review / Reject)
+  expected_output: >
+    A formatted KYB verification report with all sections above,
+    ending with a clear recommendation and the data sources used.
+  agent: report_writer
+  context:
+    - company_lookup
+    - compliance_screening
