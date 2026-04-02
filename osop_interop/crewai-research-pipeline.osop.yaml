@@ -1,0 +1,76 @@
+# CrewAI Research Pipeline — OSOP Portable Workflow
+#
+# A three-agent research crew: Researcher gathers sources, Analyst extracts
+# insights, Writer produces a polished report. Demonstrates how CrewAI crews
+# map 1:1 to OSOP nodes, making the workflow portable across any runtime.
+#
+# Run with CrewAI:  crewai run research_crew.py
+# Validate with OSOP: osop validate crewai-research-pipeline.osop.yaml
+
+osop_version: "1.0"
+id: "crewai-research-pipeline"
+name: "Research Pipeline Crew"
+description: "Three-agent crew that researches a topic, analyzes findings, and writes a report."
+version: "1.0.0"
+tags: [crewai, multi-agent, research, llm]
+
+nodes:
+  - id: "user_topic"
+    type: "human"
+    name: "Provide Research Topic"
+    description: "User supplies a topic and desired depth (overview / deep-dive)."
+
+  - id: "researcher"
+    type: "agent"
+    subtype: "llm"
+    name: "Researcher Agent"
+    description: "Searches the web, reads papers, and collects raw source material."
+    config:
+      role: "Senior Research Analyst"
+      tools: [web_search, arxiv_search, url_reader]
+      max_iterations: 5
+
+  - id: "analyst"
+    type: "agent"
+    subtype: "llm"
+    name: "Analyst Agent"
+    description: "Synthesizes raw sources into structured insights and key findings."
+    config:
+      role: "Data Analyst"
+      tools: [text_summarizer]
+      max_iterations: 3
+
+  - id: "writer"
+    type: "agent"
+    subtype: "llm"
+    name: "Writer Agent"
+    description: "Produces a polished markdown report with citations."
+    config:
+      role: "Technical Writer"
+      tools: [markdown_formatter]
+      max_iterations: 3
+
+  - id: "human_review"
+    type: "human"
+    subtype: "review"
+    name: "Review Report"
+    description: "User reviews the final report and requests revisions if needed."
+
+edges:
+  - from: "user_topic"
+    to: "researcher"
+    mode: "sequential"
+  - from: "researcher"
+    to: "analyst"
+    mode: "sequential"
+  - from: "analyst"
+    to: "writer"
+    mode: "sequential"
+  - from: "writer"
+    to: "human_review"
+    mode: "sequential"
+  - from: "human_review"
+    to: "writer"
+    mode: "conditional"
+    when: "revision_requested"
+    label: "Revisions needed"
