@@ -1,0 +1,2 @@
+crewai>=0.100.0
+arch-tools>=0.1.0
