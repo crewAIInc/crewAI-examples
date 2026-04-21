@@ -1,0 +1,28 @@
+verify_agent_trust:
+  description: >
+    Verify the trust profile of the AI agent with wallet address {wallet_address}
+    using the AgentStamp trust check tool. Analyze the trust score (0-100),
+    stamp tier (free/bronze/silver/gold), endorsement count, and heartbeat status.
+    Determine whether this agent meets the minimum trust threshold of {min_score}
+    for participation in our workflow.
+  expected_output: >
+    A trust verification report containing:
+    - Agent name and wallet address
+    - Trust score (0-100) and whether it meets the minimum threshold
+    - Stamp tier and its implications
+    - Number of endorsements
+    - Heartbeat status (active/inactive)
+    - Final recommendation: APPROVED or REJECTED with reasoning
+
+coordinate_verified_task:
+  description: >
+    Based on the trust verification results, coordinate the following task
+    assignment: {task_description}. Only proceed if the agent was APPROVED
+    in the trust check. If rejected, explain why and suggest alternatives.
+    Include the agent's trust profile in the task assignment documentation.
+  expected_output: >
+    A task coordination report containing:
+    - Trust verification summary (from previous task)
+    - Task assignment details (if approved)
+    - Risk assessment based on trust profile
+    - Recommendations for ongoing trust monitoring
