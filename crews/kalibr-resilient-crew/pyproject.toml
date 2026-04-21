@@ -1,0 +1,16 @@
+[project]
+name = "kalibr_resilient_crew"
+version = "0.1.0"
+description = "Production-resilient job posting crew with Kalibr execution path routing"
+authors = [{name = "Devon Kelley", email = "devon@kalibr.systems"}]
+readme = "README.md"
+requires-python = ">=3.12,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.152.0",
+    "python-dotenv>=1.0.1",
+    "kalibr>=0.1.0",
+]
+
+[project.scripts]
+kalibr_resilient_crew = "kalibr_resilient_crew.main:run"
+train = "kalibr_resilient_crew.main:train"
