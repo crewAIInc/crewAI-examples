@@ -1,0 +1,8 @@
+.env
+.DS_Store
+__pycache__
+.venv
+*.key
+*.pem
+.agentid_cache.json
+audit_logs/

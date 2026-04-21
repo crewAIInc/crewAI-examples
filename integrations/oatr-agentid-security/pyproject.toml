@@ -1,0 +1,24 @@
+[project]
+name = "oatr-agentid-security"
+version = "0.1.0"
+description = "Three-layer security gate for CrewAI: OATR runtime attestation + AgentID identity verification"
+authors = [
+    {name = "FransDevelopment"},
+    {name = "haroldmalikfrimpong-ops"},
+]
+requires-python = ">=3.10.0,<3.13"
+dependencies = [
+    "crewai>=0.152.0",
+    "httpx>=0.27.0",
+    "python-jose[cryptography]>=3.3.0",
+    "python-dotenv>=1.0.0",
+    "agentid-crewai>=0.1.0",
+]
+
+[tool.pyright]
+useLibraryCodeForTypes = true
+exclude = [".cache"]
+
+[tool.ruff]
+select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']
+ignore = ['W291', 'W292', 'W293']
