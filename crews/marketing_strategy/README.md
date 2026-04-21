@@ -16,7 +16,13 @@ By [@joaomdmoura](https://x.com/joaomdmoura)
 CrewAI is designed to facilitate the collaboration of role-playing AI agents. In this example, these agents work together to create a comprehensive marketing strategy and develop compelling marketing content.
 
 ## Running the Script
-It uses GPT-4o by default so you should have access to that to run it.
+It uses GPT-4o by default, so ensure you have access to that.
+
+### 1. Installation
+Ensure you have [UV](https://github.com/astral-sh/uv) installed. Then, install the dependencies:
+
+```shell
+uv sync
 
 ***Disclaimer:** This will use gpt-4o unless you change it to use a different model, and by doing so it may incur in different costs.*
 
