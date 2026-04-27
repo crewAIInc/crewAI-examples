@@ -67,6 +67,6 @@ Sources: Bolagsverket (SE), EU VIES, Dilisense AML
 
 ## How Strale tools work
 
-`crewai-strale` exposes 250+ capabilities as CrewAI tools. The agents discover and call the right tools automatically based on their task descriptions. Each result includes a quality score (SQS) and data provenance.
+`crewai-strale` wraps Strale’s capability catalog as CrewAI tools. The agents discover and call the right tools automatically based on their task descriptions. Each result includes provenance and an SQS field that the crew can query before relying on the data.
 
 Free capabilities (no API key needed): `iban-validate`, `email-validate`, `dns-lookup`, `json-repair`, `url-to-markdown`.
