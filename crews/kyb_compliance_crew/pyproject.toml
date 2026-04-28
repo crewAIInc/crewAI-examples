@@ -1,0 +1,20 @@
+[project]
+name = "kyb_compliance_crew"
+version = "0.1.0"
+description = "KYB (Know Your Business) compliance verification crew using Strale for company data, VAT validation, and sanctions screening"
+authors = [
+    { name = "Strale", email = "hello@strale.io" },
+]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.152.0",
+    "crewai-strale>=0.1.4",
+]
+
+[project.scripts]
+kyb_compliance_crew = "kyb_compliance_crew.main:run"
+run_crew = "kyb_compliance_crew.main:run"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
