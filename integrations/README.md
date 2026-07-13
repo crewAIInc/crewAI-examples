@@ -22,6 +22,12 @@ Integration with NVIDIA's AI model ecosystem:
 - Performance optimization examples
 - Multiple example implementations (intro, marketing strategy)
 
+### 4. Decision Anchor MCP
+Integration with Decision Anchor via MCP for external accountability proof:
+- Connects to DA's remote MCP server using `MCPServerAdapter`
+- Records decision boundaries for payments, delegation, and disputes
+- No DA API key needed — agents register via MCP tools
+
 ## Integration Patterns
 
 These examples demonstrate:
